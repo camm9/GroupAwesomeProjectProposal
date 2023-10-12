@@ -1,0 +1,89 @@
+		<!-- close button -->
+		<button type="button" class="close cursor-pointer z-index-10 w--30 h--30 position-absolute top-0 end-0 my-2 mx-3" data-dismiss="modal" aria-label="Close">
+			<span class="fi fi-close fs--25 position-absolute end-0 top-0" aria-hidden="true"></span>
+		</button>
+
+
+		<div class="modal-body p-0 rounded overflow-hidden">
+
+			<div class="row no-gutters z-index-1 position-relative">
+
+				<!-- 
+
+					set here image bg instead using 
+					style="background-image:url(...)"
+					Also, add class .text-white to h3 if needed!
+
+					And adjust background luminozity:
+						overlay-opacity-[0-9]
+
+				-->
+				<div class="col-12 col-lg-5 d-flex align-items-center overlay-dark overlay-opacity-1 bg-cover bg-gradient-indigo text-white">
+					
+					<div class="px-4 py-6 w-100 text-center-xs">
+
+						
+
+						<h3 class="m-0 font-weight-light">
+							 Up to 45% OFF <br>
+							<strong class="h2">best deals</strong>
+						</h3>
+
+					</div>
+
+				</div>
+
+
+				<div class="col-12 col-lg-7 d-flex align-items-center">
+					<div class="py-7 px-4 w-100 text-center-xs">
+						
+						<div class="py-5 p-0-md">
+							<p class="lead">
+								Don't lose our <b>best deals</b>!
+							</p>
+
+							<form novalidate class="bs-validate" method="post" action="#">
+
+								<div class="input-group mb-3">
+
+									<input required type="email" name="subscribe_email" value="" class="form-control" placeholder="email address">
+
+									<div class="input-group-append">
+										<button class="btn btn-indigo">Subscribe</button>
+									</div>
+
+								</div>
+
+								<label class="form-checkbox form-checkbox-indigo form-checkbox-bordered d-block text-align-start">
+									<input required type="checkbox" name="checkbox" value="1">
+									<i></i> I agree the <a href="#!" target="_blank" class="link-muted">terms &amp; conditions</a>
+								</label>
+
+							</form>
+						</div>
+
+					</div>
+
+
+					<!--
+
+						Cookie button, expire: 1 day
+						documentation/plugins-sow-utils.html
+
+						modal_subscribe   		should match the id of the html markup that trigger this modal!
+												because is the cookie name set for this modal!
+
+					-->
+					<a href="#!" class="sow-util-cookie link-muted fs--14 position-absolute end-0 bottom-0 m-2"
+						data-dismiss="modal" aria-label="Close" 
+						data-cookie-set="modal_subscribe" 
+						data-cookie-expire="1">
+						stop showing
+					</a>
+
+				</div>
+
+
+			</div>
+
+		</div>

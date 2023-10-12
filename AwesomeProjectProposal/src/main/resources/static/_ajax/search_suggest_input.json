@@ -1,0 +1,285 @@
+[
+  {
+    "label":  "Overview / Intro",
+    "url":    "overview.html"
+  },{
+    "label":  "Homepage: Landing 1",
+    "url":    "landing-1.html"
+  },{
+    "label":  "Homepage: Landing 2",
+    "url":    "landing-2.html"
+  },{
+    "label":  "Homepage: Landing 3",
+    "url":    "landing-3.html"
+  },{
+    "label":  "Homepage: Landing 4",
+    "url":    "landing-4.html"
+  },{
+    "label":  "Homepage: Landing 5",
+    "url":    "landing-5.html"
+  },{
+    "label":  "Homepage: Landing 6",
+    "url":    "landing-6.html"
+  },{
+    "label":  "Niche: Classifieds",
+    "url":    "niche.classifieds.html"
+  },{
+    "label":  "Niche: Real Estate",
+    "url":    "niche.realestate.html"
+  },{
+    "label":  "Niche: Restaurant",
+    "url":    "niche.restaurant.html"
+  },{
+    "label":  "Niche: Caffe",
+    "url":    "niche.caffe.html"
+  },{
+    "label":  "Niche: Lawyer",
+    "url":    "niche.lawyer.html"
+  },{
+    "label":  "Niche: Tattoo",
+    "url":    "niche.tattoo.html"
+  },{
+    "label":  "Niche: Hosting",
+    "url":    "niche.hosting.html"
+  },{
+    "label":  "Help Center 1",
+    "url":    "help-center-1-index.html"
+  },{
+    "label":  "Help Center 2",
+    "url":    "help-center-2-index.html"
+  },{
+    "label":  "About Us 1",
+    "url":    "about-us-1.html"
+  },{
+    "label":  "About Us 2",
+    "url":    "about-us-2.html"
+  },{
+    "label":  "About Us 3",
+    "url":    "about-us-3.html"
+  },{
+    "label":  "About Us 4",
+    "url":    "about-us-4.html"
+  },{
+    "label":  "About Us 5",
+    "url":    "about-us-5.html"
+  },{
+    "label":  "About Me 1",
+    "url":    "about-me-1.html"
+  },{
+    "label":  "About Me 2",
+    "url":    "about-me-2.html"
+  },{
+    "label":  "Services 1",
+    "url":    "services-1.html"
+  },{
+    "label":  "Services 2",
+    "url":    "services-2.html"
+  },{
+    "label":  "Services 3",
+    "url":    "services-3.html"
+  },{
+    "label":  "Services 4",
+    "url":    "services-4.html"
+  },{
+    "label":  "Services 5",
+    "url":    "services-5.html"
+  },{
+    "label":  "Contact 1",
+    "url":    "contact-1.html"
+  },{
+    "label":  "Contact 2",
+    "url":    "contact-2.html"
+  },{
+    "label":  "Contact 3",
+    "url":    "contact-3.html"
+  },{
+    "label":  "Contact 4",
+    "url":    "contact-4.html"
+  },{
+    "label":  "Pricing 1",
+    "url":    "pricing-1.html"
+  },{
+    "label":  "Pricing 2",
+    "url":    "pricing-2.html"
+  },{
+    "label":  "Pricing 3",
+    "url":    "pricing-3.html"
+  },{
+    "label":  "Pricing 4",
+    "url":    "pricing-4.html"
+  },{
+    "label":  "Pricing 5",
+    "url":    "pricing-5.html"
+  },{
+    "label":  "FAQ 1",
+    "url":    "faq-1.html"
+  },{
+    "label":  "FAQ 2",
+    "url":    "faq-2.html"
+  },{
+    "label":  "FAQ 3",
+    "url":    "faq-3.html"
+  },{
+    "label":  "FAQ 4",
+    "url":    "faq-4.html"
+  },{
+    "label":  "Team 1",
+    "url":    "team-1.html"
+  },{
+    "label":  "Team 2",
+    "url":    "team-2.html"
+  },{
+    "label":  "Sign In/Up : Full 1",
+    "url":    "account-full-signin-1.html"
+  },{
+    "label":  "Sign In/Up : Full 2",
+    "url":    "account-full-signin-2.html"
+  },{
+    "label":  "Sign In/Up : Onepage",
+    "url":    "account-onepage-signin.html"
+  },{
+    "label":  "Sign In/Up : Simple",
+    "url":    "account-simple-signin.html"
+  },{
+    "label":  "Sign In/Up : Modal",
+    "url":    "account-modal-signin.html"
+  },{
+    "label":  "Account : Orders",
+    "url":    "account-orders.html"
+  },{
+    "label":  "Account : Favourites",
+    "url":    "account-favourites.html"
+  },{
+    "label":  "Account : Settings",
+    "url":    "account-settings.html"
+  },{
+    "label":  "Clients",
+    "url":    "clients.html"
+  },{
+    "label":  "Career",
+    "url":    "career.html"
+  },{
+    "label":  "2 Columns",
+    "url":    "portfolio-columns-2.html"
+  },{
+    "label":  "3 Columns",
+    "url":    "portfolio-columns-3.html"
+  },{
+    "label":  "4 Columns",
+    "url":    "portfolio-columns-4.html"
+  },{
+    "label":  "Single Item 1",
+    "url":    "portfolio-single-1.html"
+  },{
+    "label":  "Single Item 2",
+    "url":    "portfolio-single-2.html"
+  },{
+    "label":  "Single Item 3",
+    "url":    "portfolio-single-3.html"
+  },{
+    "label":  "Single Item 4",
+    "url":    "portfolio-single-4.html"
+  },{
+    "label":  "Search Result 1",
+    "url":    "search-result-1.html"
+  },{
+    "label":  "Search Result 2",
+    "url":    "search-result-2.html"
+  },{
+    "label":  "Error 1",
+    "url":    "404-1.html"
+  },{
+    "label":  "Forum / Comunity : Home",
+    "url":    "forum-index.html"
+  },{
+    "label":  "Forum / Comunity : Topic",
+    "url":    "forum-topic.html"
+  },{
+    "label":  "Forum / Comunity : Post",
+    "url":    "forum-post.html"
+  },{
+    "label":  "Error 2",
+    "url":    "404-2.html"
+  },{
+    "label":  "Error 3",
+    "url":    "404-3.html"
+  },{
+    "label":  "Maintenance 1",
+    "url":    "maintenance-1.html"
+  },{
+    "label":  "Maintenance 2",
+    "url":    "maintenance-2.html"
+  },{
+    "label":  "Coming Soon 1",
+    "url":    "comingsoon-1.html"
+  },{
+    "label":  "Coming Soon 2",
+    "url":    "comingsoon-2.html"
+  },{
+    "label":  "GDPR Page &amp; Cookie Window",
+    "url":    "page-cookie.html"
+  },{
+    "label":  "Smarty Junkyard",
+    "url":    "__junkyard.html"
+  },{
+    "label":  "Shop Homepage 1",
+    "url":    "shop-index-1.html"
+  },{
+    "label":  "Shop Homepage 2",
+    "url":    "shop-index-2.html"
+  },{
+    "label":  "Shop Homepage 3",
+    "url":    "shop-index-3.html"
+  },{
+    "label":  "Shop Homepage 4",
+    "url":    "shop-index-4.html"
+  },{
+    "label":  "Shop Product Page 1",
+    "url":    "shop-page-product-1.html"
+  },{
+    "label":  "Shop Product Page 2",
+    "url":    "shop-page-product-2.html"
+  },{
+    "label":  "Shop Product Page 3",
+    "url":    "shop-page-product-3.html"
+  },{
+    "label":  "Shop Product Page 4",
+    "url":    "shop-page-product-4.html"
+  },{
+    "label":  "Shop Product Page 5",
+    "url":    "shop-page-product-5.html"
+  },{
+    "label":  "Shop Cart Full",
+    "url":    "shop-page-cart-1.html"
+  },{
+    "label":  "Shop Cart Empty",
+    "url":    "shop-page-cart-2.html"
+  },{
+    "label":  "Shop Cart Checkout - Not Logged",
+    "url":    "shop-page-checkout.html"
+  },{
+    "label":  "Shop Cart Checkout - Logged",
+    "url":    "shop-page-checkout-logged.html"
+  },{
+    "label":  "Shop Cart Checkout Success",
+    "url":    "shop-page-checkout-success.html"
+  },{
+    "label":  "Shop Category 1",
+    "url":    "shop-page-category-1.html"
+  },{
+    "label":  "Shop Category 2",
+    "url":    "shop-page-category-2.html"
+  },{
+    "label":  "Shop Category 3",
+    "url":    "shop-page-category-3.html"
+  },{
+    "label":  "Shop Category Using Lazyload",
+    "url":    "shop-page-category-lazyload.html"
+  },{
+    "label":  "Blog - With Sidebar",
+    "url":    "blog-page-sidebar.html"
+  },{
+    "label":  "Blog - No Sidebar",
+    "url":    "blog-page-sidebar-no.html"
+  }
+]

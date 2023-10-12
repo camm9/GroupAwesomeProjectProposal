@@ -1,0 +1,36 @@
+[
+  {
+    "label":  "Overview / Intro",
+    "url":    "overview.html"
+  },{
+    "label": "About us",
+    "url": "about-us-1.html"
+  },{
+    "label": "Services",
+    "url": "services-3.html"
+  },{
+    "label": "Pricing",
+    "url": "pricing-1.html"
+  },{
+    "label": "Frequently Asked Questions",
+    "url": "faq-4.html"
+  },{
+    "label": "Career",
+    "url": "career.html"
+  },{
+    "label": "Contact Us",
+    "url": "contact-2.html"
+  },{
+    "label": "Shop Homepage",
+    "url": "shop-index-1.html"
+  },{
+    "label": "Admin Layout 1",
+    "url": "../html_admin/layout_1/"
+  },{
+    "label": "Admin Layout 2",
+    "url": "../html_admin/layout_2/"
+  },{
+    "label": "Documentation",
+    "url": "documentation/index.html"
+  }
+]

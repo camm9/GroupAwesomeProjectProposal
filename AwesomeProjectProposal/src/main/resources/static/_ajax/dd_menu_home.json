@@ -1,0 +1,91 @@
+[
+  {
+    "label":  "Home Landing",
+    "url":    "#",
+
+    "info_comment": "Just use (copy/paste) the same params to any element!",
+    "info_start":   "------------------------------------------------------",
+    "target": "",
+    "class":  "",
+    "disabled": false,
+    "active":   false,
+    "icon": "",
+    "info_end":     "------------------------------------------------------",
+
+    "childs":[
+      {
+        "label":  "Landing 1",
+        "url":    "landing-1.html"
+      },{
+        "label":  "Landing 2",
+        "url":    "landing-2.html"
+      },{
+        "label":  "Landing 3",
+        "url":    "landing-3.html"
+      },{
+        "label":  "Landing 4",
+        "url":    "landing-4.html"
+      },{
+        "label":  "Landing 5",
+        "url":    "landing-5.html"
+      },{
+        "label":  "Landing 6",
+        "url":    "landing-6.html"
+      },{
+        "label":  "Landing 7 (SAAS)",
+        "url":    "landing-7.html"
+      }
+    ]
+  },{
+    "label":  "Niche",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Classifieds",
+        "url":    "niche.classifieds.html"
+      },{
+        "label":  "Real Estate",
+        "url":    "niche.realestate.html"
+      },{
+        "label":  "Restaurant",
+        "url":    "niche.restaurant.html"
+      },{
+        "label":  "Caffe",
+        "url":    "niche.caffe.html"
+      },{
+        "label":  "Lawyer",
+        "url":    "niche.lawyer.html"
+      },{
+        "label":  "Tattoo",
+        "url":    "niche.tattoo.html"
+      },{
+        "label":  "Hosting",
+        "url":    "niche.hosting.html"
+      },{
+        "label":  "More : Soon",
+        "url":    "#",
+        "disabled": true
+      }
+    ]
+  },{
+    "label":  "Help Center 1",
+    "url":    "help-center-1-index.html"
+  },{
+    "label":  "Help Center 2",
+    "url":    "help-center-2-index.html"
+  },{
+    "label":  "Full Ajax",
+    "url":    "fullajax-index.html",
+    "target": "_blank"
+  },{
+    "divider":  true
+  },{
+    "label":  "Smarty v2.x <i class=\"fi fi-emoji-smile text-muted\"></i> <span class=\"d-block text-muted pt--6 fs--13 font-weight-light\">You also get previous <br> Smarty version. Eh?</span>",
+    "target": "_blank",
+    "class":  "",
+    "url":    "https://theme.stepofweb.com/Smarty/v2.3.0/HTML_BS4/start_v4.html"
+  }
+]
+
+
+

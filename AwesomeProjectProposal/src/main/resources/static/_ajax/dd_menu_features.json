@@ -1,0 +1,189 @@
+[
+  {
+    "label":  "Header",
+    "url":    "#",
+
+    "info_comment": "Just use (copy/paste) the same params to any element!",
+    "info_start":   "------------------------------------------------------",
+    "target": "",
+    "class":  "",
+    "disabled": false,
+    "active":   false,
+    "icon": "",
+    "info_end":     "------------------------------------------------------",
+
+    "childs":[
+      {
+        "label":  "Variants",
+        "url":    "#",
+        "class":  "font-weight-bold",
+        "childs":[
+            {
+              "label":  "Header : Variant : 1",
+              "url":    "header-variant-1.html"
+            },{
+              "label":  "Header : Variant : 2",
+              "url":    "header-variant-2.html"
+            },{
+              "label":  "Header : Variant : 3",
+              "url":    "header-variant-3.html"
+            }
+        ]
+      },{
+        "divider":  true
+      },{
+        "label":  "Header : Light <small class=\"text-muted\">(default)</small>",
+        "url":    "header-option-light.html"
+      },{
+        "label":  "Header : Dark",
+        "url":    "header-option-dark.html"
+      },{
+        "label":  "Header : Color",
+        "url":    "header-option-color.html"
+      },{
+        "label":  "Header : Transparent",
+        "url":    "header-option-transparent.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Header : Centered",
+        "url":    "header-option-centered.html"
+      },{
+        "label":  "Header : Bottom",
+        "url":    "header-option-bottom.html"
+      },{
+        "label":  "Header : Floating",
+        "url":    "header-option-floating.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Header : Fixed",
+        "url":    "header-option-fixed.html"
+      },{
+        "label":  "Header : Reveal on Scroll",
+        "url":    "header-option-reveal.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Ajax Search : Json",
+        "url":    "header-option-ajax-search-json.html"
+      },{
+        "label":  "Ajax Search : Html",
+        "url":    "header-option-ajax-search-html.html"
+      }
+    ]
+  },{
+    "label":  "Footer",
+    "url":    "#",
+    "childs":[
+        {
+          "label":  "Variants",
+          "url":    "#",
+          "class":  "font-weight-bold",
+          "childs":[
+              {
+                "label":  "Footer : Variant : 1",
+                "url":    "footer-variant-1.html#footer"
+              },{
+                "label":  "Footer : Variant : 2",
+                "url":    "footer-variant-2.html#footer"
+              },{
+                "label":  "Footer : Variant : 3",
+                "url":    "footer-variant-3.html#footer"
+              },{
+                "label":  "Footer : Variant : 4",
+                "url":    "footer-variant-4.html#footer"
+              },{
+                "label":  "Footer : Variant : 5",
+                "url":    "footer-variant-5.html#footer"
+              },{
+                "label":  "Footer : Variant : 6",
+                "url":    "footer-variant-6.html#footer"
+              }
+          ]
+        },{
+          "divider":  true
+        },{
+          "label":  "Footer : Light",
+          "url":    "footer-option-light.html"
+        },{
+          "label":  "Footer : Dark <small class=\"text-muted\">(default)</small>",
+          "url":    "footer-option-dark.html"
+        },{
+          "label":  "Footer : Image",
+          "url":    "footer-option-image.html"
+        }
+    ]
+  },{
+    "label":  "Sliders",
+    "url":    "#",
+    "childs":[
+        {
+          "label":  "Swiper Slider",
+          "url":    "slider-swiper.html"
+        }
+    ]
+  },{
+  "label":  "Page Title",
+  "url":    "#",
+  "childs":[
+      {
+        "label":  "Page Title : Classic",
+        "url":    "page-title-classic.html"
+      },{
+        "label":  "Page Title : Alternate",
+        "url":    "page-title-alternate.html"
+      },{
+        "label":  "Page Title : Color + Nav",
+        "url":    "page-title-color.html"
+      },{
+        "label":  "Page Title : Clean",
+        "url":    "page-title-clean.html"
+      },{
+        "label":  "Page Title : Parallax 1",
+        "url":    "page-title-parallax-1.html"
+      },{
+        "label":  "Page Title : Parallax 2",
+        "url":    "page-title-parallax-2.html"
+      }
+  ]
+  },{
+  "label":  "Sidebar",
+  "url":    "#",
+  "childs":[
+      {
+        "label":  "Sidebar : Float : Dark",
+        "url":    "sidebar-float-dark.html"
+      },{
+        "label":  "Sidebar : Float : Light",
+        "url":    "sidebar-float-light.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Sidebar : Static : Dark",
+        "url":    "sidebar-static-dark.html"
+      },{
+        "label":  "Sidebar : Static : Light",
+        "url":    "sidebar-static-light.html"
+      },{
+        "divider":  true
+      },{
+        "text": "<span class=\"d-block text-muted py-2 px-4 fs--13 font-weight-bold\">Same as admin</span>"
+      },{
+        "label":  "Sidebar : Float",
+        "url":    "sidebar-float-admin-color.html"
+      },{
+        "label":  "Sidebar : Static",
+        "url":    "sidebar-static-admin-color.html"
+      }
+  ]
+  },{
+    "divider":  true
+  },{
+    "label":  "Boxed Layout",
+    "url":    "layout-boxed-1.html"
+  },{
+    "label":  "Boxed + Background",
+    "url":    "layout-boxed-2.html"
+  }
+]

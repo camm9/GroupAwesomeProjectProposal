@@ -57,9 +57,9 @@
 							<!-- 
 								Logo : height: 70px max
 							-->
-							<a class="navbar-brand" href="index.html">
-								<img src="assets/images/logo/logo.png" width="90" height="70" alt="...">
-								<img src="assets/images/logo/logo.png" width="90" height="70" alt="...">
+							<a class="navbar-brand" href="/">
+								<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+								<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
 							</a>
 
 						</div>
@@ -86,7 +86,7 @@
 									Logo : height: 70px max
 								-->
 								<a class="navbar-brand" href="index.html">
-									<img src="assets/images/logo/logo_dark.svg" width="110" height="70" alt="...">
+										<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
 								</a>
 
 							</div>
@@ -157,6 +157,9 @@
 									</a>
 
 								</li>
+								
+								
+								
 
 
 							</ul>
@@ -171,7 +174,22 @@
 
 						<!-- OPTIONS -->
 						<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
+								
+								<li class="list-inline-item mx-1">
 
+								<a th:href="@{login}" aria-label="Account Options" class="btn btn-sm btn-primary text-white "  aria-expanded="false" aria-haspopup="true">
+									<span class="group-icon">
+										<i class="fi fi-user-male"></i>
+										<i class="fi fi-close"></i>
+									</span>
+									<span>Account</span>
+								</a>
+								
+								
+							
+
+							
+							</li>
 
 						</ul>
 						<!-- /OPTIONS -->
@@ -692,7 +710,7 @@
 
 						<div class="col-10 mx-auto col-lg-4 py-4">
 
-							<form novalidate="" method="post" action="#subscribe_url" class="bs-validate py-3 mt-1 input-group-over form-control-pill"> 
+							<form novalidate="" method="get" action="/" class="bs-validate py-3 mt-1 input-group-over form-control-pill"> 
 									
 								<input required="" class="form-control form-control-lg font-weight-light text-center-md text-center-xs" name="subscriber_email" type="email" value="" placeholder="email address..." aria-label="email address...">
 
@@ -939,7 +957,7 @@
 										<div class="clearfix bg-light position-relative rounded p-4 mb-4">
 
 											<span class="text-muted fs--12 d-block position-absolute bottom-0 end-0 m-2">
-												EU GDPR
+											 GAME DAY TRADES
 											</span>
 
 											<label class="form-checkbox form-checkbox-primary">
@@ -948,7 +966,7 @@
 												<span> 	
 													I consent that my data is being stored in 
 													line with the guidelines set out in  
-													<a href="page-terms-and-conditions.html" target="_blank">Privacy Policy</a>. 
+													<a href="#" target="_blank">Privacy Policy</a>. 
 												</span>
 											</label>
 

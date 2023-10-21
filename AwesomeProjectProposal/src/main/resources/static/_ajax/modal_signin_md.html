@@ -1,0 +1,177 @@
+		<!-- modal header not used -->
+
+		<button type="button" class="close cursor-pointer z-index-10 w--30 h--30 position-absolute top-0 end-0 my-2 mx-3" data-dismiss="modal" aria-label="Close">
+			<span class="fi fi-close fs--25 position-absolute end-0 top-0" aria-hidden="true"></span>
+		</button>
+
+
+		<div class="modal-body p-0 m-5 m-4-xs">
+
+			<div class="accordion" id="accordionAccount">
+
+
+				<!-- SIGN IN -->
+				<form class="collapse bs-validate show" novalidate method="post" action="#" id="accordionAccountSignIn" data-parent="#accordionAccount">
+
+					<h5 class="text-center pb-3">Sign In</h5>
+
+
+					<!-- email -->
+					<div class="form-label-group mb-4">
+
+						<input required placeholder="Email" id="signin_email" type="email" class="form-control">
+						<label for="signin_email">Email</label>
+					
+					</div>
+
+
+					<!-- password -->
+					<div class="input-group-over">
+
+						<div class="form-label-group mb-4">
+							<input required placeholder="Password" id="signin_password" type="password" class="form-control" autocomplete="new-password">
+							<label for="signin_password">Password</label>
+						</div>
+
+						<a href="#accordionAccountPasswd" class="btn btn-pill fs--12" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountPasswd">
+							FORGOT?
+						</a>
+
+					</div>
+
+
+					<!-- button -->
+					<button type="submit" class="btn btn-primary btn-soft btn-block">
+						Sign In
+					</button>
+
+					<div class="text-center mt-5">
+						<a href="#accordionAccountSignUp" class="d-block text-success text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignUp">
+							Don't have an account yet?
+						</a>
+					</div>
+
+				</form>
+				<!-- /SIGN IN -->
+
+
+
+				<!-- PASSWD RESET -->
+				<form class="collapse bs-validate" novalidate method="post" action="#" id="accordionAccountPasswd" data-parent="#accordionAccount">
+
+					<h5 class="text-center pb-3">Password Reset</h5>
+
+					<!-- email -->
+					<div class="form-label-group mb-4">
+						<input required placeholder="Email" id="reset_email" type="email" class="form-control">
+						<label for="reset_email">Email</label>
+					</div>
+
+
+					<!-- password -->
+					<button type="submit" class="btn btn-primary btn-soft btn-block">
+						Reset Password
+					</button>
+
+
+					<!-- back -->
+					<div class="text-center mt-5">
+						<a href="#accordionAccountSignIn" class="d-block text-success text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignIn">
+							Nevermind, back to Sign In
+						</a>
+					</div>
+
+				</form>
+				<!-- /PASSWD RESET -->
+
+
+
+				<!-- SIGN UP -->
+				<form class="collapse bs-validate" novalidate method="post" action="#" id="accordionAccountSignUp" data-parent="#accordionAccount">
+
+					<h5 class="text-center pb-3">Sign Up</h5>
+
+					<div class="form-label-group mb-3">
+						<input required id="signup_first_name" type="text" class="form-control" placeholder="First Name">
+						<label for="signup_first_name">First Name</label>
+					</div>
+
+					<div class="form-label-group mb-3">
+						<input required id="signup_last_name" type="text" class="form-control" placeholder="Last Name">
+						<label for="signup_last_name">Last Name</label>
+					</div>
+
+					<div class="form-label-group mb-3">
+						<input required id="signup_email" type="email" class="form-control" placeholder="Email">
+						<label for="signup_email">Email</label>
+					</div>
+
+					<div class="form-label-group mb-3">
+						<!-- bootstrap select vendor plugin used -->
+						<select required class="form-control bs-select pt-0 pb-0" data-live-search="true">
+							<option value="">Country...</option>
+							<option>United States</option>
+							<option>United Kingdrom</option>
+							<option>France</option>
+						</select>
+						<label for="signup_email">Country</label>
+					</div>
+
+					<div class="input-group-over">
+						
+						<div class="form-label-group mb-3">
+							<input required placeholder="Password" id="account_password" type="password" class="form-control">
+							<label for="account_password">Password</label>
+						</div>
+
+						<!-- `SOW : Form Advanced` plugin used -->
+						<a href="account-sign-password.html" class="btn fs--12 btn-password-type-toggle" data-target="#account_password">
+							<span class="group-icon">
+								<i class="fi fi-eye m-0"></i>
+								<i class="fi fi-close m-0"></i>
+							</span>
+						</a>
+
+					</div>
+
+					<!-- GDPR CONSENT -->
+					<div class="clearfix bg-light position-relative rounded p-4 mb-4">
+
+						<span class="text-muted fs--12 d-block position-absolute bottom-0 end-0 m-2">
+							EU GDPR
+						</span>
+
+						<label class="form-checkbox form-checkbox-primary m-0">
+							<input required type="checkbox" name="checkbox">
+							<i></i> 
+							<span class="fs--15"> 	
+								I consent that my data is being stored in 
+								line with the guidelines set out in  
+								<a href="page-terms-and-conditions.html" target="_blank">Privacy Policy</a>. 
+							</span>
+						</label>
+
+					</div>
+					<!-- /GDPR CONSENT -->
+
+					<button type="submit" class="btn btn-primary btn-soft btn-block">
+						Sign Up
+					</button>
+
+					<div class="text-center mt-5">
+						<a href="#accordionAccountSignIn" class="d-block text-muted text-decoration-none" data-toggle="collapse" aria-expanded="true" aria-controls="accordionAccountSignIn">
+							Back to Sign In
+						</a>
+					</div>
+
+				</form>
+				<!-- /SIGN UP -->
+
+
+			</div>
+
+		</div>
+
+		<div class="border-top text-muted fs--13 bg-light rounded-bottom p-3">
+			<b>Privacy:</b> All data is secure, never transfered to a third party provider/service.
+		</div>

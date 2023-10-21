@@ -1,0 +1,266 @@
+[
+  {
+    "label":  "About",
+    "url":    "#",
+
+    "info_comment": "Just use (copy/paste) the same params to any element!",
+    "info_start":   "------------------------------------------------------",
+    "target": "",
+    "class":  "",
+    "disabled": false,
+    "active":   false,
+    "icon": "",
+    "info_end":     "------------------------------------------------------",
+
+    "childs":[
+      {
+        "label":  "About Us 1",
+        "url":    "about-us-1.html"
+      },{
+        "label":  "About Us 2",
+        "url":    "about-us-2.html"
+      },{
+        "label":  "About Us 3",
+        "url":    "about-us-3.html"
+      },{
+        "label":  "About Us 4",
+        "url":    "about-us-4.html"
+      },{
+        "label":  "About Us 5",
+        "url":    "about-us-5.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "About Me 1",
+        "url":    "about-me-1.html"
+      },{
+        "label":  "About Me 2",
+        "url":    "about-me-2.html"
+      }
+    ]
+  }, {
+    "label":  "Services",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Services 1",
+        "url":    "services-1.html"
+      },{
+        "label":  "Services 2",
+        "url":    "services-2.html"
+      },{
+        "label":  "Services 3",
+        "url":    "services-3.html"
+      },{
+        "label":  "Services 4",
+        "url":    "services-4.html"
+      },{
+        "label":  "Services 5",
+        "url":    "services-5.html"
+      }
+    ]
+  }, {
+    "label":  "Contact",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Contact 1",
+        "url":    "contact-1.html"
+      },{
+        "label":  "Contact 2",
+        "url":    "contact-2.html"
+      },{
+        "label":  "Contact 3",
+        "url":    "contact-3.html"
+      },{
+        "label":  "Contact 4",
+        "url":    "contact-4.html"
+      }
+    ]
+  }, {
+    "label":  "Pricing",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Pricing 1",
+        "url":    "pricing-1.html"
+      },{
+        "label":  "Pricing 2",
+        "url":    "pricing-2.html"
+      },{
+        "label":  "Pricing 3",
+        "url":    "pricing-3.html"
+      },{
+        "label":  "Pricing 4",
+        "url":    "pricing-4.html"
+      },{
+        "label":  "Pricing 5",
+        "url":    "pricing-5.html"
+      }
+    ]
+  }, {
+    "label":  "FAQ",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "FAQ 1",
+        "url":    "faq-1.html"
+      },{
+        "label":  "FAQ 2",
+        "url":    "faq-2.html"
+      },{
+        "label":  "FAQ 3",
+        "url":    "faq-3.html"
+      },{
+        "label":  "FAQ 4",
+        "url":    "faq-4.html"
+      }
+    ]
+  }, {
+    "label":  "Team",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Team 1",
+        "url":    "team-1.html"
+      },{
+        "label":  "Team 2",
+        "url":    "team-2.html"
+      }
+    ]
+  }, {
+    "label":  "Account",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Sign In/Up : Full 1",
+        "url":    "account-full-signin-1.html"
+      },{
+        "label":  "Sign In/Up : Full 2",
+        "url":    "account-full-signin-2.html"
+      },{
+        "label":  "Sign In/Up : Onepage",
+        "url":    "account-onepage-signin.html"
+      },{
+        "label":  "Sign In/Up : Simple",
+        "url":    "account-simple-signin.html"
+      },{
+        "label":  "Sign In/Up : Modal",
+        "url":    "account-modal-signin.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Account : Orders",
+        "url":    "account-orders.html"
+      },{
+        "label":  "Account : Favourites",
+        "url":    "account-favourites.html"
+      },{
+        "label":  "Account : Settings",
+        "url":    "account-settings.html"
+      }
+    ]
+  }, {
+    "label":  "Clients / Career",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Clients",
+        "url":    "clients.html"
+      },{
+        "label":  "Career",
+        "url":    "career.html"
+      }
+    ]
+  }, {
+    "label":  "Portfolio",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "2 Columns",
+        "url":    "portfolio-columns-2.html"
+      },{
+        "label":  "3 Columns",
+        "url":    "portfolio-columns-3.html"
+      },{
+        "label":  "4 Columns",
+        "url":    "portfolio-columns-4.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Single Item 1",
+        "url":    "portfolio-single-1.html"
+      },{
+        "label":  "Single Item 2",
+        "url":    "portfolio-single-2.html"
+      },{
+        "label":  "Single Item 3",
+        "url":    "portfolio-single-3.html"
+      },{
+        "label":  "Single Item 4",
+        "url":    "portfolio-single-4.html"
+      }
+    ]
+  }, {
+    "label":  "Search Result",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Search Result 1",
+        "url":    "search-result-1.html"
+      },{
+        "label":  "Search Result 2",
+        "url":    "search-result-2.html"
+      }
+    ]
+  },{
+    "label":  "Forum / Comunity",
+    "url":    "forum-index.html"
+  },{
+    "label":  "Utility",
+    "url":    "#",
+    "childs":[
+      {
+        "label":  "Error 1",
+        "url":    "404-1.html"
+      },{
+        "label":  "Error 2",
+        "url":    "404-2.html"
+      },{
+        "label":  "Error 3",
+        "url":    "404-3.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Maintenance 1",
+        "url":    "maintenance-1.html"
+      },{
+        "label":  "Maintenance 2",
+        "url":    "maintenance-2.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "Coming Soon 1",
+        "url":    "comingsoon-1.html"
+      },{
+        "label":  "Coming Soon 2",
+        "url":    "comingsoon-2.html"
+      },{
+        "divider":  true
+      },{
+        "label":  "GDPR Page &amp; Cookie Window",
+        "url":    "page-cookie.html"
+      }
+    ]
+  },{
+    "divider":  true
+  },{
+    "label":  "Smarty Junkyard",
+    "url":    "__junkyard.html",
+    "target": "smarty",
+    "class":  "text-gray-500"
+  }
+]
+
+
+

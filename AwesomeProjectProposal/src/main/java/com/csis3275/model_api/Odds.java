@@ -4,7 +4,11 @@ package com.csis3275.model_api;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+
 public class Odds {
+
+	
 
 	@SerializedName("1")
 	@Expose

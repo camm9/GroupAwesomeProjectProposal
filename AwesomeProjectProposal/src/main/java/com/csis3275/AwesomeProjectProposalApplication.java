@@ -20,7 +20,8 @@ public class AwesomeProjectProposalApplication {
 		log.info("In main method");
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-			apiService.getAllPredictionData();
+			apiService.getAllPredictionDataForDate();
+//			apiService.getFederationList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

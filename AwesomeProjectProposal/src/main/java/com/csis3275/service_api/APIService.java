@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,11 +59,19 @@ public class APIService {
 			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			
 			JsonNode data = objectMapper.readTree(JSONString).get("data");
+			List<JsonNode> listOfNodes = data.findParents("home_team");
 			
-			String awayTeam = data.get(0).get("away_team").asText();
-			String homeTeam = data.get(0).get("home_team").asText();
-			System.out.println("Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
+			for (int i = 0; i < listOfNodes.size(); i++) {
+				String awayTeam = data.get(i).get("away_team").asText();
+				System.out.println();
+				String homeTeam = data.get(i).get("home_team").asText();
+				System.out.println("Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
+			}
+//			String awayTeam = data.get(0).get("away_team").asText();
+//			String homeTeam = data.get(0).get("home_team").asText();
+//			System.out.println("Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
 			
+// I still like this idea of turning the JSON into a list of objects, while this code doesn't work I want to keep here for future reference and inspiration.			
 //			Predictions[] predictions = objectMapper.readValue(String.valueOf(JSONString), new TypeReference<Predictions[]>() {
 //			});
 //			System.out.println(predictions[0].toString());

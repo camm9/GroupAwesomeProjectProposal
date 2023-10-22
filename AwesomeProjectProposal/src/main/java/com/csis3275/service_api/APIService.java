@@ -20,6 +20,7 @@ import com.csis3275.model_api.Datum;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -50,14 +51,21 @@ public class APIService {
 			
 			//See the print out of the data
 			String JSONString = response.body();
-			System.out.println(response.body());
+			//System.out.println(response.body());
 			
 			//Map JSON to Predictions object
 			//Configure objectMapper to ignore unknown properties
 			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-			Predictions predictions = objectMapper.readValue(String.valueOf(JSONString), new TypeReference<Predictions>() {
-			});
-			System.out.println(predictions.toString());
+			
+			JsonNode data = objectMapper.readTree(JSONString).get("data");
+			
+			String awayTeam = data.get(0).get("away_team").asText();
+			String homeTeam = data.get(0).get("home_team").asText();
+			System.out.println("Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
+			
+//			Predictions[] predictions = objectMapper.readValue(String.valueOf(JSONString), new TypeReference<Predictions[]>() {
+//			});
+//			System.out.println(predictions[0].toString());
 		
 			
 		}catch (Exception e) {

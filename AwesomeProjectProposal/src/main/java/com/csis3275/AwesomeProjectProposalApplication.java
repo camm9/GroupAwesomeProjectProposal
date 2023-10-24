@@ -27,5 +27,5 @@ public class AwesomeProjectProposalApplication {
 			e.printStackTrace();
 		}
 	}
-
+	
 }

@@ -16,4 +16,8 @@ public class Controller_Navigation {
 		return "login";
 	}
 
+	@GetMapping("/test")
+	public String renderTest() {
+		return "test";
+	}
 }

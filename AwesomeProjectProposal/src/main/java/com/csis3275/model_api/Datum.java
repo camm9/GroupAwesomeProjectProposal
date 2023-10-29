@@ -183,6 +183,13 @@ public class Datum {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 	}
+	
+	public Datum(Integer id, String homeTeam, String awayTeam, Odds odds) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.odds = odds;
+	}
 
 	
 	

@@ -28,6 +28,20 @@ public class Odds {
 	@SerializedName("X2")
 	@Expose
 	private Double x2;
+	
+	public Odds(){
+		
+	}
+	
+	public Odds(Double _1, Double _2, Double _12, Double x, Double _1x, Double x2) {
+		super();
+		this._1 = _1;
+		this._2 = _2;
+		this._12 = _12;
+		this.x = x;
+		this._1x = _1x;
+		this.x2 = x2;
+	}
 
 	public Double get1() {
 		return _1;

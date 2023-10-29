@@ -29,7 +29,7 @@ public class AwesomeProjectProposalApplication {
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
 	static APIService apiService = new APIService();
 	static List<Datum> listOfMatches = new ArrayList();
-	static Datum matchOdds = new Datum();
+	static List<Datum> matchOdds = new ArrayList();
 
 	
 	
@@ -52,6 +52,9 @@ public class AwesomeProjectProposalApplication {
 
 
 			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
+
+			matchOdds = apiService.getMatchOdds("273761");
+
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

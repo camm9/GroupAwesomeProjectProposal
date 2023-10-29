@@ -20,10 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.csis3275.model_api.Datum;
-
-
 import com.csis3275.model_api.Odds;
-
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -112,10 +109,9 @@ public class APIService {
 			String JSONString = response.body();
 			JsonNode data = objectMapper.readTree(JSONString).get("data");
 			//Get the number of matches expected in the day
+
 			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
 
-//			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
-			
 			List<JsonNode> listOfNodes = data.findParents("home_team");
 			
 			// Add results for date to a List
@@ -179,12 +175,10 @@ public class APIService {
 			e.printStackTrace();
 		}
 	}
-
 	
 //	Call matches by match id and return odds with prediction
-	public Datum getMatchOdds(String matchID){
+	public List<Datum> getMatchOdds(String matchID){
 		List<Datum> matchList = new ArrayList();
-		Datum matchInfo = null;
 		
 		try {
 			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions/";
@@ -198,30 +192,28 @@ public class APIService {
 			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 			
 			String JSONString = response.body();
-//			System.out.println(JSONString);
-			JsonNode data = objectMapper.readTree(JSONString);
-//			System.out.println(data.findValue("id"));
-//			System.out.println(data.findValue("odds").findValue("1"));
-					
-			//sample match ID = 274216
+			JsonNode data = objectMapper.readTree(JSONString).get("data");
+			
+			
+			//sample match ID = 273761
 			
 			// Add results for date to a List
 			for (int i = 0; i < 14; i++) {
-				Integer idNum = Integer.valueOf(matchID);
-				String awayTeam = data.findValue("away_team").asText();
-				String homeTeam = data.findValue("home_team").asText();
-				Double _1 = data.findValue("odds").findValue("1").asDouble();
-				Double _2  = data.findValue("odds").findValue("2").asDouble();
-				Double _12  = data.findValue("odds").findValue("12").asDouble();
-				Double _x  = data.findValue("odds").findValue("X").asDouble();
-				Double x1  = data.findValue("odds").findValue("1X").asDouble();
-				Double x2  = data.findValue("odds").findValue("X2").asDouble();
-				String prediction = data.findValue("prediction").asText();
-			
-				Odds matchOdd = new Odds(_1, _2, _12, _x, x1, x2);
-
-				matchInfo = new Datum(idNum, homeTeam, awayTeam, prediction, matchOdd);
-//				matchList.add(matchInfo);
+				String id = data.get(i).get("id").asText();
+				Integer idNum = Integer.valueOf(id);
+				String awayTeam = data.get(i).get("away_team").asText();
+				String homeTeam = data.get(i).get("home_team").asText();
+//				public Odds(Double _1, Double _2, Double _12, Double x, Double _1x, Double x2)
+				Double _1 = data.get(i).get("1").asDouble();
+				Double _2 =data.get(i).get("2").asDouble();
+				Double _12 =data.get(i).get("12").asDouble();
+				Double x =data.get(i).get("X").asDouble();
+				Double X1 =data.get(i).get("1X").asDouble();
+				Double X2 =data.get(i).get("X2").asDouble();
+				
+				Odds matchOdd = new Odds(_1, _2, _12, x, X1, X2);
+				Datum matchInfo = new Datum(idNum, homeTeam, awayTeam, matchOdd);
+				matchList.add(matchInfo);
 			}
 			
 	
@@ -234,11 +226,8 @@ public class APIService {
 					e
 					);
 		}
-		return matchInfo;
-
+		
+		return matchList;
 	}
-
-
-	
 
 }

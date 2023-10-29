@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.csis3275.model_api.Match;
+import com.csis3275.model_api.Datum;
 import com.csis3275.service_api.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -17,7 +17,7 @@ public class AwesomeProjectProposalApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
 	static APIService apiService = new APIService();
-	static List<Match> listOfMatches = new ArrayList();
+	static List<Datum> listOfMatches = new ArrayList();
 	
 	
 	public static void main(String[] args) {

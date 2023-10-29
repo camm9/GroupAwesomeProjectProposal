@@ -20,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.csis3275.model_api.Datum;
-import com.csis3275.model_api.Match;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -92,8 +91,8 @@ public class APIService {
 	}
 	
 	
-	public List<Match> getAllMatchesForDate(String date) {
-		List<Match> listOfMatches = new ArrayList();
+	public List<Datum> getAllMatchesForDate(String date) {
+		List<Datum> matchList = new ArrayList();
 		try {
 			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=";
 			String fullURL = init + date;
@@ -107,19 +106,21 @@ public class APIService {
 			
 			String JSONString = response.body();
 			JsonNode data = objectMapper.readTree(JSONString).get("data");
-			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
+//			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
 			
 
 			List<JsonNode> listOfNodes = data.findParents("home_team");
 			
 			// Add results for date to a List
 			for (int i = 0; i < listOfNodes.size(); i++) {
-				String matchID = data.get(i).get("id").asText();
+				int matchID = data.get(i).get("id").asInt();
 				String awayTeam = data.get(i).get("away_team").asText();
 				String homeTeam = data.get(i).get("home_team").asText();
-				Match newMatch = new Match(matchID, awayTeam, homeTeam);
-				listOfMatches.add(newMatch);
+				
+				Datum matchInfo = new Datum(matchID, homeTeam, awayTeam);
+				matchList.add(matchInfo);
 			}
+			
 	
 		}catch (Exception e) {
 			System.out.println("something went wrong while getting value from API");
@@ -132,7 +133,7 @@ public class APIService {
 		}
 		
 		// return list of matches
-		return listOfMatches;
+		return matchList;
 	}
 	
 	public void getFederationList() {

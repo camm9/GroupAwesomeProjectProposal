@@ -177,6 +177,12 @@ public class Datum {
 	public Datum() {
 		
 	}
+	
+	public Datum(Integer id, String homeTeam, String awayTeam) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+	}
 
 	
 	

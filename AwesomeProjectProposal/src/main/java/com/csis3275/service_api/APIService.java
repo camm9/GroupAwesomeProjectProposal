@@ -21,8 +21,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.csis3275.model_api.Datum;
 
+
 import com.csis3275.model_api.Odds;
-import com.csis3275.model_api.Match;
+
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -97,7 +98,6 @@ public class APIService {
 
 	public List<Datum> getAllMatchesForDate(String date) {
 		List<Datum> matchList = new ArrayList();
-
 		try {
 			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=";
 			String fullURL = init + date;
@@ -114,6 +114,8 @@ public class APIService {
 			//Get the number of matches expected in the day
 			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
 
+//			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
+			
 			List<JsonNode> listOfNodes = data.findParents("home_team");
 			
 			// Add results for date to a List
@@ -127,7 +129,6 @@ public class APIService {
 				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
 				matchList.add(matchInfo);
 			}
-			
 
 	
 		}catch (Exception e) {

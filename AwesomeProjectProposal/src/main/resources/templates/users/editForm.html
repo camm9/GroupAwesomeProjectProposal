@@ -1,26 +1,296 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>GameDayTrades</title>
+	<meta name="description" content="Sports betting analytic website">
+
+	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+
+	<!-- up to 10% speed up for external res -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<!-- preloading icon font is helping to speed up a little bit -->
+	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+
+	<link rel="stylesheet" href="assets/css/core.min.css">
+	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
+
+
+	<!-- favicon -->
+	<link rel="apple-touch-icon" href="assets/images/logo/logo.png">
+
 </head>
-<body>
-<h1>User Edit Form</h1>
-<form action ="#" th:action="@{/editFormPost}" th:object="${selected}" method="post" >
 
-<input type="text" th:value ="${selected.userId}" th:field="${selected.userId}" readOnly> </br>
-<label for="username">username:</label><br>
- <input type="text" id="username" name="username" th:value ="${selected.username}" th:field="${selected.username}"  ><br>
- <label for="email">Email:</label><br>
- <input type="text" id="Email" name="Email" th:value ="${selected.email}" th:field="${selected.email}" ></br>
- <label for="password">Password:</label><br>
- <input type="password" id="password" name="password" th:value ="${selected.password}" th:field="${selected.password}" >
- 
- <input type="submit" value="Submit" />
 
-</form>
+<!--
+
+    Layout Admin
+      .layout-admin   (required)
+
+      .aside-sticky           - sidebar : fixed and push header
+      .header-sticky          - header : always visible on top (acting as old .header-focus)
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+    SCROLL TO TOP BUTTON [optional styling]
+
+      data-s2t-disable="true"
+      data-s2t-position="start|end"
+      data-s2t-class="btn-secondary btn-sm"   (default)
+      data-s2t-class="btn-secondary rounded-circle"
+      data-s2t-class="btn-warning rounded-circle"
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+  -->
+
+<body class="layout-admin aside-sticky bg-lime header-sticky"
+	data-s2t-class="btn-primary btn-sm bg-gradient-default rounded-circle border-0">
+
+	<div id="wrapper" class="d-flex align-items-stretch flex-column">
+
+
+		<!--  header -->
+		<header id="header" class="d-flex align-items-center shadow-xs">
+
+			<!-- Navbar -->
+			<div class="container-fluid position-relative">
+
+				<nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+
+					<!-- logo, navigation toggler -->
+					<div class="align-items-start">
+
+						<!-- sidebar toggler -->
+						<a href="#aside-main"
+							class="btn-sidebar-toggle h-100 d-inline-block d-lg-none justify-content-center align-items-center p-2">
+							<span>
+								<svg width="25" height="25" viewBox="0 0 20 20">
+									<path
+										d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z">
+									</path>
+									<path
+										d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z">
+									</path>
+									<path
+										d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z">
+									</path>
+									<path
+										d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z">
+									</path>
+								</svg>
+							</span>
+						</a>
+
+						<!-- logo : mobile only -->
+						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="/">
+							<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+						</a>
+
+					</div>
+
+					<!-- navbar : navigation -->
+					<div class="collapse navbar-collapse" id="navbarMainNav">
+
+						<!-- navbar : mobile menu -->
+						<div class="navbar-xs d-none">
+
+
+
+							<!-- logo -->
+							<a class="navbar-brand" href="/">
+								<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+							</a>
+
+						</div>
+						<!-- /navbar : mobile menu -->
+					</div>
+					<!-- /navbar : navigation -->
+
+					<!-- options -->
+					<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
+
+
+
+
+
+						<!-- account -->
+						<li class="list-inline-item mx-1 dropdown">
+
+							<!-- has avatar -->
+							<a href="#" id="dropdownAccountOptions"
+								class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle shadow bg-cover"
+								style="background-image:url(demo.files/images/icons/user750.png)"
+								data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+								aria-haspopup="true" aria-label="Account options"></a>
+
+							<!-- no avatar -->
+							<!--
+                <a href="#" id="dropdownAccountOptions" class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                  <span class="small fw-bold">JD</span>
+                </a>
+                -->
+
+
+						</li>
+
+
+
+					</ul>
+					<!-- /options -->
+
+				</nav>
+
+			</div>
+			<!-- /Navbar -->
+
+		</header>
+		<!-- /Header -->
+
+
+		<!-- content -->
+		<div id="wrapper_content" class="d-flex flex-fill">
+
+
+			<!-- sidebar -->
+			<aside id="aside-main" class="aside-start aside-hide-xs bg-white shadow-sm d-flex flex-column px-2 h-auto">
+
+
+				<!-- sidebar : logo -->
+				<div class="py-2 px-3 mb-3 mt-1">
+					<a href="/">
+						<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+					</a>
+				</div>
+				<!-- /sidebar : logo -->
+
+
+				<!-- sidebar : navigation -->
+				<div class="aside-wrapper scrollable-vertical scrollable-styled-light align-self-baseline h-100 w-100">
+
+					<!--
+
+              All parent open navs are closed on click!
+              To ignore this feature, add .js-ignore to .nav-deep
+    
+              Links height (paddings):
+                .nav-deep-xs
+                .nav-deep-sm
+                .nav-deep-md
+
+              .nav-deep-hover     hover background slightly different
+              .nav-deep-bordered  bordered links
+
+            -->
+					<nav class="nav-deep nav-deep-sm nav-deep-light">
+						<ul class="nav flex-column">
+
+
+
+							<li class="nav-title mt-1">
+								<h6 class="mb-0 smaller text-muted text-uppercase">ADMIN AREA</h6>
+							</li>
+
+							<li class="nav-item active">
+								<a class="nav-link" href="#">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+										<path fill-rule="evenodd"
+											d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z">
+										</path>
+										<path fill-rule="evenodd"
+											d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z">
+										</path>
+									</svg>
+									<span>Users</span>
+								</a>
+							</li>
+
+
+
+							<li class="nav-item">
+								<a class="nav-link" href="/">
+									<i class="fi fi-power float-start"></i>
+									Log Out
+								</a>
+							</li>
+
+
+
+						</ul>
+					</nav>
+				</div>
+				<!-- /sidebar : navigation -->
+
+
+				<!-- sidebar : footer -->
+				<div class="d-flex align-self-baseline w-100 py-3 px-3 border-top border-light small">
+
+					<p class="d-inline-grid gap-auto-3 mb-0">
+						<svg class="text-gray-600" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512.052 512.052" fill="currentColor">
+							<path
+								d="M208.026,16.026c-114.7,0-208,78.9-208,176c0,39.8,15.7,77.9,44.5,108.9l-39.8,39.8c-4.6,4.6-6,11.5-3.5,17.4c2.5,6,8.3,9.9,14.8,9.9h192c114.7,0,208-78.9,208-176S322.726,16.026,208.026,16.026z">
+							</path>
+							<path opacity="0.5"
+								d="M467.526,428.926c28.8-30.9,44.5-69.1,44.5-108.9c0-49.8-24.6-94.9-64-126.9c-0.9,114.1-108.2,206.9-240,206.9h-89.2c34.5,56.9,104.6,96,185.2,96h192c6.5,0,12.3-3.9,14.8-9.9c2.5-6,1.1-12.9-3.5-17.4L467.526,428.926z">
+							</path>
+							<path fill="#ffffff"
+								d="M304.026,144.026h-192c-8.8,0-16,7.2-16,16s7.2,16,16,16h192c8.8,0,16-7.2,16-16S312.826,144.026,304.026,144.026z">
+							</path>
+							<path fill="#ffffff"
+								d="M240.026,208.026h-128c-8.8,0-16,7.2-16,16s7.2,16,16,16h128c8.8,0,16-7.2,16-16S248.826,208.026,240.026,208.026z">
+							</path>
+						</svg>
+						<a href="#" class="link-normal text-dashed">GameDayTrades</a>
+					</p>
+
+				</div>
+				<!-- /sidebar : footer -->
+
+
+			</aside>
+			<!-- /sidebar -->
+
+
+			<!-- main -->
+			<main id="middle" class="flex-fill mx-auto">
+
+
+				<!-- PAGE TITLE -->
+				<header>
+					<h1 class="h4">Admin list</h1>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb small">
+							<li class="breadcrumb-item text-muted active" aria-current="page">Admin list</li>
+						</ol>
+					</nav>
+				</header>
+
+
+				<div class="user edit form">
+					<h1>User Edit Form</h1>
+					<form action="#" th:action="@{/editFormPost}" th:object="${selected}" method="post">
+
+						<input type="text" th:value="${selected.userId}" th:field="${selected.userId}" readOnly> </br>
+						<label for="username">username:</label><br>
+						<input type="text" id="username" name="username" th:value="${selected.username}"
+							th:field="${selected.username}"><br>
+						<label for="email">Email:</label><br>
+						<input type="text" id="Email" name="Email" th:value="${selected.email}"
+							th:field="${selected.email}"></br>
+						<label for="password">Password:</label><br>
+						<input type="password" id="password" name="password" th:value="${selected.password}"
+							th:field="${selected.password}">
+
+						<input type="submit" value="Submit" />
+					</form>
+				</div>
 </body>
-</html>
 
+</html>

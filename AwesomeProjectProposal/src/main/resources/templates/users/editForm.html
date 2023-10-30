@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>User Edit Form</h1>
+<form action ="#" th:action="@{/editFormPost}" th:object="${selected}" method="post" >
+
+<input type="text" th:value ="${selected.userId}" th:field="${selected.userId}" readOnly> </br>
+<label for="username">username:</label><br>
+ <input type="text" id="username" name="username" th:value ="${selected.username}" th:field="${selected.username}"  ><br>
+ <label for="email">Email:</label><br>
+ <input type="text" id="Email" name="Email" th:value ="${selected.email}" th:field="${selected.email}" ></br>
+ <label for="password">Password:</label><br>
+ <input type="text" id="password" name="password" th:value ="${selected.password}" th:field="${selected.password}" >
+ 
+ <input type="submit" value="Submit" />
+
+</form>
+</body>
+</html>

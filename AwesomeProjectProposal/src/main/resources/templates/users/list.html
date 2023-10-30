@@ -26,9 +26,9 @@
 		<td th:text="${user.password}"></td>
 
 		
-<!--		<td><a th:href="@{'/students/editStudent?id=' + ${student.id}}" class="btn btn-danger">Edit</a>	-->
+		<td><a th:href="@{'/users/editUser?id=' + ${user.userId}}" class="btn btn-danger">Edit</a>	
 		
-<!--		<td><a th:href="@{'/students/delete?deleteStudent=' + ${student.id}}" class="btn btn-danger">Delete</a>		-->
+		<td><a th:href="@{'/users/delete?deleteUser=' + ${user.userId}}" class="btn btn-danger">Delete</a>		
 		
 		</tr>
 	</table>

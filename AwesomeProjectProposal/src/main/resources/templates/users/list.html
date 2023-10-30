@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<body>
+    <div id="container">
+      <h1>Site User List</h1>
+      <table class="table table-striped">
+		<thead>
+			<tr>Id
+			</tr>
+			<tr>Username
+			</tr>
+			<tr>Email
+			</tr>
+			<tr>Password
+			</tr>
+		</thead>
+		<tr th:each="user: ${userList}">
+		<td th:text="${user.userId}"></td>
+		<td th:text="${user.username}"></td>
+		<td th:text="${user.email}"></td>
+		<td th:text="${user.password}"></td>
+
+		
+<!--		<td><a th:href="@{'/students/editStudent?id=' + ${student.id}}" class="btn btn-danger">Edit</a>	-->
+		
+<!--		<td><a th:href="@{'/students/delete?deleteStudent=' + ${student.id}}" class="btn btn-danger">Delete</a>		-->
+		
+		</tr>
+	</table>
+    </div>
+
+</body>
+</html>

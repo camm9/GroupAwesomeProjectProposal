@@ -26,7 +26,11 @@ public class AwesomeProjectProposalApplication {
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
 			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
-			matchOdds = apiService.getMatchOdds("273761");
+			
+//			for(int i=0; i < listOfMatches.size(); i++) {
+//				System.out.println(listOfMatches.get(i).getCompetitionCluster());
+//			}
+//			matchOdds = apiService.getMatchOdds("273761");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

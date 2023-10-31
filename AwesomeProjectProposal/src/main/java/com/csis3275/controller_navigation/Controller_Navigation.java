@@ -11,9 +11,9 @@ public class Controller_Navigation {
 		return "home";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/loginpage")
 	public String renderLogin() {
-		return "login";
+		return "loginpage";
 	}
 
 	@GetMapping("/test")

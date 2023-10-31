@@ -122,6 +122,7 @@ public class APIService {
 				String federation = data.get(i).get("federation").asText();
 				String country = data.get(i).get("competition_cluster").asText();
 				
+
 				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
 				matchList.add(matchInfo);
 			}
@@ -203,16 +204,16 @@ public class APIService {
 				Integer idNum = Integer.valueOf(id);
 				String awayTeam = data.get(i).get("away_team").asText();
 				String homeTeam = data.get(i).get("home_team").asText();
-//				public Odds(Double _1, Double _2, Double _12, Double x, Double _1x, Double x2)
-				Double _1 = data.get(i).get("1").asDouble();
-				Double _2 =data.get(i).get("2").asDouble();
-				Double _12 =data.get(i).get("12").asDouble();
-				Double x =data.get(i).get("X").asDouble();
-				Double X1 =data.get(i).get("1X").asDouble();
-				Double X2 =data.get(i).get("X2").asDouble();
-				
-				Odds matchOdd = new Odds(_1, _2, _12, x, X1, X2);
-				Datum matchInfo = new Datum(idNum, homeTeam, awayTeam, matchOdd);
+////				public Odds(Double _1, Double _2, Double _12, Double x, Double _1x, Double x2)
+//				Double _1 = data.get(i).get("1").asDouble();
+//				Double _2 =data.get(i).get("2").asDouble();
+//				Double _12 =data.get(i).get("12").asDouble();
+//				Double x =data.get(i).get("X").asDouble();
+//				Double X1 =data.get(i).get("1X").asDouble();
+//				Double X2 =data.get(i).get("X2").asDouble();
+//				
+//				Odds matchOdd = new Odds(_1, _2, _12, x, X1, X2);
+				Datum matchInfo = new Datum(idNum, homeTeam, awayTeam);
 				matchList.add(matchInfo);
 			}
 			

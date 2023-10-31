@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Controller_Admin {
-	
-	@GetMapping("/admin")
-	public String renderHomeMmeber() {
-		return "admin/index";
-	}
+
+	//Disabled admin as it is now loaded from User Controller
+//	@GetMapping("/admin")
+//	public String renderHomeMmeber() {
+//		return "admin/index";
+//	}
 
 }

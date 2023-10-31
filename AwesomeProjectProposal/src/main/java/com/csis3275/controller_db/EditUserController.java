@@ -32,6 +32,6 @@ public class EditUserController {
 	public String editStudent(@ModelAttribute User userData, Model model) 
 	{
 		userService.updateStudent(userData);
-		return "redirect:/admin/index";
+		return "redirect:/admin";
 	}
 }

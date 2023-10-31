@@ -14,7 +14,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/users/list")
+	@GetMapping("/admin")
 	public String listStudents(Model model) {
 		model.addAttribute("userList", userService.readUsers());
 		return "/admin/index";
@@ -24,7 +24,7 @@ public class UserController {
 	public String deleteUser(@RequestParam("deleteUser") String id) {
 		// Delete the student
 		userService.deleteUser(Long.parseLong(id));
-		return "redirect:/admin/index";
+		return "redirect:/admin";
 	}
 
 

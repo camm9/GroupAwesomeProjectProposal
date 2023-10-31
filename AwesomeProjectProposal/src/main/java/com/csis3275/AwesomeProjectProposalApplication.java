@@ -29,7 +29,7 @@ public class AwesomeProjectProposalApplication {
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
 	static APIService apiService = new APIService();
 	static List<Datum> listOfMatches = new ArrayList();
-	static List<Datum> matchOdds = new ArrayList();
+	static Datum matchOdds = new Datum();
 
 	
 	
@@ -37,31 +37,6 @@ public class AwesomeProjectProposalApplication {
 		log.info("In main method");
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-
-//			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
-			// to access each match and a chosen variable in listOfMatches
-//			for(int i=0; i < listOfMatches.size(); i++) {
-//				System.out.println(listOfMatches.get(i).getCompetitionCluster());
-//			}
-			
-			//to get a set of odds for the selected matchID
-//			matchOdds = apiService.getMatchOdds("274216");
-			
-//			apiService.getAllPredictionDataForDate();
-//			apiService.getFederationList();
-
-
-			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
-<<<<<<< HEAD
-
-			matchOdds = apiService.getMatchOdds("273761");
-=======
-			
-//			for(int i=0; i < listOfMatches.size(); i++) {
-//				System.out.println(listOfMatches.get(i).getCompetitionCluster());
-//			}
-//			matchOdds = apiService.getMatchOdds("273761");
->>>>>>> 007e99e (fix: added country and federation to getAllMatchesForDate(String date))
 
 
 		} catch (Exception e) {

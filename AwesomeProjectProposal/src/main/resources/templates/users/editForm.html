@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<title>GameDayTrades</title>
+	<meta name="description" content="Sports betting analytic website">
+
+	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+
+	<!-- up to 10% speed up for external res -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<!-- preloading icon font is helping to speed up a little bit -->
+	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+
+	<link rel="stylesheet" href="assets/css/core.min.css">
+	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
+
+
+	<!-- favicon -->
+	<link rel="apple-touch-icon" href="assets/images/logo/logo.png">
+
+</head>
+
+
+<!--
+
+    Layout Admin
+      .layout-admin   (required)
+
+      .aside-sticky           - sidebar : fixed and push header
+      .header-sticky          - header : always visible on top (acting as old .header-focus)
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+    SCROLL TO TOP BUTTON [optional styling]
+
+      data-s2t-disable="true"
+      data-s2t-position="start|end"
+      data-s2t-class="btn-secondary btn-sm"   (default)
+      data-s2t-class="btn-secondary rounded-circle"
+      data-s2t-class="btn-warning rounded-circle"
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+  -->
+
+<body class="layout-admin aside-sticky bg-lime header-sticky"
+	data-s2t-class="btn-primary btn-sm bg-gradient-default rounded-circle border-0">
+	<div class="user edit form">
+		<h1>User Edit Form</h1>
+		<form action="#" th:action="@{/editFormPost}" th:object="${selected}" method="post">
+
+			<input type="text" th:value="${selected.userId}" th:field="${selected.userId}" readOnly> </br>
+			<label for="username">username:</label><br>
+			<input type="text" id="username" name="username" th:value="${selected.username}"
+				th:field="${selected.username}"><br>
+			<label for="email">Email:</label><br>
+			<input type="text" id="Email" name="Email" th:value="${selected.email}" th:field="${selected.email}"></br>
+			<label for="password">Password:</label><br>
+			<input type="password" id="password" name="password" th:value="${selected.password}"
+				th:field="${selected.password}">
+
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<!-- Core javascripts -->
+				<script src="assets/js/core.min.js"></script>
+				<script src="assets/js/vendor_bundle.min.js"></script>
+</body>
+
+</html>

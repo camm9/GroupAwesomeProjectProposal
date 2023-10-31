@@ -49,7 +49,7 @@
 
   -->
 
-<body class="layout-admin aside-sticky bg-lime "
+<body class="layout-admin aside-sticky bg-lime header-sticky"
 	data-s2t-class="btn-primary btn-sm bg-gradient-default rounded-circle border-0">
 
 	<div id="wrapper" class="d-flex align-items-stretch flex-column">
@@ -264,7 +264,7 @@
 
 				<!-- PAGE TITLE -->
 				<header>
-					<h1 class="h4">Admin list</h1>
+					<h1 class="h4">User list</h1>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb small">
 							<li class="breadcrumb-item text-muted active" aria-current="page">Admin list</li>
@@ -273,244 +273,38 @@
 				</header>
 
 
+				<div id="container">
+					<h1>Site User List</h1>
+					<table class="table table-align-middle" role="grid" aria-describedby="mobile-page-info">
+						<thead>
+							<tr>Id
+							</tr>
+							<tr>Username
+							</tr>
+							<tr>Email
+							</tr>
+							<tr>Password
+							</tr>
+						</thead>
+						<tr th:each="user: ${userList}">
+							<td th:text="${user.userId}"></td>
+							<td th:text="${user.username}"></td>
+							<td th:text="${user.email}"></td>
+							<td th:text="${user.password}" style="-webkit-text-security: square"></td>
 
 
+							<td><a th:href="@{'/users/editUser?id=' + ${user.userId}}" class="btn btn-danger">Edit</a>
 
-				<!-- user list -->
-				<div class="section p-0">
-					<div class="card-header p-3">
+							<td><a th:href="@{'/users/delete?deleteUser=' + ${user.userId}}"
+									class="btn btn-danger">Delete</a>
 
-						<div class="card-body pt-1">
+						</tr>
+					</table>
+				</div>
 
-							<!-- item list -->
-							<div class="table-responsive-md">
-
-								<table class="table table-align-middle" role="grid" aria-describedby="mobile-page-info">
-									<thead>
-										<tr>
-											<th style="width:46px">
-												<div class="form-check"><!-- check all -->
-													<input data-checkall-container="#checkall-list"
-														class="form-check-input" type="checkbox" value="1">
-												</div>
-											</th>
-											<th class="small text-muted" style="width:120px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
-
-													<span class="ms-2">First name</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:200px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
-
-													<span class="ms-2">Last name</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:120px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
-
-													<span class="ms-2">Email</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:150px">
-												<a href="#!" class="d-flex link-muted" title="order by price"
-													aria-label="order by inventory">
-
-													<span class="ms-2">Password</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:64px"><!-- options --></th>
-										</tr>
-									</thead>
-									<tbody id="checkall-list">
-
-										<!-- item -->
-										<tr>
-											<th><!-- check -->
-												<div class="form-check">
-													<input class="form-check-input form-check-input-primary"
-														type="checkbox" value="">
-												</div>
-											</th>
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="link-normal">Jaimin Shah</a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="text-dark">Jaimin Shah</a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- orders -->
-												<a href="#!" class="text-dark">JaiminShah.doe@douglas.ca</a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" href="#">
-													<span class="btn btn-small bg-success text-white">Edit</span>
-												</a>
-
-											</td>
-										</tr>
-										<!-- end item -->
-
-
-										<!-- item -->
-										<tr>
-											<th><!-- check -->
-												<div class="form-check">
-													<input class="form-check-input form-check-input-primary"
-														type="checkbox" value="">
-												</div>
-											</th>
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="link-normal">Edison</a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="text-dark">CHAN</a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- orders -->
-												<a href="#!" class="text-dark">Edison.doe@douglas.ca</a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" href="#">
-													<span class="btn btn-small bg-success text-white">Edit</span>
-												</a>
-
-											</td>
-										</tr>
-										<!-- end item -->
-
-
-										<!-- item -->
-										<tr>
-											<th><!-- check -->
-												<div class="form-check">
-													<input class="form-check-input form-check-input-primary"
-														type="checkbox" value="">
-												</div>
-											</th>
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="link-normal">Methven </a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="text-dark">Methven</a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- orders -->
-												<a href="#!" class="text-dark">Catherine.doe@douglas.ca</a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" href="#">
-													<span class="btn btn-small bg-success text-white">Edit</span>
-												</a>
-
-											</td>
-										</tr>
-										<!-- end item -->
-										<!-- DB item -->
-										<tr th:each="user: ${userList}">
-											<th><!-- check -->
-												<div class="form-check">
-													<input class="form-check-input form-check-input-primary"
-														type="checkbox" value="">
-												</div>
-											</th>
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="link-normal" th:text="${user.userId}"> </a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="text-dark" th:text="${user.username}"></a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- email -->
-												<a href="#!" class="text-dark" th:text="${user.email}"></a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" th:href="@{'/users/editUser?id=' + ${user.userId}}">
-													<span class="btn btn-small bg-success text-white">Edit</span>
-												</a>
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" th:href="@{'/users/delete?deleteUser=' + ${user.userId}}">
-													<span class="btn btn-small btn-danger text-white">DELETE</span>
-												</a>
-											</td>				
-										</tr>
-
-										<!-- end DB item -->
-
-									</tbody>
-								</table>
-
-							</div>
-
-
-
-						</div>
-					</div>
-
-
-			</main>
-			<!-- /main -->
-
-		</div>
-		<!-- /content -->
-
-
-
-
-
-	</div><!-- /#wrapper -->
-
-
-
-	<!-- Core javascripts -->
-	<script src="assets/js/core.min.js"></script>
-	<script src="assets/js/vendor_bundle.min.js"></script>
-
-	<!-- Your custom javascripts -->
+				<!-- Core javascripts -->
+				<script src="assets/js/core.min.js"></script>
+				<script src="assets/js/vendor_bundle.min.js"></script>
 
 </body>
 

@@ -8,8 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Odds {
 
-	
-
 	@SerializedName("1")
 	@Expose
 	private Double _1;

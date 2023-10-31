@@ -18,19 +18,23 @@ public class AwesomeProjectProposalApplication {
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
 	static APIService apiService = new APIService();
 	static List<Datum> listOfMatches = new ArrayList();
-	static List<Datum> matchOdds = new ArrayList();
+	static Datum matchOdds = new Datum();
 	
 	
 	public static void main(String[] args) {
 		log.info("In main method");
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
-			
+//			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
+			// to access each match and a chosen variable in listOfMatches
 //			for(int i=0; i < listOfMatches.size(); i++) {
 //				System.out.println(listOfMatches.get(i).getCompetitionCluster());
 //			}
-//			matchOdds = apiService.getMatchOdds("273761");
+			
+			//to get a set of odds for the selected matchID
+//			matchOdds = apiService.getMatchOdds("274216");
+			
+
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

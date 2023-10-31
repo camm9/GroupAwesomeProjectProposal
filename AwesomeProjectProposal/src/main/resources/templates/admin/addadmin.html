@@ -16,13 +16,13 @@
 	<!-- preloading icon font is helping to speed up a little bit -->
 	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
 
-	<link rel="stylesheet" href="assets/css/core.min.css">
-	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="/assets/css/core.min.css">
+	<link rel="stylesheet" href="/assets/css/vendor_bundle.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
 
 
 	<!-- favicon -->
-	<link rel="apple-touch-icon" href="assets/images/logo/logo.png">
+	<link rel="apple-touch-icon" href="/assets/images/logo/logo.png">
 
 </head>
 
@@ -89,7 +89,7 @@
 
 						<!-- logo : mobile only -->
 						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="/">
-							<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+							<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 						</a>
 
 					</div>
@@ -104,7 +104,7 @@
 
 							<!-- logo -->
 							<a class="navbar-brand" href="/">
-								<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+								<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 							</a>
 
 						</div>
@@ -125,7 +125,7 @@
 							<!-- has avatar -->
 							<a href="#" id="dropdownAccountOptions"
 								class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle shadow bg-cover"
-								style="background-image:url(demo.files/images/icons/user750.png)"
+								style="background-image:url(/demo.files/images/icons/user750.png)"
 								data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
 								aria-haspopup="true" aria-label="Account options"></a>
 
@@ -164,7 +164,7 @@
 				<!-- sidebar : logo -->
 				<div class="py-2 px-3 mb-3 mt-1">
 					<a href="/">
-						<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+						<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 					</a>
 				</div>
 				<!-- /sidebar : logo -->
@@ -196,16 +196,16 @@
 								<h6 class="mb-0 smaller text-muted text-uppercase">ADMIN AREA</h6>
 							</li>
 
-							<li class="nav-item active">
-								<a class="nav-link" href="#">
+							<li class="nav-item">
+								<a class="nav-link" href="/admin">
 									<i class="fi fi-users"></i>
 									<span>List Administrators</span>
 								</a>
 							</li>
 
 
-							<li class="nav-item">
-								<a class="nav-link" th:href=@{/admin/add}>
+	<li class="nav-item active">
+								<a class="nav-link" href="#">
 									<i class="fi fi-user-male"></i>
 									<span>Add Administrator</span>
 								</a>
@@ -264,10 +264,10 @@
 
 				<!-- PAGE TITLE -->
 				<header>
-					<h1 class="h4">Admin list</h1>
+					<h1 class="h4">Admin Add</h1>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb small">
-							<li class="breadcrumb-item text-muted active" aria-current="page">Admin list</li>
+							<li class="breadcrumb-item text-muted active" aria-current="page">Admin Add</li>
 						</ol>
 					</nav>
 				</header>
@@ -284,94 +284,44 @@
 
 							<!-- item list -->
 							<div class="table-responsive-md">
+				<form action="#" th:action="@{/admin/saveadmin}" th:object="${adminObj}" method="post">
+								 <div class="section">
+                  <div class="h5 card-header border-bottom-0 fw-bold">New Account</div>
+                  <div class="card-body">
 
-								<table class="table table-align-middle" role="grid" aria-describedby="mobile-page-info">
-									<thead>
-										<tr>
-											<th style="width:16px">
-												<div class="form-check"><!-- check all -->
-													<input data-checkall-container="#checkall-list"
-														class="form-check-input" type="checkbox" value="1">
-												</div>
-											</th>
-											<th class="small text-muted" style="width:20px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
+                    <div class="row g-3 mb-3">
+                      <div class="col-lg-12">
+                        <div class="form-floating">
+                          <input required type="text" class="form-control"  name="username" placeholder="First name">
+                          <label for="user-fname">Username</label>
+                        </div>
+                      </div>
+                     
+                    </div>
 
-													<span class="ms-2">Id</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
+                    <div class="form-floating mb-3">
+                      <input required type="email" class="form-control"  name="email" placeholder="Email address">
+                      <label for="user-email">Email address</label>
+                    </div>
 
-													<span class="ms-2">Username</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted" title="order by inventory"
-													aria-label="order by inventory">
+                    <div class="form-floating">
+                      <input required type="password" class="form-control"  name="password" placeholder="Password" autocomplete="new-password">
+                      <label for="user-password">Password</label>
+                    </div>
 
-													<span class="ms-2">Email</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted" title="order by price"
-													aria-label="order by inventory">
+                  </div>
 
-													<span class="ms-2">Password</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:64px"><!-- options --></th>
-										</tr>
-									</thead>
-									<tbody id="checkall-list">
+                  <div class="card-footer border-light">
+                    <button type="submit" class="btn btn-primary">
+                      <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Save changes</span>
+                    </button>
+                  </div>
 
-										<!-- DB item -->
-										<tr th:each="user: ${userList}">
-											<th><!-- check -->
-												<div class="form-check">
-													<input class="form-check-input form-check-input-primary"
-														type="checkbox" value="">
-												</div>
-											</th>
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="link-normal" th:text="${user.userId}"> </a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="link-normal" th:text="${user.username}"></a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- email -->
-												<a href="#!" class="text-dark" th:text="${user.email}"></a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" th:href="@{'/users/editUser?id=' + ${user.userId}}">
-													<span class="btn btn-small bg-success text-white">Edit</span>
-												</a>
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="" th:href="@{'/users/delete?deleteUser=' + ${user.userId}}">
-													<span class="btn btn-small btn-danger text-white">DELETE</span>
-												</a>
-											</td>				
-										</tr>
-
-										<!-- end DB item -->
-
-									</tbody>
-								</table>
-
+                </div>
+                </form>
 							</div>
 
 
@@ -395,8 +345,8 @@
 
 
 	<!-- Core javascripts -->
-	<script src="assets/js/core.min.js"></script>
-	<script src="assets/js/vendor_bundle.min.js"></script>
+	<script src="/assets/js/core.min.js"></script>
+	<script src="/assets/js/vendor_bundle.min.js"></script>
 
 	<!-- Your custom javascripts -->
 

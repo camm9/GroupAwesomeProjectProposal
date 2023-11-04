@@ -37,6 +37,8 @@ public class AwesomeProjectProposalApplication {
 		log.info("In main method");
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
+			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
+			matchOdds = apiService.getMatchOdds("273761");
 
 
 		} catch (Exception e) {

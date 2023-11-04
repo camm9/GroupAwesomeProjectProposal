@@ -20,7 +20,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.csis3275.model_api.Datum;
+
 import com.csis3275.model_api.Odds;
+import com.csis3275.model_api.Match;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -92,8 +94,10 @@ public class APIService {
 	}
 	
 	
+
 	public List<Datum> getAllMatchesForDate(String date) {
 		List<Datum> matchList = new ArrayList();
+
 		try {
 			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=";
 			String fullURL = init + date;
@@ -108,6 +112,8 @@ public class APIService {
 			String JSONString = response.body();
 			JsonNode data = objectMapper.readTree(JSONString).get("data");
 			//Get the number of matches expected in the day
+			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
+
 			List<JsonNode> listOfNodes = data.findParents("home_team");
 			
 			// Add results for date to a List
@@ -118,10 +124,11 @@ public class APIService {
 				String federation = data.get(i).get("federation").asText();
 				String country = data.get(i).get("competition_cluster").asText();
 				
-				Datum matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
+				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
 				matchList.add(matchInfo);
 			}
 			
+
 	
 		}catch (Exception e) {
 			System.out.println("something went wrong while getting value from API");
@@ -171,6 +178,7 @@ public class APIService {
 			e.printStackTrace();
 		}
 	}
+
 	
 //	Call matches by match id and return odds with prediction
 	public Datum getMatchOdds(String matchID){
@@ -228,6 +236,7 @@ public class APIService {
 		return matchInfo;
 
 	}
+
 
 	
 

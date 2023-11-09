@@ -362,7 +362,7 @@
 
 
 
-									<div class="col-md-4 float-right">
+									<div class="float">
 										<form action="#" th:action="@{/member/api_date}" method="post">
 
 											<!--
@@ -404,33 +404,34 @@ Rounded - add class:
 							<!--                Table to feed matches available for date-->
 
 							<div class="card-body p-4 h-100">
-
+<!--								Search bar-->
+								<input class="form-control" id="matchList" type="text" placeholder="Search MatchID..." onkeyup="searchFunction()">
 								<div class="table-responsive-md mb-3">
-									<table class="table table-align-middle mb-0" role="grid">
+									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
 										<thead>
 											<tr>
 
 												<th class="fw-bold" style="width:180px">Match ID</th>
 												<th class="fw-bold" style="width:20px">Home Team</th>
 												<th class="fw-bold" style="width:20px">Away Team</th>
-												<th class=" text-dark text-center" style="width:30px">Fedaration</th>
-												<th class="fw-bold" style="width:10px">Country</th>
+												<th class="fw-bold" style="width:20px">Federation</th>
+												<th class="fw-bold" style="width:20px">Country</th>
 											</tr>
 										</thead>
 										<tbody id="checkall-list">
 
 											<!-- item -->
 											<tr th:each="match:${matchList}">
-												<td th:text="${match.id}">
+												<td> <a href="#!" class="link-normal fw-medium"
+														th:text="${match.id}"></a></td>
 												<td th:text="${match.homeTeam}"></td>
 												<td th:text="${match.awayTeam}"></td>
 												<td th:text="${match.federation}"></td>
 												<td th:text="${match.competitionCluster}"></td>
 
 												<!--							   product -->
-												<!--                            <a href="#!" class="link-normal fw-medium">269784</a>-->
-												<!--                            <span class="d-block text-muted small" th:text="${match.homeTeam}">Home Team:</span>-->
-												<!--                            <span class="d-block text-muted small">Away Team: Hodd</span>-->
+
+
 												<!--                          </td>-->
 												<!--                          <td class="text-center text-muted small">-->
 												<!--                            England-->
@@ -697,16 +698,36 @@ Rounded - add class:
 	<script src="/assets/js/vendor_bundle.min.js"></script>
 
 	<!-- Your custom javascripts -->
+<!--	Calendar Date script-->
 	<script>
-
-
 		$("#date_p").change(function () {
 			var $form = $(this).closest('form');
 			$form.find('input[type=submit]').click();
 		});
+	</script>
+<!--	Search Bar script-->
+	<script>
+		function searchFunction() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("matchList");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("matchListTable");
+			tr = table.getElementsByTagName("tr");
 
-
-
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
 	</script>
 
 </body>

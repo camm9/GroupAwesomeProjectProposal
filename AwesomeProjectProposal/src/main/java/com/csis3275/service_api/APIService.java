@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.csis3275.model_api.Datum;
+import com.csis3275.model_api.Odds;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -89,6 +91,57 @@ public class APIService {
 		}
 	}
 	
+	
+
+	public List<Datum> getAllMatchesForDate(String date) {
+		List<Datum> matchList = new ArrayList();
+		try {
+			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?market=classic&iso_date=";
+			String fullURL = init + date;
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(fullURL))
+					.header("X-RapidAPI-Key", rapidApiKey)
+					.header("X-RapidAPI-Host", rapidApiHost)
+					.method("GET", HttpRequest.BodyPublishers.noBody())
+					.build();
+			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+			
+			String JSONString = response.body();
+			JsonNode data = objectMapper.readTree(JSONString).get("data");
+			//Get the number of matches expected in the day
+
+			Datum matchInfo = objectMapper.readValue(JSONString, Datum.class);
+
+			List<JsonNode> listOfNodes = data.findParents("home_team");
+			
+			// Add results for date to a List
+			for (int i = 0; i < listOfNodes.size(); i++) {
+				int matchID = data.get(i).get("id").asInt();
+				String awayTeam = data.get(i).get("away_team").asText();
+				String homeTeam = data.get(i).get("home_team").asText();
+				String federation = data.get(i).get("federation").asText();
+				String country = data.get(i).get("competition_cluster").asText();
+				
+
+				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
+				matchList.add(matchInfo);
+			}
+
+	
+		}catch (Exception e) {
+			System.out.println("something went wrong while getting value from API");
+			e.printStackTrace();
+			throw new ResponseStatusException(
+					HttpStatus.INTERNAL_SERVER_ERROR,
+					"Exception while calling endpoint API",
+					e
+					);
+		}
+		
+		// return list of matches
+		return matchList;
+	}
+	
 	public void getFederationList() {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://football-prediction-api.p.rapidapi.com/api/v2/list-federations"))
@@ -122,10 +175,63 @@ public class APIService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
+//	Call matches by match id and return odds with prediction
+	public Datum getMatchOdds(String matchID){
+		List<Datum> matchList = new ArrayList();
+		Datum matchInfo = null;
+		
+		try {
+			String init = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions/";
+			String fullURL = init + matchID;
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create(fullURL))
+					.header("X-RapidAPI-Key", rapidApiKey)
+					.header("X-RapidAPI-Host", rapidApiHost)
+					.method("GET", HttpRequest.BodyPublishers.noBody())
+					.build();
+			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+			
+			String JSONString = response.body();
+//			System.out.println(JSONString);
+			JsonNode data = objectMapper.readTree(JSONString);
+//			System.out.println(data.findValue("id"));
+//			System.out.println(data.findValue("odds").findValue("1"));
+					
+			//sample match ID = 274216
+			
+			// Add results for date to a List
+			for (int i = 0; i < 14; i++) {
+				Integer idNum = Integer.valueOf(matchID);
+				String awayTeam = data.findValue("away_team").asText();
+				String homeTeam = data.findValue("home_team").asText();
+				Double _1 = data.findValue("odds").findValue("1").asDouble();
+				Double _2  = data.findValue("odds").findValue("2").asDouble();
+				Double _12  = data.findValue("odds").findValue("12").asDouble();
+				Double _x  = data.findValue("odds").findValue("X").asDouble();
+				Double x1  = data.findValue("odds").findValue("1X").asDouble();
+				Double x2  = data.findValue("odds").findValue("X2").asDouble();
+				String prediction = data.findValue("prediction").asText();
+			
+				Odds matchOdd = new Odds(_1, _2, _12, _x, x1, x2);
+
+				matchInfo = new Datum(idNum, homeTeam, awayTeam, prediction, matchOdd);
+//				matchList.add(matchInfo);
+			}
+			
 	
+		}catch (Exception e) {
+			System.out.println("something went wrong while getting value from API");
+			e.printStackTrace();
+			throw new ResponseStatusException(
+					HttpStatus.INTERNAL_SERVER_ERROR,
+					"Exception while calling endpoint API",
+					e
+					);
+		}
+		return matchInfo;
+
+	}
 
 }

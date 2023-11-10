@@ -177,8 +177,35 @@ public class Datum {
 	public Datum() {
 		
 	}
+	
+	public Datum(Integer id, String homeTeam, String awayTeam) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+	}
 
+	public Datum(Integer id, String homeTeam, String awayTeam, String federation, String competitionCluster) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.federation = federation;
+		this.competitionCluster = competitionCluster;
+	}
+
+	public Datum(Integer id, String homeTeam, String awayTeam, Odds odds) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.odds = odds;
+	}
 	
-	
+	public Datum(Integer id, String homeTeam, String awayTeam, String prediction, Odds odds) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.prediction = prediction;
+		this.odds = odds;
+	}
+
 	
 }

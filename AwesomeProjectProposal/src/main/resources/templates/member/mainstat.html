@@ -404,8 +404,11 @@ Rounded - add class:
 							<!--                Table to feed matches available for date-->
 
 							<div class="card-body p-4 h-100">
-<!--								Search bar-->
-								<input class="form-control" id="matchList" type="text" placeholder="Search MatchID..." onkeyup="searchFunction()">
+								<!--								Buttons-->
+							<button type="button" id="matchIDSearchBtn" class=btn> Match ID </button>
+								<!--								Search bar-->
+								<input class="form-control" id="matchIDSearchBar" type="text"
+									placeholder="Search MatchID..." onkeyup="searchFunction()">
 								<div class="table-responsive-md mb-3">
 									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
 										<thead>
@@ -698,26 +701,29 @@ Rounded - add class:
 	<script src="/assets/js/vendor_bundle.min.js"></script>
 
 	<!-- Your custom javascripts -->
-<!--	Calendar Date script-->
+	<!--	Calendar Date script-->
 	<script>
 		$("#date_p").change(function () {
 			var $form = $(this).closest('form');
 			$form.find('input[type=submit]').click();
 		});
 	</script>
-<!--	Search Bar script-->
+	<!--	Search Bar script-->
 	<script>
 		function searchFunction() {
 			// Declare variables
-			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById("matchList");
+			var input, filter, table, tr, td, i, txtValue, x, row;
+			input = document.getElementById("matchIDSearchBar");
 			filter = input.value.toUpperCase();
 			table = document.getElementById("matchListTable");
 			tr = table.getElementsByTagName("tr");
-
+			x = document.getElementById("matchIDBtn");
+			row = 0;
+			
 			// Loop through all table rows, and hide those who don't match the search query
 			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
+				//matchID is row 0
+				td = tr[i].getElementsByTagName("td")[row];
 				if (td) {
 					txtValue = td.textContent || td.innerText;
 					if (txtValue.toUpperCase().indexOf(filter) > -1) {

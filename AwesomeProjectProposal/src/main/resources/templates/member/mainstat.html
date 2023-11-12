@@ -405,7 +405,14 @@ Rounded - add class:
 
 							<div class="card-body p-4 h-100">
 								<!--								Buttons-->
-								<button type="button" id="MatchID" class=btn onclick=setSearchRow()> Match ID </button>
+								<div id="searchBtns">
+									<button type="button" id="MatchID" class="btn active" onclick="setSearchRow('MatchID')">
+										Match ID
+									</button>
+									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('HomeTeam')"> Home
+										Team
+									</button>
+								</div>
 								<!--								Search bar-->
 								<input class="form-control" id="matchIDSearchBar" type="text"
 									placeholder="Search MatchID..." onkeyup="searchFunction()">
@@ -432,7 +439,7 @@ Rounded - add class:
 												<td th:text="${match.federation}"></td>
 												<td th:text="${match.competitionCluster}"></td>
 
-												
+
 											</tr>
 											<!-- end item -->
 										</tbody>
@@ -693,19 +700,33 @@ Rounded - add class:
 	<script>
 		var rowName = "MatchID";
 		var rowNum = 0;
+		var btnContainer = document.getElementById("searchBtns");
+		var btns = btnContainer.getElementsByClassName("btn");
 
-		function setSearchRow() {
-			rowName = this.id;
-			if (rowName == "MatchID") {
+
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function () {
+				var current = document.getElementsByClassName("active");
+				current[0].className = current[0].className.replace(" active", "");
+				this.className += " active";
+			});
+		}
+
+		function setSearchRow(id) {
+			rowName = id;
+			if (rowName === "MatchID") {
 				rowNum = 0;
-			} else if (rowName == "HomeTeam"){
+			} else if (rowName === "HomeTeam") {
 				rowNum = 1;
-			} else if (rowName == "AwayTeam"){
+			} else if (rowName === "AwayTeam") {
 				rowNum = 2;
-			} else if (rowName == "Federation"){
+			} else if (rowName === "Federation") {
 				rowNum = 3;
-			} else if (rowName == "Country"){
+			} else if (rowName === "Country") {
 				rowNum = 4;
+			} else {
+				rowName = "MatchID";
+				rowNum = 0;
 			}
 			return false;
 		}
@@ -717,7 +738,7 @@ Rounded - add class:
 			table = document.getElementById("matchListTable");
 			tr = table.getElementsByTagName("tr");
 			row = rowNum;
-			
+
 
 			// Loop through all table rows, and hide those who don't match the search query
 			for (i = 0; i < tr.length; i++) {

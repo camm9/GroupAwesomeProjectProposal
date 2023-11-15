@@ -46,8 +46,8 @@ public class AwesomeProjectProposalApplication {
 	@Bean
 	CommandLineRunner userDB(UserService repo)	{
 		return (args) -> {
-		repo.saveUser(new User("testusername", "test@email.com", "testpassword"));
-		repo.saveUser(new User("test2username", "test2@email.com", "test2password"));
+		repo.saveUser(new User("testusername", "test@email.com", "testpassword", "123456789"));
+		repo.saveUser(new User("test2username", "test2@email.com", "test2password","098765234"));
 		};
 		
 	}

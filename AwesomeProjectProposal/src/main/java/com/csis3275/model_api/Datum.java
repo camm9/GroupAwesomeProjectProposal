@@ -53,6 +53,19 @@ public class Datum {
 	@SerializedName("odds")
 	@Expose
 	private Odds odds;
+	@SerializedName("probability")
+	@Expose
+	private String probability;
+	
+	
+
+	public String getProbability() {
+		return probability;
+	}
+
+	public void setProbability(String probability) {
+		this.probability = probability;
+	}
 
 	public String getHomeTeam() {
 		return homeTeam;
@@ -190,6 +203,26 @@ public class Datum {
 		this.awayTeam = awayTeam;
 		this.federation = federation;
 		this.competitionCluster = competitionCluster;
+	}
+	
+	public Datum(Integer id, String homeTeam, String awayTeam, String federation, String competitionCluster, String prediction) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.federation = federation;
+		this.competitionCluster = competitionCluster;
+		this.prediction = prediction;
+	}
+	
+	
+	public Datum(Integer id, String homeTeam, String awayTeam, String federation, String competitionCluster, String prediction, String status) {
+		this.id = id;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.federation = federation;
+		this.competitionCluster = competitionCluster;
+		this.prediction = prediction;
+		this.status = status;
 	}
 
 	public Datum(Integer id, String homeTeam, String awayTeam, Odds odds) {

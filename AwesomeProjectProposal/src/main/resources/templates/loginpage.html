@@ -118,7 +118,7 @@
 								<!-- about -->
 								<li class="nav-item">
 
-									<a class="nav-link" th:href="@{/#section_pricing}">
+									<a class="nav-link" href="#">
 										STAT
 									</a>
 
@@ -172,67 +172,6 @@
 
 
 
-						<!-- OPTIONS -->
-						<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
-								
-								<li class="list-inline-item mx-1 dropdown">
-
-								<a href="#" aria-label="Account Options" id="dropdownAccountOptions" class="btn btn-sm btn-primary text-white " data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-									<span class="group-icon">
-										<i class="fi fi-user-male"></i>
-										<i class="fi fi-close"></i>
-									</span>
-									<span>Account</span>
-								</a>
-								
-								
-							
-
-								<!--
-									
-									Dropdown Classes
-										.dropdown-menu-dark 		- dark dropdown (desktop only, will be white on mobile)
-										.dropdown-menu-hover 		- open on hover
-										.dropdown-menu-clean 		- no background color on hover
-										.dropdown-menu-invert 		- open dropdown in oposite direction (left|right, according to RTL|LTR)
-										.dropdown-click-ignore 		- keep dropdown open on inside click (useful on forms inside dropdown)
-
-										Dropdown prefix icon (optional, if enabled in variables.scss)
-											.prefix-link-icon .prefix-icon-dot 		- link prefix
-											.prefix-link-icon .prefix-icon-line 	- link prefix
-											.prefix-link-icon .prefix-icon-ico 		- link prefix
-											.prefix-link-icon .prefix-icon-arrow 	- link prefix
-
-											.prefix-icon-ignore 					- ignore, do not use on a specific link
-
-								-->
-								<div aria-labelledby="dropdownAccountOptions" class="prefix-link-icon prefix-icon-dot dropdown-menu dropdown-menu-clean dropdown-menu-invert dropdown-click-ignore p-0 mt--18 fs--15">
-									<div class="dropdown-header">
-										Washington Valencia
-									</div>
-									<div class="dropdown-divider"></div>
-									<a href="#" title="My Orders" class="dropdown-item text-truncate font-weight-light">
-										My Stat <small>(2)</small>
-									</a>
-									<a href="#" title="My Favourites" class="dropdown-item text-truncate font-weight-light">
-										My Favourites <small>(3)</small>
-									</a>
-									<a href="#" title="Account Settings" class="dropdown-item text-truncate font-weight-light">
-										Account Settings
-									</a>
-									<div class="dropdown-divider mb-0"></div>
-									<a href="#!" title="Log Out" class="prefix-icon-ignore dropdown-footer dropdown-custom-ignore">
-										<i class="fi fi-power float-start"></i>
-										Log Out
-									</a>
-								</div>
-
-							</li>
-
-						</ul>
-						<!-- /OPTIONS -->
-
-
 
 					</nav>
 
@@ -259,28 +198,58 @@
 
 							<!-- SIGN IN -->
 
-							<form class="collapse bs-validate show" novalidate method="get" action="#" th:action="${'/member'}"
-
-
+							<form class="collapse bs-validate show" novalidate method="get" action="#" th:action="${'/admin'}">
 
 								<!-- title -->
 								<h2 class="text-primary mb-1">
-									<span class="font-weight-normal">Sign</span> In
-								</h2>
-								<p class="mb-5 font-weight-medium b-0">
-									Type your email and password to continue
-								</p>
+									<span class="font-weight-normal">Sign</span> In Users
+								 </h2> 
+								
+								
+								
+								<div class="p-5 rouder alert-info">
+								
+									<div class="row text-center-xs">
 
-								<div class="p-5 rounded shadow-xs">
+					<div class="col">
+						<h3 class="m-0 font-weight-light"> Connect With:</h3>
+						<p class="m-0">Members way to logging in!</p>
+					</div>
 
+					<div class="col-12 mt-4 d-block d-md-none"><!-- mobile spacer --></div>
 
+					<div class="col-12 col-md-6 col-lg-4 text-align-end">
+
+						<div class="row">
+
+							<div class="col-12">
+								<a th:href="@{/member/valida}" class="btn btn-bg btn-block btn-github transition-hover-top mt-1"
+									rel="noopener">
+									<i class="fi fi-social-github"></i>
+									GitHub
+								</a>
+							</div>
+
+							
+						</div>
+
+					</div>
+
+				</div>
+								
+								</div>
+								<hr>
+					
+								<div class="py-1 rounded shadow-xs">
+
+								<p class="ml-4 mt-3">Administrators way to logging in!</p>
 									<!--
 										<p class="text-danger">
 											Ups! Please check again
 										</p>
 										-->
 
-
+								<div class="ml-5 mr-5 mb-5 mt-3">
 									<div class="form-label-group mb-3">
 										<input required placeholder="Email" id="account_email" name="account_email"
 											type="email" class="form-control">
@@ -294,25 +263,18 @@
 											<label for="account_password">Password</label>
 										</div>
 
-										<a href="#accordionAccountPasswd" class="btn btn-pill fs--12"
-											data-toggle="collapse" aria-expanded="true"
-											aria-controls="accordionAccountPasswd">
-											FORGOT?
-										</a>
+										
 
 									</div>
 
 									<button type="submit" class="btn btn-primary btn-soft btn-block">
 										Sign In
 									</button>
-
-									<div class="text-center mt--30">
-										<a href="#accordionAccountSignUp"
-											class="d-block text-success text-decoration-none" data-toggle="collapse"
-											aria-expanded="true" aria-controls="accordionAccountSignUp">
-											Don't have an account yet?
-										</a>
-									</div>
+									
+									
+									
+				</div>
+									
 
 								</div>
 
@@ -321,165 +283,8 @@
 
 
 
-							<!-- PASSWD RESET -->
-							<form class="collapse bs-validate" novalidate method="post" action="#"
-								id="accordionAccountPasswd" data-parent="#accordionAccount">
-
-								<!-- title -->
-								<h2 class="text-primary mb-1">
-									<span class="font-weight-normal">Password</span> Reset
-								</h2>
-								<p class="mb-5 font-weight-medium b-0">
-									Type your email and password to continue
-								</p>
-
-								<div class="p-5 rounded shadow-xs">
-
-									<h2 class="h5 text-center mb-5 mt-3">
-										Password Reset instructions are sent to your email.
-									</h2>
 
 
-									<!--
-										<p class="text-danger">
-											Ups! Please check again
-										</p>
-										-->
-
-
-									<div class="form-label-group mb-4">
-										<input required placeholder="Email" id="reset_email" name="reset_email"
-											type="email" class="form-control">
-										<label for="reset_email">Email</label>
-									</div>
-
-									<button type="submit" class="btn btn-primary btn-soft btn-block">
-										Reset Password
-									</button>
-
-									<div class="text-center mt--30">
-										<a href="#accordionAccountSignIn"
-											class="d-block text-success text-decoration-none" data-toggle="collapse"
-											aria-expanded="true" aria-controls="accordionAccountSignIn">
-											Nevermind, back to Sign In
-										</a>
-									</div>
-
-								</div>
-
-							</form>
-							<!-- /PASSWD RESET -->
-
-
-
-							<!-- SIGN UP -->
-							<form class="collapse bs-validate" novalidate method="post" action="#"
-								id="accordionAccountSignUp" data-parent="#accordionAccount">
-
-								<!-- title -->
-								<h2 class="text-primary mb-1">
-									<span class="font-weight-normal">Sign</span> Up
-								</h2>
-								<p class="mb-5 font-weight-medium b-0">
-									Get started! It's Free!
-								</p>
-
-								<div class="p-5 rounded shadow-xs">
-
-
-									<!--
-										<p class="text-danger">
-											Ups! Please check again
-										</p>
-										-->
-
-
-									<div class="form-label-group mb-3">
-										<input required placeholder="First Name" id="signup_first_name"
-											name="signup_first_name" type="text" class="form-control">
-										<label for="signup_first_name">First Name</label>
-									</div>
-
-									<div class="form-label-group mb-3">
-										<input required placeholder="Last Name" id="signup_last_name"
-											name="signup_last_name" type="text" class="form-control">
-										<label for="signup_last_name">Last Name</label>
-									</div>
-
-									<div class="form-label-group mb-3">
-										<input required placeholder="Email" id="signup_email" name="signup_email"
-											type="email" class="form-control">
-										<label for="signup_email">Email</label>
-									</div>
-
-									<div class="form-label-group mb-3">
-										<!-- bootstrap select vendor plugin used -->
-										<select required class="form-control bs-select pt-0 pb-0"
-											data-live-search="true">
-											<option value="">Country...</option>
-											<option>United States</option>
-											<option>United Kingdrom</option>
-											<option>France</option>
-										</select>
-										<label for="signup_email">Country</label>
-									</div>
-
-									<div class="input-group-over">
-										<div class="form-label-group mb-3">
-											<input required placeholder="Password" id="signup_password"
-												name="signup_password" type="password" class="form-control">
-											<label for="signup_password">Password</label>
-										</div>
-
-										<!-- `SOW : Form Advanced` plugin used -->
-										<a href="account-sign-password.html" class="btn fs--12 btn-password-type-toggle"
-											data-target="#signup_password">
-											<span class="group-icon">
-												<i class="fi fi-eye m-0"></i>
-												<i class="fi fi-close m-0"></i>
-											</span>
-										</a>
-
-									</div>
-
-
-									<!-- GDPR CONSENT -->
-									<div class="clearfix bg-light position-relative rounded p-4 mb-4">
-
-										<span class="text-muted fs--12 d-block position-absolute bottom-0 end-0 m-2">
-											GAME DAY TRADES
-										</span>
-
-										<label class="form-checkbox form-checkbox-primary">
-											<input required type="checkbox" name="checkbox">
-											<i></i>
-											<span>
-												I consent that my data is being stored in
-												line with the guidelines set out in
-												<a href="#" target="_blank">Privacy
-													Policy</a>.
-											</span>
-										</label>
-
-									</div>
-									<!-- /GDPR CONSENT -->
-
-									<button type="submit" class="btn btn-primary btn-soft btn-block">
-										Sign Up
-									</button>
-
-									<div class="text-center mt--30">
-										<a href="#accordionAccountSignIn"
-											class="d-block text-muted text-decoration-none" data-toggle="collapse"
-											aria-expanded="true" aria-controls="accordionAccountSignIn">
-											Back to Sign In
-										</a>
-									</div>
-
-								</div>
-
-							</form>
-							<!-- /SIGN UP -->
 
 
 						</div>
@@ -501,48 +306,6 @@
 		<!-- /FORM -->
 							
 
-<!-- CONNECT WITH -->
-		<section class="py-5 bg-theme-color-light">
-			<div class="container">
-				<div class="row text-center-xs">
-
-					<div class="col">
-						<h3 class="m-0 font-weight-light">Or &ndash; Connect With:</h3>
-						<p class="m-0">Alternative ways to sign in!</p>
-					</div>
-
-					<div class="col-12 mt-4 d-block d-md-none"><!-- mobile spacer --></div>
-
-					<div class="col-12 col-md-6 col-lg-4 text-align-end">
-
-						<div class="row">
-
-							<div class="col-6">
-								<a href="#" class="btn btn-sm btn-block btn-github transition-hover-top mt-1"
-									rel="noopener">
-									<i class="fi fi-social-github"></i>
-									GitHub
-								</a>
-							</div>
-
-							<div class="col-6">
-								<a href="#"
-									class="btn btn-sm btn-block bg-googleplay transition-hover-top mt-1 text-white"
-									rel="noopener">
-									<i>G</i>
-									google
-								</a>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-		</section>
-		<!-- /CONNECT WITH -->
 
 
 			<!-- Footer -->

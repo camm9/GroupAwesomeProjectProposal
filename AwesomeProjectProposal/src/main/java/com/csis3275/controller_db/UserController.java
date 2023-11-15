@@ -26,6 +26,12 @@ public class UserController {
 	public String addStudentAdmin() {
 		return "/admin/addadmin";
 	}
+	
+
+	@GetMapping("/admin/api")
+	public String renderApiDetailsAdmin() {
+		return "/admin/apidetails";
+	}
 
 	@GetMapping("/users/delete")
 	public String deleteUser(@RequestParam("deleteUser") String id) {

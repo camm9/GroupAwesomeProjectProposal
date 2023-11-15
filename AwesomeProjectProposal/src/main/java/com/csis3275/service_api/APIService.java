@@ -71,6 +71,7 @@ public class APIService {
 				String awayTeam = data.get(i).get("away_team").asText();
 				System.out.println();
 				String homeTeam = data.get(i).get("home_team").asText();
+				String prediction = data.get(i).get("prediction").asText();
 				System.out.println("Match ID: "+ matchID + " Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
 			}
 			
@@ -121,9 +122,11 @@ public class APIService {
 				String homeTeam = data.get(i).get("home_team").asText();
 				String federation = data.get(i).get("federation").asText();
 				String country = data.get(i).get("competition_cluster").asText();
+				String prediction = data.get(i).get("prediction").asText();
+				String status = data.get(i).get("status").asText();
 				
 
-				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
+				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country, prediction, status);
 				matchList.add(matchInfo);
 			}
 

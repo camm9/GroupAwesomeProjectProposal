@@ -405,32 +405,7 @@ Rounded - add class:
 							<!--                Table to feed matches available for date-->
 
 							<div class="card-body p-4 h-100">
-								<!--								Buttons-->
-								<div id="searchBtns">
-									<button type="button" id="MatchID" class="btn active"
-										onclick="setSearchRow('MatchID')">
-										Match ID
-									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('HomeTeam')">
-										Home
-										Team
-									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('AwayTeam')">
-										Away
-										Team
-									</button>
-									<button type="button" id="HomeTeam" class="btn"
-										onclick="setSearchRow('Federation')">
-										Federation
-									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('Country')">
-										Country
 
-									</button>
-								</div>
-								<!--								Search bar-->
-								<input class="form-control" id="matchIDSearchBar" type="text" placeholder="Search..."
-									onkeyup="searchFunction()">
 								<div class="table-responsive-md mb-3">
 									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
 										<thead>
@@ -461,10 +436,10 @@ Rounded - add class:
 								</div>
 								<div id="searchByMatchID">
 									<h2> Know the MatchID already? Get match details!</h2>
-									<form action="#" th:action="@{/member/api_searchByMatchID}" method="post">
+									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
 										<input class="form-control" id="searchByMatchID" name="searchByMatchID"
 											type="text" placeholder="Search a specific MatchID..." onkeyup="">
-										<button type="submit">Submit</button>
+										<button class="btn" type="submit">Submit</button>
 									</form>
 								
 									<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
@@ -755,69 +730,19 @@ Rounded - add class:
 		});
 
 	</script>
-	<!-- search bar for matchDetails -->
-	<script>
-
-	</script>
-	<!--	Search Bar script for table of matchList-->
-	<script>
-		var rowName = "MatchID";
-		var rowNum = 0;
-		var btnContainer = document.getElementById("searchBtns");
-		var btns = btnContainer.getElementsByClassName("btn");
-
-
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].addEventListener("click", function () {
-				var current = document.getElementsByClassName("active");
-				current[0].className = current[0].className.replace(" active", "");
-				this.className += " active";
-			});
-		}
-
-		function setSearchRow(id) {
-			rowName = id;
-			if (rowName === "MatchID") {
-				rowNum = 0;
-			} else if (rowName === "HomeTeam") {
-				rowNum = 1;
-			} else if (rowName === "AwayTeam") {
-				rowNum = 2;
-			} else if (rowName === "Federation") {
-				rowNum = 3;
-			} else if (rowName === "Country") {
-				rowNum = 4;
-			} else {
-				rowName = "MatchID";
-				rowNum = 0;
-			}
-			return false;
-		}
-		function searchFunction() {
-			// Declare variables
-			var input, filter, table, tr, td, i, txtValue, x, row;
-			input = document.getElementById("matchIDSearchBar");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("matchListTable");
-			tr = table.getElementsByTagName("tr");
-			row = rowNum;
-
-
-			// Loop through all table rows, and hide those who don't match the search query
-			for (i = 0; i < tr.length; i++) {
-				//matchID is row 0
-				td = tr[i].getElementsByTagName("td")[row];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
-	</script>
+	
+	<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
+<script>
+function validateForm() {
+    var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
+    if (x == "") {
+      alert("MatchID must be filled out");
+      return false;
+    }
+  }
+</script>
+	
+	
 
 </body>
 

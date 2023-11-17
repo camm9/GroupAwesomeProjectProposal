@@ -28,14 +28,14 @@ public class HomeController_Member {
 	@PostMapping("/member/api_date")
 	public String renderAPIDateMember(@RequestParam("date_p") String date_p, Model model) {
 		model.addAttribute("matchList", apiService.getAllMatchesForDate(date_p));
-		System.out.print(date_p);
+//		System.out.print(date_p);
 		return "member/mainstat";
 	}
 
 	//	public String renderAPIMatchDetails(@RequestParam(value="searchByMatchID") String searchByMatchID, Model model)
 	@PostMapping("/member/api_searchByMatchID")
 	public String renderAPIMatchDetails(Model model,@RequestParam(value="searchByMatchID") String searchByMatchID) {
-		System.out.print(searchByMatchID);
+//		System.out.print(searchByMatchID);
 		model.addAttribute("matchIDDetails", apiService.getMatchOdds(searchByMatchID));
 		model.addAttribute("getOdd_1", apiService.getMatchOdds(searchByMatchID).getOdds().get1());
 		model.addAttribute("getOdd_2", apiService.getMatchOdds(searchByMatchID).getOdds().get2());

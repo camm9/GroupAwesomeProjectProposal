@@ -194,14 +194,13 @@ public class APIService {
 			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 			
 			String JSONString = response.body();
-//			System.out.println(JSONString);
+
 			JsonNode data = objectMapper.readTree(JSONString);
-//			System.out.println(data.findValue("id"));
-//			System.out.println(data.findValue("odds").findValue("1"));
+
 					
 			//sample match ID = 274216
 			
-			// Add results for date to a List
+			// Add results for matchID to an object of matchOdd and matchInfo
 			for (int i = 0; i < 14; i++) {
 				Integer idNum = Integer.valueOf(matchID);
 				String awayTeam = data.findValue("away_team").asText();
@@ -215,9 +214,8 @@ public class APIService {
 				String prediction = data.findValue("prediction").asText();
 			
 				Odds matchOdd = new Odds(_1, _2, _12, _x, x1, x2);
-
+				//return match details in matchInfo 
 				matchInfo = new Datum(idNum, homeTeam, awayTeam, prediction, matchOdd);
-//				matchList.add(matchInfo);
 			}
 			
 	

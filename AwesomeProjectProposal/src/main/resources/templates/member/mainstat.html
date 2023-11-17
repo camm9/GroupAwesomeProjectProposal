@@ -356,6 +356,7 @@
 						<!-- Order items -->
 						<div class="card border-0 h-100">
 							<div class="card-header p-4 border-bottom-0 fw-bold">
+								<h2> Find Matches by Date </h2>
 								<h2 class="h4 text-truncate w-100">To start <span class="text-success">choose</span> a
 									date :
 
@@ -406,30 +407,34 @@ Rounded - add class:
 							<div class="card-body p-4 h-100">
 								<!--								Buttons-->
 								<div id="searchBtns">
-									<button type="button" id="MatchID" class="btn active" onclick="setSearchRow('MatchID')">
+									<button type="button" id="MatchID" class="btn active"
+										onclick="setSearchRow('MatchID')">
 										Match ID
 									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('HomeTeam')"> Home
+									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('HomeTeam')">
+										Home
 										Team
 									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('AwayTeam')"> Away
+									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('AwayTeam')">
+										Away
 										Team
 									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('Federation')"> 
+									<button type="button" id="HomeTeam" class="btn"
+										onclick="setSearchRow('Federation')">
 										Federation
 									</button>
-									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('Country')"> Country
-										
+									<button type="button" id="HomeTeam" class="btn" onclick="setSearchRow('Country')">
+										Country
+
 									</button>
 								</div>
 								<!--								Search bar-->
-								<input class="form-control" id="matchIDSearchBar" type="text"
-									placeholder="Search..." onkeyup="searchFunction()">
+								<input class="form-control" id="matchIDSearchBar" type="text" placeholder="Search..."
+									onkeyup="searchFunction()">
 								<div class="table-responsive-md mb-3">
 									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
 										<thead>
 											<tr>
-
 												<th class="fw-bold" style="width:180px">Match ID</th>
 												<th class="fw-bold" style="width:20px">Home Team</th>
 												<th class="fw-bold" style="width:20px">Away Team</th>
@@ -454,7 +459,51 @@ Rounded - add class:
 										</tbody>
 									</table>
 								</div>
+								<div id="searchByMatchID">
+									<h2> Know the MatchID already? Get match details!</h2>
+									<form action="#" th:action="@{/member/api_searchByMatchID}" method="post">
+										<input class="form-control" id="searchByMatchID" name="searchByMatchID"
+											type="text" placeholder="Search a specific MatchID..." onkeyup="">
+										<button type="submit">Submit</button>
+									</form>
+								
+									<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
+										<thead>
+											<tr>
+												<th class="fw-bold" style="width:180px">Match ID</th>
+												<th class="fw-bold" style="width:20px">Home Team</th>
+												<th class="fw-bold" style="width:20px">Away Team</th>
+												<th class="fw-bold" style="width:20px">Prediction</th>
+												<th class="fw-bold" style="width:20px">Odds</th>
 
+											</tr>
+										</thead>
+										<tbody id="checkall-list">
+
+											<!-- item -->
+											<tr th:each="details:${matchIDDetails}">
+												<td> <a href="#!" class="link-normal fw-medium"
+														th:text="${details.id}"></a></td>
+												<td th:text="${details.homeTeam}"></td>
+												<td th:text="${details.awayTeam}"></td>
+												<td th:text="${details.prediction}"></td>
+<!--												<td th:text="${getOdd_1}"></td>-->
+												<td>
+													 <ul>
+													1:<p th:text="${getOdd_1}"></p>
+													2:<p th:text="${getOdd_2}"></p>
+													12:<p th:text="${getOdd_12}"></p>
+													X:<p th:text="${getOdd_X}"></p>
+													1X:<p th:text="${getOdd_1X}"></p>
+													X2:<p th:text="${getOdd_X2}"></p>
+													 </ul>
+
+												</td>
+											</tr>
+											<!-- end item -->
+										</tbody>
+									</table>
+								</div>
 
 
 
@@ -704,8 +753,13 @@ Rounded - add class:
 			var $form = $(this).closest('form');
 			$form.find('input[type=submit]').click();
 		});
+
 	</script>
-	<!--	Search Bar script-->
+	<!-- search bar for matchDetails -->
+	<script>
+
+	</script>
+	<!--	Search Bar script for table of matchList-->
 	<script>
 		var rowName = "MatchID";
 		var rowNum = 0;

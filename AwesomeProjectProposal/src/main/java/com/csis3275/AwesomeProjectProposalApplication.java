@@ -31,10 +31,16 @@ public class AwesomeProjectProposalApplication {
 	
 	public static void main(String[] args) {
 		log.info("In main method");
+//		System.out.println("Match Odds");
+		matchOdds = apiService.getMatchOdds("273761");
+		System.out.println(matchOdds.getHomeTeam());
+		System.out.println(matchOdds.getPrediction());
+		System.out.println(matchOdds.getOdds().get1());
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
 //			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
 //			matchOdds = apiService.getMatchOdds("273761");
+
 
 
 		} catch (Exception e) {

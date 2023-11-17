@@ -356,84 +356,6 @@
 						<!-- Order items -->
 						<div class="card border-0 h-100">
 							<div class="card-header p-4 border-bottom-0 fw-bold">
-								<h2> Find Matches by Date </h2>
-								<h2 class="h4 text-truncate w-100">To start <span class="text-success">choose</span> a
-									date :
-
-
-
-
-									<div class="float">
-										<form action="#" th:action="@{/member/api_date}" method="post">
-
-											<!--
-Optional, for quick inline translation. Default: english
-data-quick-locale="..."
-
-Rounded - add class:
-.form-control-pill
--->
-											<div class="input-group-over position-realtive z-index-1 bg-white">
-
-												<input type="text" id="date_p" name="date_p" autocomplete="off"
-													class="form-control bg-transparent datepicker"
-													data-today-highlight="true" data-layout-rounded="true"
-													data-title="Datepicker" data-show-weeks="true" data-today-btn="true"
-													data-autoclose="true" data-format="YYYY-MM-DD" data-quick-locale='{
-			"days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-			"daysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-			"daysMin": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-			"months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-			"monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			"today": "Today",
-			"clear": "Clear",
-			"titleFormat": "MM yyyy"}'>
-
-												<span class="fi fi-calendar fs--20 ml-4 mr-4 z-index-n1 text-muted">
-													<input class="d-none" type="submit" name="" value="">
-												</span>
-
-											</div>
-
-										</form>
-
-
-									</div>
-								</h2>
-							</div>
-
-							<!--                Table to feed matches available for date-->
-
-							<div class="card-body p-4 h-100">
-
-								<div class="table-responsive-md mb-3">
-									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
-										<thead>
-											<tr>
-												<th class="fw-bold" style="width:180px">Match ID</th>
-												<th class="fw-bold" style="width:20px">Home Team</th>
-												<th class="fw-bold" style="width:20px">Away Team</th>
-												<th class="fw-bold" style="width:20px">Federation</th>
-												<th class="fw-bold" style="width:20px">Country</th>
-											</tr>
-										</thead>
-										<tbody id="checkall-list">
-
-											<!-- item -->
-											<tr th:each="match:${matchList}">
-												<td> <a href="#!" class="link-normal fw-medium"
-														th:text="${match.id}"></a></td>
-												<td th:text="${match.homeTeam}"></td>
-												<td th:text="${match.awayTeam}"></td>
-												<td th:text="${match.federation}"></td>
-												<td th:text="${match.competitionCluster}"></td>
-
-
-											</tr>
-											<!-- end item -->
-										</tbody>
-									</table>
-								</div>
 								<div id="searchByMatchID">
 									<h2> Know the MatchID already? Get match odds!</h2>
 									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
@@ -721,16 +643,7 @@ Rounded - add class:
 	<script src="/assets/js/core.min.js"></script>
 	<script src="/assets/js/vendor_bundle.min.js"></script>
 
-	<!-- Your custom javascripts -->
-	<!--	Calendar Date script-->
-	<script>
-		$("#date_p").change(function () {
-			var $form = $(this).closest('form');
-			$form.find('input[type=submit]').click();
-		});
-
-	</script>
-	
+	<!-- Your custom javascripts -->	
 	<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
 <script>
 function validateForm() {

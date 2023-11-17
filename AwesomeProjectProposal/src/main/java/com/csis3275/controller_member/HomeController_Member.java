@@ -23,6 +23,11 @@ public class HomeController_Member {
 	public String renderStatMember() {
 		return "member/mainstat";
 	}
+	
+	@GetMapping("/member/matchdetails")
+	public String renderMatchDetails() {
+		return "member/matchdetails";
+	}
 
 	
 	@PostMapping("/member/api_date")

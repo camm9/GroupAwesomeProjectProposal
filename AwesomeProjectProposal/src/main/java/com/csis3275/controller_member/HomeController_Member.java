@@ -29,6 +29,7 @@ public class HomeController_Member {
 		return "member/matchdetails";
 	}
 
+
 	
 	@PostMapping("/member/api_date")
 	public String renderAPIDateMember(@RequestParam("date_p") String date_p, Model model) {
@@ -37,7 +38,7 @@ public class HomeController_Member {
 		return "member/mainstat";
 	}
 
-	//	public String renderAPIMatchDetails(@RequestParam(value="searchByMatchID") String searchByMatchID, Model model)
+	//Prints match odds to mainstat page
 	@PostMapping("/member/api_searchByMatchID")
 	public String renderAPIMatchDetails(Model model,@RequestParam(value="searchByMatchID") String searchByMatchID) {
 //		System.out.print(searchByMatchID);
@@ -49,6 +50,19 @@ public class HomeController_Member {
 		model.addAttribute("getOdd_1X", apiService.getMatchOdds(searchByMatchID).getOdds().get1x());
 		model.addAttribute("getOdd_X2", apiService.getMatchOdds(searchByMatchID).getOdds().getX2());
 		return "member/mainstat";
+	}
+	
+	//Prints match odds to matchdetails page
+	@PostMapping("/member/api_searchByMatchID2")
+	public String renderAPIMatchDetails2(Model model,@RequestParam(value="searchByMatchID") String searchByMatchID) {
+		model.addAttribute("matchIDDetails", apiService.getMatchOdds(searchByMatchID));
+		model.addAttribute("getOdd_1", apiService.getMatchOdds(searchByMatchID).getOdds().get1());
+		model.addAttribute("getOdd_2", apiService.getMatchOdds(searchByMatchID).getOdds().get2());
+		model.addAttribute("getOdd_12", apiService.getMatchOdds(searchByMatchID).getOdds().get12());
+		model.addAttribute("getOdd_X", apiService.getMatchOdds(searchByMatchID).getOdds().getX());
+		model.addAttribute("getOdd_1X", apiService.getMatchOdds(searchByMatchID).getOdds().get1x());
+		model.addAttribute("getOdd_X2", apiService.getMatchOdds(searchByMatchID).getOdds().getX2());
+		return "member/matchdetails";
 	}
 
 }

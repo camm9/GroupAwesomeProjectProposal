@@ -218,10 +218,10 @@
 								</a>
 							</li>
 
-							<li class="nav-item active">
-								<a class="nav-link" href="/member/mainstat" target="_self" rel="noopener">
+							<li class="nav-item">
+								<a class="nav-link" href="/member/mainstat" >
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
 										<path
 											d="M7.5 5.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L6 7l-.549.317a.5.5 0 1 0 .5.866l.549-.317V8.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L8 7l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V5.5zm-2 4.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
 										</path>
@@ -233,10 +233,10 @@
 								</a>
 							</li>
 
-							<li class="nav-item">
-								<a class="nav-link" href="/member/matchdetails">
+							<li class="nav-item active">
+								<a class="nav-link" href="/member/matchdetails" target="_self" rel="noopener">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										fill="currentColor" class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
 										<path
 											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
 										</path>
@@ -358,7 +358,7 @@
 							<div class="card-header p-4 border-bottom-0 fw-bold">
 								<div id="searchByMatchID">
 									<h2> Know the MatchID already? Get match odds!</h2>
-									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
+									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID2}" onsubmit="return validateForm()" method="post" required>
 										<input class="form-control" id="searchByMatchID" name="searchByMatchID"
 											type="text" placeholder="Search a specific MatchID..." onkeyup="">
 										<button class="btn" type="submit">Submit</button>
@@ -384,7 +384,6 @@
 												<td th:text="${details.homeTeam}"></td>
 												<td th:text="${details.awayTeam}"></td>
 												<td th:text="${details.prediction}"></td>
-<!--												<td th:text="${getOdd_1}"></td>-->
 												<td>
 													 <ul>
 													1:<p th:text="${getOdd_1}"></p>

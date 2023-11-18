@@ -19,8 +19,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.csis3275.model_api.Accuracy_Performance;
+import com.csis3275.model_api.Data_Performance;
 import com.csis3275.model_api.Datum;
 import com.csis3275.model_api.Odds;
+import com.csis3275.model_api.Prediction_Performance;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -179,7 +182,6 @@ public class APIService {
 	
 //	Call matches by match id and return odds with prediction
 	public Datum getMatchOdds(String matchID){
-		List<Datum> matchList = new ArrayList();
 		Datum matchInfo = null;
 		
 		try {
@@ -231,5 +233,63 @@ public class APIService {
 		return matchInfo;
 
 	}
+	
+	// Get API prediction performance statistics
+	public Accuracy_Performance prediction_Performance(){
+		Prediction_Performance data = new Prediction_Performance();
+		Accuracy_Performance accuracyData;
+			
+			try {
+				
+				String fullURL = "https://football-prediction-api.p.rapidapi.com/api/v2/performance-stats?market=classic";
+				HttpRequest request = HttpRequest.newBuilder()
+						.uri(URI.create(fullURL))
+						.header("X-RapidAPI-Key", rapidApiKey)
+						.header("X-RapidAPI-Host", rapidApiHost)
+						.method("GET", HttpRequest.BodyPublishers.noBody())
+						.build();
+				HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+				
+				String JSONString = response.body();
+
+				JsonNode performanceData = objectMapper.readTree(JSONString);
+
+				//Find win percentage over days
+				Double performanceData_30DaysDouble = performanceData.findValue("accuracy").findValue("last_30_days").asDouble();
+				Double performanceData_14DaysDouble = performanceData.findValue("accuracy").findValue("last_14_days").asDouble();
+				Double performanceData_7DaysDouble = performanceData.findValue("accuracy").findValue("last_7_days").asDouble();
+				Double performanceData_YesterdayDouble = performanceData.findValue("accuracy").findValue("yesterday").asDouble();
+				
+				accuracyData = new Accuracy_Performance(performanceData_30DaysDouble,performanceData_YesterdayDouble , performanceData_7DaysDouble, performanceData_14DaysDouble );
+				
+				System.out.println(accuracyData);
+				
+				
+			}catch (Exception e) {
+				System.out.println("something went wrong while getting value from API");
+				e.printStackTrace();
+				throw new ResponseStatusException(
+						HttpStatus.INTERNAL_SERVER_ERROR,
+						"Exception while calling endpoint API",
+						e
+						);
+			}
+
+		return accuracyData;
+		
+		
+	}
+	
+	//Get Head to Head data
+	
+	
+	
+	//Get Home Team League Stats
+	
+	//Get Away Team League Stats
+	
+	//Get Home Team Last 10 Matches
+	
+	//Get Away Team Last 10 Matches
 
 }

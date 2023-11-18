@@ -34,8 +34,8 @@ public class AwesomeProjectProposalApplication {
 
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-			System.out.println("prediction performance last 30 days");
-			apiService.prediction_Performance();
+//			System.out.println("prediction performance last 30 days");
+//			apiService.getPrediction_Performance();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

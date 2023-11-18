@@ -235,7 +235,7 @@ public class APIService {
 	}
 	
 	// Get API prediction performance statistics
-	public Accuracy_Performance prediction_Performance(){
+	public Accuracy_Performance getPrediction_Performance(){
 		Prediction_Performance data = new Prediction_Performance();
 		Accuracy_Performance accuracyData;
 			
@@ -261,9 +261,6 @@ public class APIService {
 				Double performanceData_YesterdayDouble = performanceData.findValue("accuracy").findValue("yesterday").asDouble();
 				
 				accuracyData = new Accuracy_Performance(performanceData_30DaysDouble,performanceData_YesterdayDouble , performanceData_7DaysDouble, performanceData_14DaysDouble );
-				
-				System.out.println(accuracyData);
-				
 				
 			}catch (Exception e) {
 				System.out.println("something went wrong while getting value from API");

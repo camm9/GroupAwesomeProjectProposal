@@ -361,7 +361,7 @@
 						<div class="col-12 col-lg-7 col-xl-9">
 
 							<div class="position-relative h-100" style="min-height:250px; max-height:500px">
-								<canvas id="visitsvsorders" class="chartjs" data-chartjs-dots="false"
+								<canvas id="apiAccuracyChart" class="chartjs" data-chartjs-dots="false"
 									data-chartjs-legend="false" data-chartjs-grid="true" data-chartjs-tooltip="true"
 									data-chartjs-title="" data-chartjs-xaxes-label="" data-chartjs-yaxes-label=""
 									data-chartjs-line-width="5" data-chartjs-type="line"
@@ -491,7 +491,7 @@
 
 					<div class="col-12 col-md-6 col-xl-3">
 
-						<!-- small graph widget -->
+						<!-- small graph widget for api prediction accuracy -->
 						<div class="bg-white shadow-md text-dark p-5 rounded text-center">
 
 							<!-- icon -->
@@ -505,23 +505,9 @@
 								</svg>
 							</span>
 
-							<h3 class="fs-5 mt-4">Latest games</h3>
-							<p>Last 30 days</p>
-
-							<!-- chart -->
-							<div class="position-relative" style="height:100px">
-								<canvas class="chartjs" data-chartjs-dots="true" data-chartjs-legend="true"
-									data-chartjs-grid="false" data-chartjs-tooltip="true" data-chartjs-line-width="3"
-									data-chartjs-type="bar"
-									data-chartjs-labels='["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]'
-									data-chartjs-datasets='[{                                                           
-                        "label": "Games",
-                        "data": [11, 11, 17, 11, 15, 12, 13, 16, 11, 18, 20, 21],
-                        "fill": false,
-                        "backgroundColor": "rgba(54, 162, 235, 1)"
-                    }]'></canvas>
-							</div>
-
+							<h3 class="fs-5 mt-4">Latest Prediction Accuracy</h3>
+							<p>Over the last 30 days</p>
+							<h3 th:text="${accuracyData}"></h3>
 						</div>
 						<!-- /small graph widget -->
 
@@ -606,7 +592,23 @@
 	<script src="assets/js/vendor_bundle.min.js"></script>
 
 	<!-- Your custom javascripts -->
+	<script>
+	const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+const yValues = [7,8,8,9,9,9,10,11,14,14,15];
 
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor:"rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+
+});
+</script>
 </body>
 
 </html>

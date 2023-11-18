@@ -1,5 +1,6 @@
 package com.csis3275.controller_member;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.csis3275.model_api.Accuracy_Performance;
 import com.csis3275.service_api.APIService;
 
 
@@ -15,7 +18,10 @@ public class HomeController_Member {
 	static APIService apiService = new APIService();
 	
 	@GetMapping("/member")
-	public String renderHomeMmeber() {
+	public String renderHomeMmeber(Model model) {
+		//returns object of accuracy_Performance API predictions of last 30 days 
+		DecimalFormat df = new DecimalFormat("#%");
+		model.addAttribute("accuracyData", df.format(apiService.getPrediction_Performance().getLast30Days()));
 		return "member/index";
 	}
 	

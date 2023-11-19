@@ -219,7 +219,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/member/mainstat" >
+								<a class="nav-link" href="/member/mainstat">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
 										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
 										<path
@@ -353,17 +353,20 @@
 
 					<div class="col">
 
+
 						<!-- Order items -->
 						<div class="card border-0 h-100">
 							<div class="card-header p-4 border-bottom-0 fw-bold">
 								<div id="searchByMatchID">
 									<h2> Know the MatchID already? Get match odds!</h2>
-									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID2}" onsubmit="return validateForm()" method="post" required>
+									<form name="searchByMatchIDForm" action="#"
+										th:action="@{/member/api_searchByMatchID2}" onsubmit="return validateForm()"
+										method="post" required>
 										<input class="form-control" id="searchByMatchID" name="searchByMatchID"
 											type="text" placeholder="Search a specific MatchID..." onkeyup="">
 										<button class="btn" type="submit">Submit</button>
 									</form>
-								
+
 									<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
 										<thead>
 											<tr>
@@ -385,14 +388,14 @@
 												<td th:text="${details.awayTeam}"></td>
 												<td th:text="${details.prediction}"></td>
 												<td>
-													 <ul>
-													1:<p th:text="${getOdd_1}"></p>
-													2:<p th:text="${getOdd_2}"></p>
-													12:<p th:text="${getOdd_12}"></p>
-													X:<p th:text="${getOdd_X}"></p>
-													1X:<p th:text="${getOdd_1X}"></p>
-													X2:<p th:text="${getOdd_X2}"></p>
-													 </ul>
+													<ul>
+														1:<p th:text="${getOdd_1}"></p>
+														2:<p th:text="${getOdd_2}"></p>
+														12:<p th:text="${getOdd_12}"></p>
+														X:<p th:text="${getOdd_X}"></p>
+														1X:<p th:text="${getOdd_1X}"></p>
+														X2:<p th:text="${getOdd_X2}"></p>
+													</ul>
 
 												</td>
 											</tr>
@@ -400,7 +403,41 @@
 										</tbody>
 									</table>
 								</div>
+								<div
+									class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
+									Overall Head to Head Stats
+									<table class="table table-align-middle" role="grid" id="head2HeadOverallTable">
+										<thead class="small">
+											<tr>
+												<th class="fw-bold" style="width:20px">Number of Encounters</th>
+												<th class="fw-bold" style="width:20px">Total Goals</th>
+												<th class="fw-bold" style="width:20px">Matches Both Teams Scored</th>
+												<th class="fw-bold" style="width:20px">Average Goals Per Match</th>
 
+											</tr>
+										</thead>
+										<tbody id="checkall-list">
+
+											<!-- item -->
+											<tr th:each="overall:${overallHead2Head}">
+												<td th:text="${overall.numEncounters}"></td>
+												<td th:text="${overall.totalGoals}"></td>
+												<td th:text="${overall.bothTeamsScored}"></td>
+												<td th:text="${overall.avgGoalsPerMatch}"></td>
+											</tr>
+											<!-- end item -->
+										</tbody>
+									</table>
+
+									<!-- progress -->
+									<span class="small">39%</span>
+									<div class="progress" style="height:3px">
+										<div class="progress-bar bg-danger" role="progressbar" aria-label="progressbar"
+											style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
+
+								</div>
 
 
 
@@ -642,19 +679,19 @@
 	<script src="/assets/js/core.min.js"></script>
 	<script src="/assets/js/vendor_bundle.min.js"></script>
 
-	<!-- Your custom javascripts -->	
+	<!-- Your custom javascripts -->
 	<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
-<script>
-function validateForm() {
-    var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
-    if (x == "") {
-      alert("MatchID must be filled out");
-      return false;
-    }
-  }
-</script>
-	
-	
+	<script>
+		function validateForm() {
+			var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
+			if (x == "") {
+				alert("MatchID must be filled out");
+				return false;
+			}
+		}
+	</script>
+
+
 
 </body>
 

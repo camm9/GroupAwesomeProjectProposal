@@ -31,7 +31,8 @@ public class HomeController_Member {
 	}
 	
 	@GetMapping("/member/matchdetails")
-	public String renderMatchDetails() {
+	public String renderMatchDetails(Model model) {
+		model.addAttribute("overallHead2Head", apiService.getOverallHead2Head("274216"));
 		return "member/matchdetails";
 	}
 

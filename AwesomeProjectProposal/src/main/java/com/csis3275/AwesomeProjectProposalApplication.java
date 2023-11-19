@@ -34,8 +34,8 @@ public class AwesomeProjectProposalApplication {
 
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-//			System.out.println("prediction performance last 30 days");
-			apiService.getHead2Head("274216");
+
+
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

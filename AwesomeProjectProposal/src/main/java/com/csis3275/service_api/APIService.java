@@ -23,6 +23,7 @@ import com.csis3275.model_api.Accuracy_Performance;
 import com.csis3275.model_api.Data_Performance;
 import com.csis3275.model_api.Datum;
 import com.csis3275.model_api.Odds;
+import com.csis3275.model_api.Overall_Head2Head;
 import com.csis3275.model_api.Prediction_Performance;
 import com.csis3275.model_api.Predictions;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -250,9 +251,12 @@ public class APIService {
 	}
 
 	// Get Head to Head data up to 5 matches, required parameters = matchID
-	public void getHead2Head(String matchID) {
+	public Overall_Head2Head getOverallHead2Head(String matchID) {
 		// sample match ID = 274216
 		matchID = "274216";
+		
+		Overall_Head2Head overallStats = null;
+		
 		try {
 
 			String fullURL = "https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/" + matchID
@@ -267,7 +271,16 @@ public class APIService {
 
 			JsonNode data = objectMapper.readTree(JSONString);
 			
-			System.out.println(data);
+			Integer num_encounters = data.findValue("overall").get("num_encounters").asInt();
+			Integer both_teams_scored = data.findValue("overall").get("both_teams_scored").asInt();
+			Integer total_goals = data.findValue("overall").get("total_goals").asInt();
+			Double avg_goals_per_match = data.findValue("overall").get("avg_goals_per_match").asDouble();
+			
+			//public Overall_Head2Head(Integer totalGoals,Integer bothTeamsScored,Double avgGoalsPerMatch, Integer numEncounters) 
+			overallStats = new Overall_Head2Head(total_goals, both_teams_scored, avg_goals_per_match, num_encounters);
+			
+			
+			System.out.println(overallStats);
 
 			
 
@@ -277,7 +290,7 @@ public class APIService {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Exception while calling endpoint API",
 					e);
 		}
-
+		return overallStats;
 	}
 
 	// Get Home Team League Stats

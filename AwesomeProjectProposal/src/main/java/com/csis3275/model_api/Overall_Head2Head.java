@@ -63,6 +63,14 @@ public class Overall_Head2Head {
         this.avgGoalsPerMatch = avgGoalsPerMatch;
         this.numEncounters = numEncounters;
     }
+    
+    public Overall_Head2Head(Integer totalGoals,Integer bothTeamsScored,Double avgGoalsPerMatch, Integer numEncounters) {
+    	super();
+    	 this.totalGoals = totalGoals;
+    	 this.bothTeamsScored = bothTeamsScored;
+         this.avgGoalsPerMatch = avgGoalsPerMatch;
+         this.numEncounters = numEncounters;
+    }
 
     public Integer getTotalGoals() {
         return totalGoals;

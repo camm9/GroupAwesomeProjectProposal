@@ -427,8 +427,8 @@
 											<!-- end item -->
 										</tbody>
 									</table>
-									<h4> Home Team Stats</h4>
-
+									<h4> Home Team Stats - Head to Head</h4>
+									<canvas id="homeTeamStats"></canvas>
 									<h4> Away Team Stats</h4>
 									<!-- progress -->
 									<span class="small">39%</span>
@@ -437,7 +437,7 @@
 											style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100">
 										</div>
 									</div>
-					</div>
+								</div>
 
 							</div>
 							<div class="card-footer p-4">
@@ -679,8 +679,9 @@
 		<!-- Core javascripts -->
 		<script src="/assets/js/core.min.js"></script>
 		<script src="/assets/js/vendor_bundle.min.js"></script>
-		<script src="/assets/js/apiChart.js"></script>
+		<!--		<script src="/assets/js/apiChart.js"></script>-->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 		<!-- Your custom javascripts -->
 		<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
 		<script>
@@ -695,26 +696,74 @@
 
 
 		<script>
-			const ctx = document.getElementById('homeTeamHead2Head');
+			var apiHomeTeamLabels = [];
+			var apiHomeTeamStats = [];
 
-			new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-					datasets: [{
-						label: '# of Votes',
-						data: [12, 19, 3, 5, 2, 3],
-						borderWidth: 1
-					}]
-				},
-				options: {
-					scales: {
-						y: {
-							beginAtZero: true
+			async function apiChart_HomeTeam() {
+				await getAPIData_HomeTeam();
+
+				const ctx = document.getElementById('homeTeamStats');
+
+				new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: apiHomeTeamLabels,
+						datasets: [{
+							label: apiHomeTeamStats_TeamName + ' Stats',
+							data: apiHomeTeamStats,
+							borderWidth: 1
+						}]
+					},
+					options: {
+						scales: {
+							y: {
+								beginAtZero: true
+							}
 						}
 					}
+				});
+			}
+			apiChart_HomeTeam()
+
+			async function getAPIData_HomeTeam() {
+				const url = 'https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5';
+				const options = {
+					method: 'GET',
+					headers: {
+						'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+						'X-RapidAPI-Host': 'football-prediction-api.p.rapidapi.com'
+					}
+				};
+
+				try {
+					const response = await fetch(url, options);
+					const result = await response.json();
+					console.log(result.data.stats.home_team);
+					apiHomeTeamStats_TeamName  =result.data.stats.home_team.team_name;
+					apiHomeTeamStats = result.data.stats.home_team;
+					var key  = "first_half_lost"
+					var key1  = "team_name"
+					var key2  = "first_half_win"
+					var key3 = "first_half_draw"
+					var key4 = "avg_bookie_win_chance"
+					var key5 = "avg_bookie_draw_chance"
+					var key6 = "avg_bookie_lose_chance"
+					
+					delete apiHomeTeamStats[key];
+					delete apiHomeTeamStats[key1];
+					delete apiHomeTeamStats[key2];
+					delete apiHomeTeamStats[key3];
+					delete apiHomeTeamStats[key4];
+					delete apiHomeTeamStats[key5];
+					delete apiHomeTeamStats[key6];
+					
+					console.log(apiHomeTeamStats);
+
+
+				} catch (error) {
+					console.error(error);
 				}
-			});
+			}
 		</script>
 
 

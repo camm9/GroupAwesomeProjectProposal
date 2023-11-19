@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.csis3275.model_api.Accuracy_Performance;
 import com.csis3275.model_api.Data_Performance;
 import com.csis3275.model_api.Datum;
+import com.csis3275.model_api.HomeTeam_Head2Head;
 import com.csis3275.model_api.Odds;
 import com.csis3275.model_api.Overall_Head2Head;
 import com.csis3275.model_api.Prediction_Performance;
@@ -250,7 +251,7 @@ public class APIService {
 
 	}
 
-	// Get Head to Head data up to 5 matches, required parameters = matchID
+	// Get Overall Head to Head data up to 5 matches, required parameters = matchID
 	public Overall_Head2Head getOverallHead2Head(String matchID) {
 		// sample match ID = 274216
 		matchID = "274216";
@@ -279,11 +280,6 @@ public class APIService {
 			//public Overall_Head2Head(Integer totalGoals,Integer bothTeamsScored,Double avgGoalsPerMatch, Integer numEncounters) 
 			overallStats = new Overall_Head2Head(total_goals, both_teams_scored, avg_goals_per_match, num_encounters);
 			
-			
-			System.out.println(overallStats);
-
-			
-
 		} catch (Exception e) {
 			System.out.println("something went wrong while getting value from API");
 			e.printStackTrace();
@@ -292,6 +288,62 @@ public class APIService {
 		}
 		return overallStats;
 	}
+	
+	// Get Home Team Head to Head data up to 5 matches, required parameters = matchID
+	// sample match ID = 274216
+	public HomeTeam_Head2Head getHomeTeamHead2Head(String matchID) {
+		
+			matchID = "274216";
+			
+			HomeTeam_Head2Head homeTeam = null;
+			
+			try {
+
+				String fullURL = "https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/" + matchID
+						+ "?limit=5";
+				HttpRequest request = HttpRequest.newBuilder().uri(URI.create(fullURL))
+						.header("X-RapidAPI-Key", rapidApiKey).header("X-RapidAPI-Host", rapidApiHost)
+						.method("GET", HttpRequest.BodyPublishers.noBody()).build();
+				HttpResponse<String> response = HttpClient.newHttpClient().send(request,
+						HttpResponse.BodyHandlers.ofString());
+
+				String JSONString = response.body();
+
+				JsonNode data = objectMapper.readTree(JSONString);
+				
+				//(Integer firstHalfDraw, Integer lost, Double avgBookieWinChance, Integer firstHalfWin, Double avgBookieLoseChance, 
+				//Double avgBookieDrawChance, Integer goalsConceived, Double avgGoalsConceived, Integer won, Integer firstHalfLost, Integer draw, 
+				//Integer goalsScored, Integer cleanSheet, Double avgGoalsScored, String teamName)
+				String team_name = data.findValue("home_team").get("team_name").asText();
+				Integer goalsScored = data.findValue("home_team").get("goals_scored").asInt();
+				Integer goalsConceived = data.findValue("home_team").get("goals_conceived").asInt();
+				Double avgGoalsScored = data.findValue("home_team").get("avg_goals_scored").asDouble();
+				Double avgGoalsConceived = data.findValue("home_team").get("avg_goals_conceived").asDouble();
+				Integer won = data.findValue("home_team").get("won").asInt();
+				Integer lost = data.findValue("home_team").get("lost").asInt();
+				Integer draw = data.findValue("home_team").get("draw").asInt();
+				Integer cleanSheet = data.findValue("home_team").get("clean_sheet").asInt();
+				Double avgBookieWinChance = data.findValue("home_team").get("avg_bookie_win_chance").asDouble();
+				Double avgBookieDrawChance = data.findValue("home_team").get("avg_bookie_draw_chance").asDouble();
+				Double avgBookieLoseChance = data.findValue("home_team").get("avg_bookie_lose_chance").asDouble();
+
+				
+				//public HomeTeam_Head2Head(String teamName, Integer goalsScored, Integer goalsConceived, Double avgGoalsScored, Double avgGoalsConceived, Integer won,
+				// Integer lost,Integer draw,Integer cleanSheet,  Double avgBookieWinChance,Double avgBookieDrawChance,Double avgBookieLoseChance) 
+				
+				
+				homeTeam = new HomeTeam_Head2Head(team_name, goalsScored, goalsConceived, avgGoalsScored, avgGoalsConceived, won, lost, draw, cleanSheet, avgBookieWinChance, avgBookieDrawChance, avgBookieLoseChance);
+				
+			} catch (Exception e) {
+				System.out.println("something went wrong while getting value from API");
+				e.printStackTrace();
+				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Exception while calling endpoint API",
+						e);
+			}
+			return homeTeam;
+		}
+	
+	// Get Away Team Head to Head data up to 5 matches, required parameters = matchID
 
 	// Get Home Team League Stats
 

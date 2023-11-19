@@ -98,7 +98,23 @@ public class HomeTeam_Head2Head {
         this.avgGoalsScored = avgGoalsScored;
         this.teamName = teamName;
     }
-
+    
+  public HomeTeam_Head2Head(String teamName, Integer goalsScored, Integer goalsConceived, Double avgGoalsScored, Double avgGoalsConceived, Integer won, Integer lost,Integer draw,Integer cleanSheet,  Double avgBookieWinChance,Double avgBookieDrawChance,Double avgBookieLoseChance) { 
+    super();
+    this.lost = lost;
+    this.avgBookieWinChance = avgBookieWinChance;
+    this.avgBookieLoseChance = avgBookieLoseChance;
+    this.avgBookieDrawChance = avgBookieDrawChance;
+    this.goalsConceived = goalsConceived;
+    this.avgGoalsConceived = avgGoalsConceived;
+    this.won = won;
+    this.draw = draw;
+    this.goalsScored = goalsScored;
+    this.cleanSheet = cleanSheet;
+    this.avgGoalsScored = avgGoalsScored;
+    this.teamName = teamName;
+    }
+    
     public Integer getFirstHalfDraw() {
         return firstHalfDraw;
     }

@@ -405,7 +405,7 @@
 								</div>
 								<div
 									class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
-									Overall Head to Head Stats
+									<h4>Overall Head to Head Stats</h4>
 									<table class="table table-align-middle" role="grid" id="head2HeadOverallTable">
 										<thead class="small">
 											<tr>
@@ -413,7 +413,6 @@
 												<th class="fw-bold" style="width:20px">Total Goals</th>
 												<th class="fw-bold" style="width:20px">Matches Both Teams Scored</th>
 												<th class="fw-bold" style="width:20px">Average Goals Per Match</th>
-
 											</tr>
 										</thead>
 										<tbody id="checkall-list">
@@ -428,7 +427,9 @@
 											<!-- end item -->
 										</tbody>
 									</table>
+									<h4> Home Team Stats</h4>
 
+									<h4> Away Team Stats</h4>
 									<!-- progress -->
 									<span class="small">39%</span>
 									<div class="progress" style="height:3px">
@@ -436,10 +437,7 @@
 											style="width: 39%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100">
 										</div>
 									</div>
-
-								</div>
-
-
+					</div>
 
 							</div>
 							<div class="card-footer p-4">
@@ -646,6 +644,7 @@
 
 							</div>
 
+
 							<div class="card-footer p-4">
 								<span class="text-muted small">
 									Football Analytics API
@@ -660,13 +659,16 @@
 			</main>
 			<!-- /main -->
 
-		</div>
-		<!-- /content -->
+			<div>
+
+
+			</div>
+			<!-- /content -->
 
 
 
 
-	</div><!-- /#wrapper -->
+		</div><!-- /#wrapper -->
 
 
 
@@ -674,22 +676,46 @@
 
 
 
-
-	<!-- Core javascripts -->
-	<script src="/assets/js/core.min.js"></script>
-	<script src="/assets/js/vendor_bundle.min.js"></script>
-
-	<!-- Your custom javascripts -->
-	<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
-	<script>
-		function validateForm() {
-			var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
-			if (x == "") {
-				alert("MatchID must be filled out");
-				return false;
+		<!-- Core javascripts -->
+		<script src="/assets/js/core.min.js"></script>
+		<script src="/assets/js/vendor_bundle.min.js"></script>
+		<script src="/assets/js/apiChart.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<!-- Your custom javascripts -->
+		<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
+		<script>
+			function validateForm() {
+				var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
+				if (x == "") {
+					alert("MatchID must be filled out");
+					return false;
+				}
 			}
-		}
-	</script>
+		</script>
+
+
+		<script>
+			const ctx = document.getElementById('homeTeamHead2Head');
+
+			new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+					datasets: [{
+						label: '# of Votes',
+						data: [12, 19, 3, 5, 2, 3],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						y: {
+							beginAtZero: true
+						}
+					}
+				}
+			});
+		</script>
 
 
 

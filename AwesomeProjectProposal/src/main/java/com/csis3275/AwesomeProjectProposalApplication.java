@@ -34,7 +34,7 @@ public class AwesomeProjectProposalApplication {
 
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-
+			apiService.getHomeTeamHead2Head("274216");
 
 
 		} catch (Exception e) {

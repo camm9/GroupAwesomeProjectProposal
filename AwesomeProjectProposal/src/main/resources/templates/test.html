@@ -8,6 +8,79 @@
 
 <body>
 	<h1>Testing Page to Check if Controller is Working</h1>
+	<div>
+		<canvas id="homeTeamHead2Head"></canvas>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+
+		
+		
+		var apiPerformanceLabel = [];
+		var apiPerformanceData = [];
+		
+		async function apiChart() {
+			await getAPIData();
+			
+			const ctx = document.getElementById('homeTeamHead2Head');
+			
+			new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: apiPerformanceLabel,
+					datasets: [{
+						label: 'Win %',
+						data: apiPerformanceData,
+						borderWidth: 1
+					}]
+				},
+				options: {
+				
+					scales: {
+						y: {
+							beginAtZero: true
+						}
+					}
+				}
+
+			});
+		}
+		apiChart()
+		async function getAPIData() {
+			const url = 'https://football-prediction-api.p.rapidapi.com/api/v2/performance-stats?market=classic';
+			const options = {
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+					'X-RapidAPI-Host': 'football-prediction-api.p.rapidapi.com'
+				}
+			};
+			try {
+				const response = await fetch(url, options);
+				const result = await response.json();
+				console.log(result);
+
+				const accuracy_7days = result.data.accuracy.last_7_days;
+				const accuracy_14days = result.data.accuracy.last_14_days;
+				const accuracy_30days = result.data.accuracy.last_30_days;
+				const accuracy_yesterday = result.data.accuracy.yesterday;
+
+				apiPerformanceData = result.data.accuracy;
+
+				console.log(accuracy_7days);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+	</script>
+
+
+
+
+
 </body>
 
 </html>

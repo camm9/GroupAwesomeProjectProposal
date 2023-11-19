@@ -430,6 +430,7 @@
 									<h4> Home Team Stats - Head to Head</h4>
 									<canvas id="homeTeamStats"></canvas>
 									<h4> Away Team Stats</h4>
+									<canvas id="awayTeamStats"></canvas>
 									<!-- progress -->
 									<span class="small">39%</span>
 									<div class="progress" style="height:3px">
@@ -758,6 +759,75 @@
 					delete apiHomeTeamStats[key6];
 					
 					console.log(apiHomeTeamStats);
+
+
+				} catch (error) {
+					console.error(error);
+				}
+			}
+			
+			var apiAwayTeamLabels = [];
+			var apiAwayTeamStats = [];
+			
+			async function apiChart_AwayTeam() {
+				await getAPIData_AwayTeam();
+
+				const ctx = document.getElementById('awayTeamStats');
+
+				new Chart(ctx, {
+					type: 'bar',
+					data: {
+						labels: apiAwayTeamLabels,
+						datasets: [{
+							label: apiAwayTeamStats_TeamName + ' Stats',
+							data: apiAwayTeamStats,
+							borderWidth: 1
+						}]
+					},
+					options: {
+						scales: {
+							y: {
+								beginAtZero: true
+							}
+						}
+					}
+				});
+			}
+			apiChart_AwayTeam()
+
+			async function getAPIData_AwayTeam() {
+				const url = 'https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5';
+				const options = {
+					method: 'GET',
+					headers: {
+						'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+						'X-RapidAPI-Host': 'football-prediction-api.p.rapidapi.com'
+					}
+				};
+
+				try {
+					const response = await fetch(url, options);
+					const result = await response.json();
+					console.log(result.data.stats.home_team);
+					apiAwayTeamStats_TeamName  =result.data.stats.away_team.team_name;
+					apiAwayTeamStats = result.data.stats.away_team;
+					var key  = "first_half_lost"
+					var key1  = "team_name"
+					var key2  = "first_half_win"
+					var key3 = "first_half_draw"
+					var key4 = "avg_bookie_win_chance"
+					var key5 = "avg_bookie_draw_chance"
+					var key6 = "avg_bookie_lose_chance"
+					
+					delete apiAwayTeamStats[key];
+					delete apiAwayTeamStats[key1];
+					delete apiAwayTeamStats[key2];
+					delete apiAwayTeamStats[key3];
+					delete apiAwayTeamStats[key4];
+					delete apiAwayTeamStats[key5];
+					delete apiAwayTeamStats[key6];
+					
+					console.log(apiAwayTeamStats);
 
 
 				} catch (error) {

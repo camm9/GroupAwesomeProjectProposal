@@ -409,7 +409,7 @@
 									<div id="matchDetailsByID">
 										<form name="matchDetailsByID" action="#"
 											th:action="@{/member/api_searchMatchDetailsByID}"
-											onsubmit="validateForm()" method="post" required>
+											onkeyup="return validateForm()" method="post" required>
 											<input class="form-control" id="matchDetailsByIDValue"
 												name="matchDetailsByID" type="text"
 												placeholder="Search a match details by MatchID..."
@@ -720,13 +720,22 @@
 						datasets: [{
 							label: apiHomeTeamStats_TeamName + ' Stats',
 							data: apiHomeTeamStats,
-							borderWidth: 1
+							borderWidth: 2,
+							borderColor: '#000000',
+							backgroundColor: "#0047AB",
+
 						}]
 					},
 					options: {
+						tooltips:{
+							mode:'index',
+						},
 						scales: {
 							y: {
-								beginAtZero: true
+								beginAtZero: true,
+								ticks: {
+									stepSize: 1,
+								}
 							}
 						}
 					}
@@ -796,13 +805,21 @@
 						datasets: [{
 							label: apiAwayTeamStats_TeamName + ' Stats',
 							data: apiAwayTeamStats,
-							borderWidth: 1
+							borderWidth: 2,
+							borderColor: '#000000',
+							backgroundColor: '#FF0099'
 						}]
 					},
 					options: {
+						tooltips:{
+							mode:'index',
+						},
 						scales: {
 							y: {
-								beginAtZero: true
+								beginAtZero: true,
+								ticks: {
+									stepSize: 1,
+								}
 							}
 						}
 					}

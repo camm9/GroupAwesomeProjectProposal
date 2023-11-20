@@ -32,8 +32,6 @@ public class HomeController_Member {
 	
 	@GetMapping("/member/matchdetails")
 	public String renderMatchDetails(Model model) {
-		model.addAttribute("overallHead2Head", apiService.getOverallHead2Head("274216"));
-		apiService.getHomeTeamHead2Head("274216");
 		return "member/matchdetails";
 	}
 
@@ -72,5 +70,14 @@ public class HomeController_Member {
 		model.addAttribute("getOdd_X2", apiService.getMatchOdds(searchByMatchID).getOdds().getX2());
 		return "member/matchdetails";
 	}
+	
+	//Post matchID to get populated charts of matchdetails page
+		@PostMapping("/member/api_searchMatchDetailsByID")
+		public String renderMatchDetails(@RequestParam(value="matchDetailsByID") String matchDetailsByID,Model model) {
+			System.out.print(matchDetailsByID);
+			model.addAttribute("overallHead2Head", apiService.getOverallHead2Head(matchDetailsByID));
+			return "member/matchdetails";
+		}
+
 
 }

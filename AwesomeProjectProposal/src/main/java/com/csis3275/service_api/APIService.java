@@ -254,7 +254,7 @@ public class APIService {
 	// Get Overall Head to Head data up to 5 matches, required parameters = matchID
 	public Overall_Head2Head getOverallHead2Head(String matchID) {
 		// sample match ID = 274216
-		matchID = "274216";
+
 		
 		Overall_Head2Head overallStats = null;
 		
@@ -272,7 +272,7 @@ public class APIService {
 
 			JsonNode data = objectMapper.readTree(JSONString);
 			
-			Integer num_encounters = data.findValue("overall").get("num_encounters").asInt();
+			Integer num_encounters = 5;
 			Integer both_teams_scored = data.findValue("overall").get("both_teams_scored").asInt();
 			Integer total_goals = data.findValue("overall").get("total_goals").asInt();
 			Double avg_goals_per_match = data.findValue("overall").get("avg_goals_per_match").asDouble();
@@ -293,7 +293,6 @@ public class APIService {
 	// sample match ID = 274216
 	public HomeTeam_Head2Head getHomeTeamHead2Head(String matchID) {
 		
-			matchID = "274216";
 			
 			HomeTeam_Head2Head homeTeam = null;
 			

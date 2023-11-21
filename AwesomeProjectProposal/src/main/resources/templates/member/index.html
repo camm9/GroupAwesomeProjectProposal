@@ -147,6 +147,8 @@
 							style="background-image:url(/demo.files/images/icons/user750.png)" data-bs-toggle="dropdown"
 							data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true"
 							aria-label="Account options"></a>
+						<a href="http://localhost:8080/member/export-to-csv" class="btn btn-primary">Download CSV
+							File</a>
 
 						<!-- no avatar -->
 						<!--
@@ -207,72 +209,86 @@
               .nav-deep-bordered  bordered links
 
             -->
-					 <nav class="nav-deep nav-deep-sm nav-deep-light">
-              <ul class="nav flex-column">
+					<nav class="nav-deep nav-deep-sm nav-deep-light">
+						<ul class="nav flex-column">
 
-                
-           
-                <li class="nav-title mt-1">
-                  <h6 class="mb-0 smaller text-muted text-uppercase">MEMBER AREA</h6>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="/member">
-                    <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">  
-                      <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>  
-                      <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
-                    </svg>
-                    <span class="ml-2">Dashboard</span>
-                  </a>
-                </li>
 
-         
-                <li class="nav-item">
-                  <a class="nav-link" href="/member/mainstat">
-                  
-					<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">  
-				  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"></path>
-				</svg>
-                    <span class="ml-2">Your Stats</span>
-                  </a>
-                </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-up-right-square-fill" viewBox="0 0 16 16">  
-					  <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"></path>
-						</svg>
-				<span class="ml-2">Trends</span>
-                  </a>
-                </li>
-
-				<li class="nav-item">
-					<a class="nav-link" href="/member/matchdetails">
-						<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-							fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
-							<path
-								d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
-							</path>
-						</svg>
-						<span>Match Details</span>
-					</a>
-				</li>              
-                
-                  <li class="nav-item">
-               <a class="nav-link" th:href="@{/logout}">
-                    <i class="fi fi-power float-start"></i>
-                    <span class="ml-2">Log Out</span>
-                  </a>
-                </li>
-
-               	<li class="nav-item">
-								
-									<span><hr class="w-75"></span>
-				
+							<li class="nav-title mt-1">
+								<h6 class="mb-0 smaller text-muted text-uppercase">MEMBER AREA</h6>
 							</li>
 
-              </ul>
-            </nav>
+							<li class="nav-item">
+								<a class="nav-link" href="/member">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+										<path fill-rule="evenodd"
+											d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z">
+										</path>
+										<path fill-rule="evenodd"
+											d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z">
+										</path>
+									</svg>
+									<span class="ml-2">Dashboard</span>
+								</a>
+							</li>
+
+
+							<li class="nav-item">
+								<a class="nav-link" href="/member/mainstat">
+
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+										<path
+											d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z">
+										</path>
+									</svg>
+									<span class="ml-2">Your Stats</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-arrow-up-right-square-fill"
+										viewBox="0 0 16 16">
+										<path
+											d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z">
+										</path>
+									</svg>
+									<span class="ml-2">Trends</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="/member/matchdetails">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										<path
+											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
+										</path>
+									</svg>
+									<span>Match Details</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/logout}">
+									<i class="fi fi-power float-start"></i>
+									<span class="ml-2">Log Out</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+
+								<span>
+									<hr class="w-75">
+								</span>
+
+							</li>
+
+						</ul>
+					</nav>
 
 				</div>
 				<!-- /sidebar : navigation -->
@@ -341,19 +357,20 @@
 						<!-- Order items -->
 						<div class="card border-1 h-100">
 							<div class="card-header p-4 border border-success alert alert-success" role="alert">
-							
-						<strong>To start</strong> choose a date :
-								
-								
-								<div class="float-right">
-										<form action="#" th:action="@{/member}" method="post">
-											<div class="input-group-over position-realtive z-index-1 bg-white">
 
-												<input type="text" placeholder="Choose a date" id="date_p" name="date_p" th:value="${date_p}" autocomplete="off"
-													class="form-control bg-transparent datepicker"
-													data-today-highlight="true" data-layout-rounded="true"
-													data-title="Datepicker" data-show-weeks="true" data-today-btn="true"
-													data-autoclose="true" data-format="YYYY-MM-DD" data-quick-locale='{
+								<strong>To start</strong> choose a date :
+
+
+								<div class="float-right">
+									<form action="#" th:action="@{/member}" method="post">
+										<div class="input-group-over position-realtive z-index-1 bg-white">
+
+											<input type="text" placeholder="Choose a date" id="date_p" name="date_p"
+												th:value="${date_p}" autocomplete="off"
+												class="form-control bg-transparent datepicker"
+												data-today-highlight="true" data-layout-rounded="true"
+												data-title="Datepicker" data-show-weeks="true" data-today-btn="true"
+												data-autoclose="true" data-format="YYYY-MM-DD" data-quick-locale='{
 			"days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 			"daysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
 			"daysMin": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
@@ -363,47 +380,50 @@
 			"clear": "Clear",
 			"titleFormat": "MM yyyy"}'>
 
-												<span class="fi fi-calendar fs--20 ml-4 mr-4 z-index-n1 text-muted">
+											<span class="fi fi-calendar fs--20 ml-4 mr-4 z-index-n1 text-muted">
 												<input type="hidden" name="token" th:value="${tokenuser}" />
-													<input class="d-none" type="submit" name="" value="">
-												</span>
+												<input class="d-none" type="submit" name="" value="">
+											</span>
 
-											</div>
+										</div>
 
-										</form>
-									</div>
-							
-								
+									</form>
+								</div>
+
+
 							</div>
-							
+
 
 							<!--                Table to feed matches available for date-->
-						
-						
+
+
 							<div th:if="${matchListSize >0 }" class="card-body p-2 h-100">
-							
-							
-							<div class="alert alert-warning" role="alert">
-								  Predictions for final match result <strong>(1 - home victory / X - draw / 2 - away victory)</strong>
+
+
+								<div class="alert alert-warning" role="alert">
+									Predictions for final match result <strong>(1 - home victory / X - draw / 2 - away
+										victory)</strong>
 								</div>
-							
+
 								<!-- Search bar-->
-								
-								<svg class="z-index-1 position-absolute start-0 mt-3 ml-3 text-primary" width="18px" height="18px" 
-								xmlns="http://www.w3.org/2000/svg" 
-								viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				                    <circle cx="11" cy="11" r="8"></circle>
-				                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-				                  </svg>
-				
-				                  <div class="dropdown w-100">
-				                    <input style="text-indent:20px;" class="form-control rounded form-control-sm border-success bg-transparent" id="searchBox" type="text" placeholder="Search here..." >
-							     	
-				                  </div>
+
+								<svg class="z-index-1 position-absolute start-0 mt-3 ml-3 text-primary" width="18px"
+									height="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round">
+									<circle cx="11" cy="11" r="8"></circle>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+								</svg>
+
+								<div class="dropdown w-100">
+									<input style="text-indent:20px;"
+										class="form-control rounded form-control-sm border-success bg-transparent"
+										id="searchBox" type="text" placeholder="Search here...">
+
+								</div>
 
 								<div class="table-responsive-md mb-3">
-								
+
 									<table class="table table-align-middle mb-0" role="grid" id="matchListTable">
 										<thead>
 											<tr>
@@ -420,26 +440,39 @@
 											<!-- item -->
 											<!--  <form  action="#" th:action="@{/member/savedataset}" th:object="${datasetSelected}" method="post">-->
 											<tr th:each="match:${matchList}">
-												<td class="fs--15"><a href="#!a" class="text-primary link-normal fw-medium text-decoration-none" th:text="${match.id}"></a>
-												  <span class="d-block fw-bold smaller fw-bold text-purple">
-						                          	 <i class="bi bi-exclamation-circle-fill"></i> Status:  <span th:text="${match.status}"></span>
-						                        </span>
-													
+												<td class="fs--15"><a href="#!a"
+														class="text-primary link-normal fw-medium text-decoration-none"
+														th:text="${match.id}"></a>
+													<span class="d-block fw-bold smaller fw-bold text-purple">
+														<i class="bi bi-exclamation-circle-fill"></i> Status: <span
+															th:text="${match.status}"></span>
+													</span>
+
 												</td>
-												<td class="fs--15"><a href="#!b" class="text-dark link-normal fw-medium text-decoration-none" th:text="${match.homeTeam}"></a>
-												 <span class="d-block fw-bold smaller fw-bold text-warning">
-						                          	<font color="#82703d"> <i class="fi fi-loading-dots fi-spin"></i> Prediction:  <span th:text="${match.prediction}"></span></font>
-						                        </span>
-						                       
+												<td class="fs--15"><a href="#!b"
+														class="text-dark link-normal fw-medium text-decoration-none"
+														th:text="${match.homeTeam}"></a>
+													<span class="d-block fw-bold smaller fw-bold text-warning">
+														<font color="#82703d"> <i
+																class="fi fi-loading-dots fi-spin"></i> Prediction:
+															<span th:text="${match.prediction}"></span></font>
+													</span>
+
 												</td>
-												<td class="fs--15"><a href="#!c" class="text-dark link-normal fw-medium text-decoration-none" th:text="${match.awayTeam}"></a></td>
-												<td class="fs--15"><a href="#!d" class="link-normal fw-normal  d-block text-decoration-none" th:text="${match.federation}"></a>
-						                        <span class="d-block smaller fw-bold text-dark" th:text="${match.competitionCluster}">
-						                          
-						                        </span></td>
-						                   
+												<td class="fs--15"><a href="#!c"
+														class="text-dark link-normal fw-medium text-decoration-none"
+														th:text="${match.awayTeam}"></a></td>
+												<td class="fs--15"><a href="#!d"
+														class="link-normal fw-normal  d-block text-decoration-none"
+														th:text="${match.federation}"></a>
+													<span class="d-block smaller fw-bold text-dark"
+														th:text="${match.competitionCluster}">
+
+													</span>
+												</td>
+
 												<td>
-													 <!-- 
+													<!-- 
 													  <button type="submit" class="btn btn-success btn-sm badge mb-1">
 						                            
 						                            
@@ -451,35 +484,41 @@
 													 
 													<span th:each="id:${userdDataset}"></span>
 						                            <span th:text="${id}">ec</span> -->
-						                            
-						                      
-						                         <button th:if="${not #lists.isEmpty(preferedDataSet)}" th:id="btnsavedataset + ${match.id}" class="btn btn-success btn-sm badge mb-3" 
-						                         th:disabled="${#lists.contains(preferedDataSet, '' + match.id + '')}" 
-						                         th:classappend="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'btn btn-warning btn-sm badge mb-3 disabled' : 'btn btn-success btn-sm badge mb-3'" th:onclick="func_save('[[${rnd}]]','[[${match.id}]]',[[${tokenuser}]],[[${dateTime}]],[[${date_p}]])">
-						                            
-						                            
-						                               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-														  <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/>
+
+
+													<button th:if="${not #lists.isEmpty(preferedDataSet)}"
+														th:id="btnsavedataset + ${match.id}"
+														class="btn btn-success btn-sm badge mb-3"
+														th:disabled="${#lists.contains(preferedDataSet, '' + match.id + '')}"
+														th:classappend="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'btn btn-warning btn-sm badge mb-3 disabled' : 'btn btn-success btn-sm badge mb-3'"
+														th:onclick="func_save('[[${rnd}]]','[[${match.id}]]',[[${tokenuser}]],[[${dateTime}]],[[${date_p}]])">
+
+
+														<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+															fill="currentColor" viewBox="0 0 16 16">
+															<path
+																d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z" />
 														</svg>
-						                              <span class="ml-2" th:text="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'Saved' : 'Save'"></span>
-						                           </button>
-						                           
-						                           
-						                       
-						                         
+														<span class="ml-2"
+															th:text="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'Saved' : 'Save'"></span>
+													</button>
+
+
+
+
 												</td>
 
 											</tr>
-										
+
 											<!-- end item -->
 										</tbody>
 									</table>
-									
+
 								</div>
 
 
 							</div>
-								
+
 							<div class="card-footer p-4">
 								<small class="d-block text-muted">Consumed from</small>
 								<small class="d-block text-muted">By TheFootballTraders | Sports &ndash;</small>
@@ -507,7 +546,6 @@
 									<div class="flex-none avatar avatar-lg bg-soft-primary rounded-circle"
 										style="background-image:url(../../html_frontend/demo.files/images/avatar/jessica_barden.jpg)">
 									</div>
-
 									<!-- no avatar -->
 									<!-- 
                     <div class="flex-none avatar avatar-lg bg-soft-primary rounded-circle">
@@ -526,9 +564,9 @@
 
 											</li>
 											<li class="list-item"><!-- customer name, orders -->
-											Token: 
+												Token:
 												<span class="text-dark" th:text="${tokenuser}"></span>
-												
+
 
 											</li>
 											<li class="list-item"><!-- customer email -->
@@ -566,12 +604,12 @@
 
 							<div class="card-body p-4 h-100">
 
-						
+
 
 
 								<div class="mb-3">
 
-									
+
 
 									<!-- imports -->
 
@@ -579,7 +617,7 @@
 
 
 
-									
+
 
 
 									<!-- /imports -->
@@ -620,99 +658,99 @@
 	<!-- Core javascripts -->
 	<script src="assets/js/core.min.js"></script>
 	<script src="assets/js/vendor_bundle.min.js"></script>
-	<script  src="https://app.freshlifefloral.com/back-end/assets/js/blockui.js"></script>
-	
+	<script src="https://app.freshlifefloral.com/back-end/assets/js/blockui.js"></script>
+
 
 	<!-- Your custom javascripts -->
-<!--	Calendar Date script-->
+	<!--	Calendar Date script-->
 	<script>
 		$("#date_p").change(function () {
 			var $form = $(this).closest('form');
 			$form.find('input[type=submit]').click();
-			$.blockUI({baseZ: 20000, message: '<img src="https://app.freshlifefloral.com/back-end/images/cargando.gif" width="100px" height="100px" />' });
-			
+			$.blockUI({baseZ: 20000, message: '<img src="https://app.freshlifefloral.com/back-end/images/cargando.gif" width="100px" height="100px" />'});
+
 		});
 	</script>
-<!--	Search Bar script-->
+	<!--	Search Bar script-->
 	<script>
-	
-	// $.unblockUI();
-		
-		searchBox.addEventListener("keyup",function(){
-			  
-			
-		    var keyword = this.value;
-		    keyword = keyword.toUpperCase();
-		    var table_3 = document.getElementById("matchListTable");
-		    var all_tr = table_3.getElementsByTagName("tr");
-		    for(var i=0; i<all_tr.length; i++){
-		            var all_columns = all_tr[i].getElementsByTagName("td");
-		            for(j=0;j<all_columns.length; j++){
-		                if(all_columns[j]){
-		                    var column_value = all_columns[j].textContent || all_columns[j].innerText;
-		                    column_value = column_value.toUpperCase();
-		                    if(column_value.indexOf(keyword) > -1){
-		                        all_tr[i].style.display = ""; // show
-		                        break;
-		                    }else{
-		                        all_tr[i].style.display = "none"; // hide
-		                    }
-		                }
-		            }
-		        }
+
+		// $.unblockUI();
+
+		searchBox.addEventListener("keyup", function () {
+
+
+			var keyword = this.value;
+			keyword = keyword.toUpperCase();
+			var table_3 = document.getElementById("matchListTable");
+			var all_tr = table_3.getElementsByTagName("tr");
+			for (var i = 0; i < all_tr.length; i++) {
+				var all_columns = all_tr[i].getElementsByTagName("td");
+				for (j = 0; j < all_columns.length; j++) {
+					if (all_columns[j]) {
+						var column_value = all_columns[j].textContent || all_columns[j].innerText;
+						column_value = column_value.toUpperCase();
+						if (column_value.indexOf(keyword) > -1) {
+							all_tr[i].style.display = ""; // show
+							break;
+						} else {
+							all_tr[i].style.display = "none"; // hide
+						}
+					}
+				}
+			}
 		});
-		
-		
-		function func_save(rnd, matchid, tokenuser, dateTime, date_p){
-			$.blockUI({baseZ: 20000, message: '<img src="https://app.freshlifefloral.com/back-end/images/cargando.gif" width="100px" height="100px" />' });
-			
-			
-			rnd = rnd.replace('&quot;','');
-			matchid = matchid.replace('&quot;','');
-			tokenuser = tokenuser.replace('&quot;','');
+
+
+		function func_save(rnd, matchid, tokenuser, dateTime, date_p) {
+			$.blockUI({baseZ: 20000, message: '<img src="https://app.freshlifefloral.com/back-end/images/cargando.gif" width="100px" height="100px" />'});
+
+
+			rnd = rnd.replace('&quot;', '');
+			matchid = matchid.replace('&quot;', '');
+			tokenuser = tokenuser.replace('&quot;', '');
 			//alert(tokenuser);
-		
-			var datos = "rnd="+rnd+"&matchid="+matchid+"&tok="+tokenuser+"&dos="+dateTime+"&dose="+date_p;
-   		 
-	    	
-		     
-            $.ajax({
-                url: '/member/savedataset',
-                type: 'GET',
-                data: datos,
-                success: function (result) {
-									
-                     if (result) {
-                    	 
-                    	 
-                    	
-                    	 document.getElementById('btnsavedataset'+matchid).disabled = true;
-                    	 document.getElementById('btnsavedataset'+matchid).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check-fill" viewBox="0 0 16 16"><path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg><span class="ml-2">Saved</span>';
-                    	 document.getElementById('btnsavedataset'+matchid).classList.add('btn-warning');
-                    	 $.unblockUI();
-                    	 
-                    	 
-                    //	 alert('saved');
-                    	}
-                      //  window.location.href = "subclient-market-place.php";
-                    //} else {
+
+			var datos = "rnd=" + rnd + "&matchid=" + matchid + "&tok=" + tokenuser + "&dos=" + dateTime + "&dose=" + date_p;
 
 
-                    //}
-                }
-            });
 
-		    		
-		    		
-					
+			$.ajax({
+				url: '/member/savedataset',
+				type: 'GET',
+				data: datos,
+				success: function (result) {
+
+					if (result) {
+
+
+
+						document.getElementById('btnsavedataset' + matchid).disabled = true;
+						document.getElementById('btnsavedataset' + matchid).innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-check-fill" viewBox="0 0 16 16"><path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg><span class="ml-2">Saved</span>';
+						document.getElementById('btnsavedataset' + matchid).classList.add('btn-warning');
+						$.unblockUI();
+
+
+						//	 alert('saved');
+					}
+					//  window.location.href = "subclient-market-place.php";
+					//} else {
+
+
+					//}
+				}
+			});
+
+
+
+
 		}
 
 
 
-	   
-	    	
-		
-		
+
+
+
+
 	</script>
 
 </body>

@@ -18,10 +18,11 @@ public class CSVController {
 	@Autowired
 	private CsvFileGenerator csvGenerator;
 
-	@GetMapping("/export-to-csv")
-	public void exportIntoCSV(HttpServletResponse response) throws IOException {
+	@GetMapping("/member/export-to-csv")
+	public String exportIntoCSV(HttpServletResponse response) throws IOException {
 		response.setContentType("text/csv");
-		response.addHeader("Content-Disposition", "attachment; filename=\"student.csv\"");
+		response.addHeader("Content-Disposition", "attachment; filename=\"DataSet.csv\"");
 		csvGenerator.writeDataSetToCsv(DataService.getUserDataList(), response.getWriter());
+		return "member/index";
 	}
 }

@@ -11,7 +11,7 @@ import com.csis3275.model_db.UserDataset;
 
 @Component
 public class CsvFileGenerator {
-	public void writeStudentsToCsv(List<UserDataset> UserDatasets, Writer writer) {
+	public void writeDataSetToCsv(List<UserDataset> UserDatasets, Writer writer) {
 		try {
 
 			CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT);

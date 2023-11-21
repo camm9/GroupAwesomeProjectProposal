@@ -20,4 +20,9 @@ public class Controller_Navigation {
 	public String renderTest() {
 		return "test";
 	}
+	
+	@GetMapping("/testAPICharts")
+	public String renderTestAPICharts() {
+		return "testAPICharts";
+	}
 }

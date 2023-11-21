@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<title>GameDayTrades - Statistic</title>
+	<meta name="description" content="Sports betting analytic website">
+
+	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
+
+	<!-- up to 10% speed up for external res -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<!-- preloading icon font is helping to speed up a little bit -->
+	<link rel="preload" href="/assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+
+	<link rel="stylesheet" href="/assets/css/core.min.css">
+	<link rel="stylesheet" href="/assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
+
+	<!-- favicon -->
+	<link rel="apple-touch-icon" href="/assets/images/logo/logo.png">
+
+</head>
+
+
+<!--
+
+    Layout Admin
+      .layout-admin   (required)
+
+      .aside-sticky           - sidebar : fixed and push header
+      .header-sticky          - header : always visible on top (acting as old .header-focus)
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+    SCROLL TO TOP BUTTON [optional styling]
+
+      data-s2t-disable="true"
+      data-s2t-position="start|end"
+      data-s2t-class="btn-secondary btn-sm"   (default)
+      data-s2t-class="btn-secondary rounded-circle"
+      data-s2t-class="btn-warning rounded-circle"
+
+    ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++ ++
+
+  -->
+
+<body class="layout-admin aside-sticky bg-lime "
+	data-s2t-class="btn-primary btn-sm bg-gradient-default rounded-circle border-0">
+
+	<div id="wrapper" class="d-flex align-items-stretch flex-column">
+
+
+		<!--  header -->
+		<header id="header" class="d-flex align-items-center shadow-xs">
+
+			<!-- Navbar -->
+			<div class="container-fluid position-relative">
+
+				<nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+
+					<!-- logo, navigation toggler -->
+					<div class="align-items-start">
+
+						<!-- sidebar toggler -->
+						<a href="#aside-main"
+							class="btn-sidebar-toggle h-100 d-inline-block d-lg-none justify-content-center align-items-center p-2">
+							<span>
+								<svg width="25" height="25" viewBox="0 0 20 20">
+									<path
+										d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z">
+									</path>
+									<path
+										d="M 19.9876 7.9979 L -0.0108 7.9979 L -0.0108 5.9979 L 19.9876 5.9979 L 19.9876 7.9979 Z">
+									</path>
+									<path
+										d="M 19.9876 13.9977 L -0.0108 13.9977 L -0.0108 11.9978 L 19.9876 11.9978 L 19.9876 13.9977 Z">
+									</path>
+									<path
+										d="M 19.9876 19.9976 L -0.0108 19.9976 L -0.0108 17.9976 L 19.9876 17.9976 L 19.9876 19.9976 Z">
+									</path>
+								</svg>
+							</span>
+						</a>
+
+						<!-- logo : mobile only -->
+						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="index.html">
+							<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+						</a>
+
+					</div>
+
+					<!-- navbar : navigation -->
+					<div class="collapse navbar-collapse" id="navbarMainNav">
+
+						<!-- navbar : mobile menu -->
+						<div class="navbar-xs d-none">
+
+							<!-- close button -->
+							<button class="navbar-toggler pt-0" type="button" data-bs-toggle="collapse"
+								data-bs-target="#navbarMainNav" aria-controls="navbarMainNav" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<svg width="20" viewBox="0 0 20 20">
+									<path
+										d="M 20.7895 0.977 L 19.3752 -0.4364 L 10.081 8.8522 L 0.7869 -0.4364 L -0.6274 0.977 L 8.6668 10.2656 L -0.6274 19.5542 L 0.7869 20.9676 L 10.081 11.679 L 19.3752 20.9676 L 20.7895 19.5542 L 11.4953 10.2656 L 20.7895 0.977 Z">
+									</path>
+								</svg>
+							</button>
+
+							<!-- logo -->
+							<a class="navbar-brand" href="index.html">
+								<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+							</a>
+
+						</div>
+						<!-- /navbar : mobile menu -->
+
+						<!-- /Dropdowns -->
+
+					</div>
+					<!-- /navbar : navigation -->
+
+
+
+					<!-- account -->
+					<li class="list-inline-item mx-1 dropdown">
+
+						<!-- has avatar -->
+						<a href="#" id="dropdownAccountOptions"
+							class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle shadow bg-cover"
+							style="background-image:url(/demo.files/images/icons/user750.png)" data-bs-toggle="dropdown"
+							data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true"
+							aria-label="Account options"></a>
+
+						<!-- no avatar -->
+						<!--
+                <a href="#" id="dropdownAccountOptions" class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                  <span class="small fw-bold">JD</span>
+                </a>
+                -->
+
+
+					</li>
+
+					<!-- navigation toggler (mobile) -->
+
+
+					</ul>
+					<!-- /options -->
+
+				</nav>
+
+			</div>
+			<!-- /Navbar -->
+
+		</header>
+		<!-- /Header -->
+
+
+		<!-- content -->
+		<div id="wrapper_content" class="d-flex flex-fill">
+
+
+			<!-- sidebar -->
+			<aside id="aside-main" class="aside-start aside-hide-xs bg-white shadow-sm d-flex flex-column px-2 h-auto">
+
+
+				<!-- sidebar : logo -->
+				<div class="py-2 px-3 mb-3 mt-1">
+					<a href="index.html">
+						<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+					</a>
+				</div>
+				<!-- /sidebar : logo -->
+
+
+				<!-- sidebar : navigation -->
+				<div class="aside-wrapper scrollable-vertical scrollable-styled-light align-self-baseline h-100 w-100">
+
+					<!--
+
+              All parent open navs are closed on click!
+              To ignore this feature, add .js-ignore to .nav-deep
+    
+              Links height (paddings):
+                .nav-deep-xs
+                .nav-deep-sm
+                .nav-deep-md
+
+              .nav-deep-hover     hover background slightly different
+              .nav-deep-bordered  bordered links
+
+            -->
+					<nav class="nav-deep nav-deep-sm nav-deep-light">
+						<ul class="nav flex-column">
+
+
+
+							<li class="nav-title mt-1">
+								<h6 class="mb-0 smaller text-muted text-uppercase">MEMBER AREA</h6>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="/member">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+										<path fill-rule="evenodd"
+											d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z">
+										</path>
+										<path fill-rule="evenodd"
+											d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z">
+										</path>
+									</svg>
+									<span>Dashboard</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="/member/mainstat">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										<path
+											d="M7.5 5.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L6 7l-.549.317a.5.5 0 1 0 .5.866l.549-.317V8.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L8 7l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V5.5zm-2 4.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
+										</path>
+										<path
+											d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z">
+										</path>
+									</svg>
+									<span>Statistics</span>
+								</a>
+							</li>
+
+							<li class="nav-item active">
+								<a class="nav-link" href="/member/matchdetails" target="_self" rel="noopener">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
+										<path
+											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
+										</path>
+									</svg>
+									<span>Match Details</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-droplet-half" viewBox="0 0 16 16">
+										<path fill-rule="evenodd"
+											d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z">
+										</path>
+										<path fill-rule="evenodd"
+											d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z">
+										</path>
+									</svg>
+									<span>Option 3</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z">
+										</path>
+										<path
+											d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z">
+										</path>
+									</svg>
+									<span>Option 4</span>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="/">
+									<i class="fi fi-power float-start"></i>
+									Log Out
+								</a>
+							</li>
+
+
+
+						</ul>
+					</nav>
+
+				</div>
+				<!-- /sidebar : navigation -->
+
+
+				<!-- sidebar : footer -->
+				<div class="d-flex align-self-baseline w-100 py-3 px-3 border-top border-light small">
+
+					<p class="d-inline-grid gap-auto-3 mb-0">
+						<svg class="text-gray-600" width="22px" height="22px" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512.052 512.052" fill="currentColor">
+							<path
+								d="M208.026,16.026c-114.7,0-208,78.9-208,176c0,39.8,15.7,77.9,44.5,108.9l-39.8,39.8c-4.6,4.6-6,11.5-3.5,17.4c2.5,6,8.3,9.9,14.8,9.9h192c114.7,0,208-78.9,208-176S322.726,16.026,208.026,16.026z">
+							</path>
+							<path opacity="0.5"
+								d="M467.526,428.926c28.8-30.9,44.5-69.1,44.5-108.9c0-49.8-24.6-94.9-64-126.9c-0.9,114.1-108.2,206.9-240,206.9h-89.2c34.5,56.9,104.6,96,185.2,96h192c6.5,0,12.3-3.9,14.8-9.9c2.5-6,1.1-12.9-3.5-17.4L467.526,428.926z">
+							</path>
+							<path fill="#ffffff"
+								d="M304.026,144.026h-192c-8.8,0-16,7.2-16,16s7.2,16,16,16h192c8.8,0,16-7.2,16-16S312.826,144.026,304.026,144.026z">
+							</path>
+							<path fill="#ffffff"
+								d="M240.026,208.026h-128c-8.8,0-16,7.2-16,16s7.2,16,16,16h128c8.8,0,16-7.2,16-16S248.826,208.026,240.026,208.026z">
+							</path>
+						</svg>
+						<a href="#" class="link-normal text-dashed">GameDayTrades</a>
+					</p>
+
+				</div>
+				<!-- /sidebar : footer -->
+
+
+			</aside>
+			<!-- /sidebar -->
+
+
+			<!-- main -->
+			<main id="middle" class="flex-fill mx-auto">
+
+
+				<!-- PAGE TITLE -->
+				<header>
+
+					<div class="row g-1 align-items-center">
+						<div class="col">
+
+							<h1 class="h4">Main Statistics</h1>
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb small">
+									<li class="breadcrumb-item"><a href="/member">Dashboard</a></li>
+									<li class="breadcrumb-item text-muted active" aria-current="page">Main Statistics
+									</li>
+								</ol>
+							</nav>
+
+						</div>
+
+
+
+				</header>
+
+
+
+
+				<!-- Order items -->
+				<div class="row g-2 p-0 py-2">
+
+					<div class="col">
+
+
+						<!-- Order items -->
+						<div class="card border-0 h-100">
+							<div class="card-header p-4 border-bottom-0 fw-bold">
+								<div
+									class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
+									<!--									Search bar to enter matchID to match details-->
+									<div id="matchDetailsByID">
+										<form name="matchDetailsByID_form" id="matchDetailsByID_form" method="post"
+											required>
+											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="text"
+												placeholder="Search a match details by MatchID...">
+											<button type="submit" id="matchDetailsByID_button"
+												onclick="dataToGraph(event);validateForm()">Submit</button>
+										</form>
+									</div>
+
+									<h4>Overall Head to Head Stats</h4>
+									<canvas id="head2HeadStats"></canvas>
+									<h4> Home Team Stats - Head to Head</h4>
+									<canvas id="homeTeamStats"></canvas>
+									<h4> Away Team Stats - Head to Head</h4>
+									<canvas id="awayTeamStats"></canvas>
+
+								</div>
+
+							</div>
+							<div class="card-footer p-4">
+								<small class="d-block text-muted">Consumed from</small>
+								<small class="d-block text-muted">By TheFootballTraders | Sports &ndash;</small>
+							</div>
+						</div>
+						<!-- /Order items -->
+
+					</div>
+
+					<!-- side -->
+					<div class="col-xl-4">
+						<div class="card border-0 h-100">
+
+							<!-- Customer -->
+							<div class="card-header p-4 mb-3">
+								<div class="fw-bold d-flex align-items-center mb-3">
+									<span class="w-100">Profile</span>
+
+									<span class="fw-normal"><i class="fi fi-user-male fs--25"></i></span>
+
+								</div>
+								<div class="d-flex align-items-center">
+
+									<!-- avatar -->
+									<div class="flex-none avatar avatar-lg bg-soft-primary rounded-circle"
+										style="background-image:url(../../html_frontend/demo.files/images/avatar/jessica_barden.jpg)">
+									</div>
+
+									<!-- no avatar -->
+									<!-- 
+                    <div class="flex-none avatar avatar-lg bg-soft-primary rounded-circle">
+                      <svg class="opacity-25" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.8 460.8" fill="currentColor">
+                        <path d="M230.432,0c-65.829,0-119.641,53.812-119.641,119.641s53.812,119.641,119.641,119.641s119.641-53.812,119.641-119.641S296.261,0,230.432,0z"></path>
+                        <path d="M435.755,334.89c-3.135-7.837-7.314-15.151-12.016-21.943c-24.033-35.527-61.126-59.037-102.922-64.784c-5.224-0.522-10.971,0.522-15.151,3.657c-21.943,16.196-48.065,24.555-75.233,24.555s-53.29-8.359-75.233-24.555c-4.18-3.135-9.927-4.702-15.151-3.657c-41.796,5.747-79.412,29.257-102.922,64.784c-4.702,6.792-8.882,14.629-12.016,21.943c-1.567,3.135-1.045,6.792,0.522,9.927c4.18,7.314,9.404,14.629,14.106,20.898c7.314,9.927,15.151,18.808,24.033,27.167c7.314,7.314,15.673,14.106,24.033,20.898c41.273,30.825,90.906,47.02,142.106,47.02s100.833-16.196,142.106-47.02c8.359-6.269,16.718-13.584,24.033-20.898c8.359-8.359,16.718-17.241,24.033-27.167c5.224-6.792,9.927-13.584,14.106-20.898C436.8,341.682,437.322,338.024,435.755,334.89z"></path>
+                      </svg>
+                    </div>
+                    -->
+
+									<!-- customer details -->
+									<div class="w-100 ps-4">
+										<ul class="list-unstyled m-0 p-0">
+											<li class="list-item"><!-- customer name, orders -->
+												<a class="text-decoration-none" href="#!">Edison CHAN</a>
+
+											</li>
+											<li class="list-item"><!-- customer email -->
+												<a class="link-normal small d-inline-grid gap-auto-2"
+													href="mailto:john.doe@gmail.com">
+													<svg class="text-muted" width="18px" height="18px"
+														xmlns="http://www.w3.org/2000/svg" fill="none"
+														viewBox="0 0 24 24" stroke="currentColor">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															stroke-width="2"
+															d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+														</path>
+													</svg>
+													<span>edison.chan@gmail.com</span>
+												</a>
+											</li>
+											<li class="list-item"><!-- customer phone -->
+												<a class="link-normal small d-inline-grid gap-auto-2"
+													href="tel:2483440447">
+													<svg class="text-muted" width="18px" height="18px"
+														xmlns="http://www.w3.org/2000/svg" fill="none"
+														viewBox="0 0 24 24" stroke="currentColor">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															stroke-width="2"
+															d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
+														</path>
+													</svg>
+													<span>248-344-0447</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="card-body p-4 h-100">
+
+								<!-- Shipping Address -->
+								<div class="mb-5">
+
+									<div class="fw-bold d-flex align-items-center mb-3">
+										<span class="w-100"> Last activity</span>
+										<i class="fi fi-search fs--20"></i>
+									</div>
+
+									<div class="small">
+
+										<div class="d-flex">
+											<span class="flex-none text-muted" style="width:120px">Date 1</span>
+											<span>Activity 1</span>
+										</div>
+
+										<div class="d-flex">
+											<span class="flex-none text-muted" style="width:120px">Date 2</span>
+											<span>Activity 2</span>
+										</div>
+
+										<div class="d-flex">
+											<span class="flex-none text-muted" style="width:120px">Date 3</span>
+											<span>Activity 3</span>
+										</div>
+
+										<div class="d-flex">
+											<span class="flex-none text-muted" style="width:120px">Date 4</span>
+											<span>-</span>
+										</div>
+
+										<div class="d-flex">
+											<span class="flex-none text-muted" style="width:120px">Date 5</span>
+											<span>Activity 5</span>
+										</div>
+
+
+									</div>
+
+								</div>
+								<hr>
+
+
+								<div class="mb-3">
+
+									<div class="fw-bold d-flex align-items-center mb-3">
+
+										<span class="w-100">Your Stats </span>
+										<i class="fi fi-cloud-download fs--25"></i>
+									</div>
+
+									<!-- imports -->
+
+
+
+
+
+									<!-- item -->
+									<div class="py-2 border-bottom border-light">
+
+
+
+
+										<div class="flex-fill text-truncate px-0 small">
+											<img width="25" height="25" class="img-fluid lazy"
+												src="/demo.files/svg/icons/files/csv.svg" alt="..." data-loaded="true">
+
+											<span class="text-muted">Match ID: 269784 Home Team: Moss FK</span>
+											<span class="small d-block text-muted">15 July, 2023 / 13:51</span>
+										</div>
+
+										<div class="flex-none ms-2 small text-muted text-align-end">
+											<a href="#">Download</a>
+										</div>
+
+									</div>
+									<!-- /item -->
+
+
+
+									<!-- item -->
+									<div class="py-2 border-bottom border-light">
+
+										<div class="flex-fill text-truncate px-0 small">
+											<img width="25" height="25" class="img-fluid lazy"
+												src="/demo.files/svg/icons/files/csv.svg" alt="..." data-loaded="true">
+
+											<span class="text-muted">Match ID: 269623 Home Team: Foggia</span>
+											<span class="small d-block text-muted">15 February, 2023 / 16:51</span>
+										</div>
+
+										<div class="flex-none ms-2 small text-muted text-align-end">
+											<a href="#">Download</a>
+										</div>
+
+									</div>
+									<!-- /item -->
+
+
+
+									<!-- item -->
+									<div class="py-2 border-bottom border-light">
+
+										<div class="flex-fill text-truncate px-0 small">
+											<img width="25" height="25" class="img-fluid lazy"
+												src="/demo.files/svg/icons/files/csv.svg" alt="..." data-loaded="true">
+
+											<span class="text-muted">Match ID: 269685 Home Team: Hajduk Split</span>
+											<span class="small d-block text-muted">28 March, 2020 / 10:51</span>
+										</div>
+
+										<div class="flex-none ms-2 small text-muted text-align-end">
+											<a href="#">Download</a>
+										</div>
+
+									</div>
+									<!-- /item -->
+
+
+									<!-- /imports -->
+
+								</div>
+
+							</div>
+
+
+							<div class="card-footer p-4">
+								<span class="text-muted small">
+									Football Analytics API
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+			</main>
+			<!-- /main -->
+
+			<div>
+
+
+			</div>
+			<!-- /content -->
+
+
+
+
+		</div><!-- /#wrapper -->
+
+
+
+
+
+
+
+		<!-- Core javascripts -->
+		<script src="/assets/js/core.min.js"></script>
+		<script src="/assets/js/vendor_bundle.min.js"></script>
+		<!--		<script src="/assets/js/apiChart.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<!-- Your custom javascripts -->
+		<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
+		<script>
+			function validateForm() {
+				var x = document.forms["matchDetailsByID_form"]["matchDetailsByIDValue"].value;
+				if (x == "") {
+					alert("MatchID must be filled out");
+					return false;
+				}
+			}
+		</script>
+
+
+		<script>
+
+			let apiOverallLabels = [];
+			let apiOverallStats = [];
+
+			let apiHomeTeamLabels = [];
+			let apiHomeTeamStats = [];
+
+			let apiAwayTeamLabels = [];
+			let apiAwayTeamStats = [];
+
+			let matchID = "274216";
+
+			const ctxOverall = document.getElementById('head2HeadStats');
+			const ctxAway = document.getElementById('awayTeamStats');
+			const ctxHome = document.getElementById('homeTeamStats');
+
+			var ctxOverallChart = new Chart(ctxOverall, {
+				type: 'bar',
+				data: {
+					labels: apiOverallLabels,
+					datasets: [{
+						label: apiOverallLabels,
+						data: apiOverallStats,
+						borderWidth: 2,
+						borderColor: '#000000',
+						backgroundColor: "#454B1B",
+
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'index',
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1,
+							}
+						}
+					}
+				}
+			});
+
+
+			var ctxHomeTeam = new Chart(ctxHome, {
+				type: 'bar',
+				data: {
+					labels: apiHomeTeamLabels,
+					datasets: [{
+						label: apiHomeTeamLabels,
+						data: apiHomeTeamStats,
+						borderWidth: 2,
+						borderColor: '#000000',
+						backgroundColor: "#0047AB",
+
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'index',
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1,
+							}
+						}
+					}
+				}
+			});
+
+			var ctxAwayTeam = new Chart(ctxAway, {
+				type: 'bar',
+				data: {
+					labels: apiAwayTeamLabels,
+					datasets: [{
+						label: apiAwayTeamLabels,
+						data: apiAwayTeamStats,
+						borderWidth: 2,
+						borderColor: '#000000',
+						backgroundColor: '#FF0099'
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'index',
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1,
+							}
+						}
+					}
+				}
+			});
+
+			//Load matchID entered
+			matchID = document.getElementById("matchDetailsByIDValue").value;
+			dataToGraph();
+
+			//Listener event to get matchID from user
+			//	document.getElementById('matchDetailsByID_button').addEventListener('submit', dataToGraph(event));
+
+			async function dataToGraph(event) {
+				if (event) {
+					event.preventDefault();
+				}
+
+				matchID = document.getElementById("matchDetailsByIDValue").value;
+
+				//alert("dataToGraph " + matchID);
+				// give feedback to user that data is loading in background
+				ctxOverallChart.data.datasets[0].label = `loading ... ${matchID}`;
+				ctxHomeTeam.data.datasets[0].label = `loading ... ${matchID}`;
+				ctxAwayTeam.data.datasets[0].label = `loading ... ${matchID}`;
+
+				ctxOverallChart.update();
+				ctxHomeTeam.update();
+				ctxAwayTeam.update();
+
+				// set all variables to empty again
+
+				let apiOverallLabels = [];
+				let apiOverallStats = [];
+
+				let apiHomeTeamLabels = [];
+				let apiHomeTeamStats = [];
+
+				let apiAwayTeamLabels = [];
+				let apiAwayTeamStats = [];
+
+				//fetch API data
+
+				const options = {
+					method: 'GET',
+					headers: {
+						'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+						'X-RapidAPI-Host': 'football-prediction-api.p.rapidapi.com'
+					}
+				};
+
+				//alert(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/${matchID}?limit=5`);
+				const response = await fetch(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/${matchID}?limit=10`, options)
+				const result = await response.json();
+
+				apiOverallStatsData = result.data.stats.overall;
+
+				var key = "over_05";
+				var key1 = "over_25";
+				var key2 = "over_15";
+				var key3 = "over_35";
+
+				delete apiOverallStatsData[key];
+				delete apiOverallStatsData[key1];
+				delete apiOverallStatsData[key2];
+				delete apiOverallStatsData[key3];
+
+
+
+				apiHomeTeamStats_TeamName = result.data.stats.home_team.team_name;
+				apiHomeTeamStats = result.data.stats.home_team;
+				var key = "first_half_lost"
+				var key1 = "team_name"
+				var key2 = "first_half_win"
+				var key3 = "first_half_draw"
+				var key4 = "avg_bookie_win_chance"
+				var key5 = "avg_bookie_draw_chance"
+				var key6 = "avg_bookie_lose_chance"
+
+				delete apiHomeTeamStats[key];
+				delete apiHomeTeamStats[key1];
+				delete apiHomeTeamStats[key2];
+				delete apiHomeTeamStats[key3];
+				delete apiHomeTeamStats[key4];
+				delete apiHomeTeamStats[key5];
+				delete apiHomeTeamStats[key6];
+
+
+				apiAwayTeamStats_TeamName = result.data.stats.away_team.team_name;
+				apiAwayTeamStats = result.data.stats.away_team;
+				var key = "first_half_lost"
+				var key1 = "team_name"
+				var key2 = "first_half_win"
+				var key3 = "first_half_draw"
+				var key4 = "avg_bookie_win_chance"
+				var key5 = "avg_bookie_draw_chance"
+				var key6 = "avg_bookie_lose_chance"
+
+				delete apiAwayTeamStats[key];
+				delete apiAwayTeamStats[key1];
+				delete apiAwayTeamStats[key2];
+				delete apiAwayTeamStats[key3];
+				delete apiAwayTeamStats[key4];
+				delete apiAwayTeamStats[key5];
+				delete apiAwayTeamStats[key6];
+
+				
+
+				ctxOverallChart.data.dataset = apiOverallStatsData;
+				ctxHomeTeam.data.dataset = apiHomeTeamStats;
+				ctxAwayTeam.data.dataset = apiAwayTeamStats;
+				
+				document.getElementById('head2HeadStats').style.display = "block";
+
+				ctxOverallChart.data.datasets[0].label = apiHomeTeamStats_TeamName + " vs. " + apiAwayTeamStats_TeamName;
+				ctxOverallChart.data.datasets[0].data = apiOverallStatsData;
+				ctxOverallChart.update();
+
+				document.getElementById('homeTeamStats').style.display = "block";
+
+				ctxHomeTeam.data.datasets[0].label = apiHomeTeamStats_TeamName;
+				ctxHomeTeam.data.datasets[0].data = apiHomeTeamStats;
+				ctxHomeTeam.update();
+
+				document.getElementById('awayTeamStats').style.display = "block";
+
+				ctxAwayTeam.data.datasets[0].label = apiAwayTeamStats_TeamName;
+				ctxAwayTeam.data.datasets[0].data = apiAwayTeamStats;
+				ctxAwayTeam.update();
+
+			};
+
+		</script>
+
+
+
+</body>
+
+</html>

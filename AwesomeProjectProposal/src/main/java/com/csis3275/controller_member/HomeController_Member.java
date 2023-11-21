@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.csis3275.model_db.User;
 import com.csis3275.model_db.UserDataset;
@@ -28,7 +30,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import jakarta.persistence.Entity;
-
 
 
 @Controller
@@ -47,25 +48,16 @@ public class HomeController_Member {
             .format(LocalDateTime.now());
 	
 	
+	
 	private String date_p_s;
 	private String token_s;
 	private String date_today;
 	private int sizeAPICurrentDay;
 	private int sizePreferedMID;
 	
-	
-	
-
-	
 	@GetMapping("/member/test")
 	public String renderHomeMmeber() {
-		
-		
-		
-		
-		return "member/index";
-		
-		
+		return "member/index";			
 	}
 	
 	@GetMapping("/member/mainstat")
@@ -75,7 +67,6 @@ public class HomeController_Member {
 		List<String> totalDateIdUser = new ArrayList<>(Arrays.asList());
 		List<String> occurrencesIdUser = new ArrayList<>(Arrays.asList());
 		
-	
 		
 		if(token_s == null) {
 			return "redirect:/loginpage";

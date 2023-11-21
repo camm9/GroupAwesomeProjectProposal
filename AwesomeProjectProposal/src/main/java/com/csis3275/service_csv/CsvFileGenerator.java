@@ -28,7 +28,7 @@ public class CsvFileGenerator {
 			CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT);
 			printer.printRecord("User", "MatchID", "Date");
 			for (UserDataset UserDataset : UserDatasets) {
-				printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
+				printer.printRecord(UserDataset.getUser().getTokenUser(), UserDataset.getMatchId(), UserDataset.getDos());
 			}
 		} catch (IOException e) {
 			//Disabled Print Stack 

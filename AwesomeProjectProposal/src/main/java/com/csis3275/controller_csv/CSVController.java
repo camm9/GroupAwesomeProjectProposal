@@ -1,6 +1,8 @@
 package com.csis3275.controller_csv;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import jakarta.servlet.http.Cookie;
 
@@ -29,7 +31,9 @@ public class CSVController {
 	@GetMapping("/member/export-to-csv")
 	public String exportIntoCSV(HttpServletResponse response) throws IOException {
 		response.setContentType("text/csv");
-		response.addHeader("Content-Disposition", "attachment; filename=\"DataSet.csv\"");
+		String FileName = new SimpleDateFormat("dd-MM-yyyy").format(new Date()) + "DataSet.csv";
+		response.addHeader("Content-Disposition", "attachment; filename=\"" + FileName + "\"");
+		//response.addHeader("Content-Disposition", "attachment; filename=\"DataSet.csv\"");
 		if (UserDatasetService.readUserDataset().size() > 0) {
 			//Write User Data service from data read
 			csvGenerator.writeDataSetToCsv(UserDatasetService.readUserDataset(), response.getWriter());

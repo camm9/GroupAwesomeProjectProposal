@@ -18,7 +18,10 @@ import com.csis3275.service_db.UserDatasetService;
 public class CSVController {
 
 	@Autowired
-	private DataCSVService DataService;
+	private DataCSVService DataCSVService;
+	
+	@Autowired
+	private UserDatasetService UserDatasetService;
 
 	@Autowired
 	private CsvFileGenerator csvGenerator;
@@ -27,7 +30,15 @@ public class CSVController {
 	public String exportIntoCSV(HttpServletResponse response) throws IOException {
 		response.setContentType("text/csv");
 		response.addHeader("Content-Disposition", "attachment; filename=\"DataSet.csv\"");
-		csvGenerator.writeDataSetToCsv(DataService.getUserDataList(), response.getWriter());
+		if (UserDatasetService.readUserDataset().size() > 0) {
+			//Write User Data service from data read
+			csvGenerator.writeDataSetToCsv(UserDatasetService.readUserDataset(), response.getWriter());
+		}
+		else {
+			//No saved data found, creating dummy data for fake values
+			csvGenerator.writeDemoMessage(response.getWriter());
+			csvGenerator.writeDataSetToCsv(DataCSVService.getUserDataList(), response.getWriter());
+		}
 		return "member/index";
 	}
 }

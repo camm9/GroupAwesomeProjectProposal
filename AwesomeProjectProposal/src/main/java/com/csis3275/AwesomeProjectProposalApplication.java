@@ -31,10 +31,10 @@ public class AwesomeProjectProposalApplication {
 	
 	public static void main(String[] args) {
 		log.info("In main method");
+
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-//			listOfMatches = apiService.getAllMatchesForDate("2023-10-28");
-//			matchOdds = apiService.getMatchOdds("273761");
+			apiService.getHomeTeamHead2Head("274216");
 
 
 		} catch (Exception e) {

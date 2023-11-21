@@ -3,7 +3,10 @@
 
 <head>
 	<meta charset="UTF-8">
+
+
 	<title>GameDayTrades - Statistic</title>
+
 	<meta name="description" content="Sports betting analytic website">
 
 	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
@@ -14,14 +17,19 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com/">
 	<link rel="preconnect" href="https://fonts.gstatic.com/">
 	<!-- preloading icon font is helping to speed up a little bit -->
-	<link rel="preload" href="/assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+
+	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
+
+
 
 	<link rel="stylesheet" href="assets/css/core.min.css">
 	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
 
 	<!-- favicon -->
-	<link rel="apple-touch-icon" href="/assets/images/logo/logo.png">
+
+	<link rel="apple-touch-icon" href="assets/images/logo/logo.png">
+
 
 </head>
 
@@ -88,14 +96,15 @@
 
 						<!-- logo : mobile only -->
 						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="index.html">
-							<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+
+							<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+
 						</a>
 
 					</div>
 
 					<!-- navbar : navigation -->
 					<div class="collapse navbar-collapse" id="navbarMainNav">
-					<h2>Member Space</h2>
 
 						<!-- navbar : mobile menu -->
 						<div class="navbar-xs d-none">
@@ -113,7 +122,9 @@
 
 							<!-- logo -->
 							<a class="navbar-brand" href="index.html">
+
 								<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+
 							</a>
 
 						</div>
@@ -123,6 +134,7 @@
 
 					</div>
 					<!-- /navbar : navigation -->
+
 
 
 
@@ -234,7 +246,17 @@
                   </a>
                 </li>
 
-              
+				<li class="nav-item">
+					<a class="nav-link" href="/member/matchdetails">
+						<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+							<path
+								d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
+							</path>
+						</svg>
+						<span>Match Details</span>
+					</a>
+				</li>              
                 
                   <li class="nav-item">
                <a class="nav-link" th:href="@{/logout}">
@@ -479,7 +501,6 @@
 									<span class="fw-normal"><i class="fi fi-user-male fs--25"></i></span>
 
 								</div>
-								<a href="http://localhost:8080/member/export-to-csv" class="btn btn-primary">Download CSV File</a>
 								<div class="d-flex align-items-center">
 
 									<!-- avatar -->

@@ -20,13 +20,14 @@ public class EditUserController {
 	
 	public List<User> selectedUser;
 	
-	@GetMapping("/users/editUser")
+	@GetMapping("/admin/editadmin")
 	public String pageLoad(@RequestParam("id") String id, Model model) {
 		Long selectedID = Long.parseLong(id);
 		User selectedUser = userService.findUser(selectedID);
 		model.addAttribute("selected", selectedUser);
-		return "users/editForm";
+		return "admin/editAdmin";
 	}
+	
 	
 	@PostMapping("/editFormPost")
 	public String editStudent(@ModelAttribute User userData, Model model) 

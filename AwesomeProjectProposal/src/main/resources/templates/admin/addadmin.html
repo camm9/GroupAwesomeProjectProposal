@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>GameDayTrades</title>
+	<title>GameDayTrades - Add Admin</title>
 	<meta name="description" content="Sports betting analytic website">
 
 	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
@@ -96,6 +96,7 @@
 
 					<!-- navbar : navigation -->
 					<div class="collapse navbar-collapse" id="navbarMainNav">
+					<h2 class="d-flex align-items-center">Add Administrator </h2>
 
 						<!-- navbar : mobile menu -->
 						<div class="navbar-xs d-none">
@@ -193,25 +194,73 @@
 
 
 							<li class="nav-title mt-1">
-								<h6 class="mb-0 smaller text-muted text-uppercase">ADMIN AREA</h6>
+								<h6 class="mb-0 smaller text-purple text-uppercase">ADMIN AREA</h6>
 							</li>
+							
+								<li class="nav-title mt-0">
+                  <small class="mb-0 smaller text-muted text-uppercase">Administrators</small>
+                </li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/admin">
-									<i class="fi fi-users"></i>
-									<span>List Administrators</span>
+								<a class="nav-link" th:href="@{/admin}">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">  
+  <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path>  
+  <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"></path>
+</svg> 
+									<span class="p-2">Administrator List</span>
 								</a>
 							</li>
 
 
-	<li class="nav-item active">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/admin/add}">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">  
+  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>  
+  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"></path>
+</svg>
+									<span class="p-2">Add Administrator</span>
+								</a>
+							</li>
+							
+							<li class="nav-item">
+								
+									<span><hr class="w-75"></span>
+				
+							</li>
+							
+							<li class="nav-title mt-0">
+                  <small class="mb-0 smaller text-muted text-uppercase">MEMBERS AREA</small>
+                </li>
+							
+							<li class="nav-item	">
 								<a class="nav-link" href="#">
-									<i class="fi fi-user-male"></i>
-									<span>Add Administrator</span>
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">  
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"></path>
+</svg>
+									<span class="p-2">Member List</span>
 								</a>
 							</li>
 
+	<li class="nav-title mt-0">
+                  <small class="mb-0 smaller text-muted text-uppercase">DEV AREA</small>
+                </li>
 
+							<li class="nav-item">
+								<a class="nav-link" th:href=@{/admin/api}>
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16">  
+  <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"></path>  
+  <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"></path>  
+  <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"></path>
+</svg>
+									<span class="p-2">API Server URL</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								
+									<span><hr class="w-75"></span>
+				
+							</li>
+							
 
 							<li class="nav-item">
 								<a class="nav-link" href="/">
@@ -259,16 +308,17 @@
 
 
 			<!-- main -->
-			<main id="middle" class="flex-fill mx-auto">
+			<main id="middle" class="flex-fill mx-auto bg-light">
 
 
 				<!-- PAGE TITLE -->
 				<header>
-					<h1 class="h4">Admin Add</h1>
+					<h1 class="h4">Create Administrator</h1>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb small">
-							<li class="breadcrumb-item text-muted active" aria-current="page">Admin Add</li>
-						</ol>
+							<li class="breadcrumb-item"><a th:href="@{/admin}">List</a></li>
+							<li class="breadcrumb-item text-muted active" aria-current="page">Create Administrator</li>
+						</ol><br>
 					</nav>
 				</header>
 
@@ -277,7 +327,7 @@
 
 
 				<!-- user list -->
-				<div class="section p-0">
+				<div class="section p-0 bg-light">
 					<div class="card-header p-3">
 
 						<div class="card-body pt-1">
@@ -286,7 +336,7 @@
 							<div class="table-responsive-md">
 				<form action="#" th:action="@{/admin/saveadmin}" th:object="${adminObj}" method="post">
 								 <div class="section">
-                  <div class="h5 card-header border-bottom-0 fw-bold">New Account</div>
+                  <div class="h5 card-header bg-secondary text-white border-bottom-0 fw-bold">New Administrator 	Account</div>
                   <div class="card-body">
 
                     <div class="row g-3 mb-3">
@@ -318,6 +368,13 @@
                       </svg>
                       <span>Save changes</span>
                     </button>
+                    
+                      <a class="btn btn-secondary" th:href="@{'/admin'}">
+													 <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">  
+						  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+						</svg>
+                      <span>Cancel</span>
+					</a>
                   </div>
 
                 </div>
@@ -329,7 +386,7 @@
 						</div>
 					</div>
 
-
+	</div>
 			</main>
 			<!-- /main -->
 

@@ -70,7 +70,9 @@ public class APIService {
 				String awayTeam = data.get(i).get("away_team").asText();
 				System.out.println();
 				String homeTeam = data.get(i).get("home_team").asText();
-				System.out.println("Match ID: " + matchID + " Home Team: " + homeTeam + " vs. Away Team: " + awayTeam);
+
+				String prediction = data.get(i).get("prediction").asText();
+				System.out.println("Match ID: "+ matchID + " Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
 			}
 
 // I still like this idea of turning the JSON into a list of objects, while this code doesn't work I want to keep here for future reference and inspiration.			
@@ -113,7 +115,11 @@ public class APIService {
 				String federation = data.get(i).get("federation").asText();
 				String country = data.get(i).get("competition_cluster").asText();
 
-				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country);
+				String prediction = data.get(i).get("prediction").asText();
+				String status = data.get(i).get("status").asText();
+
+
+				matchInfo = new Datum(matchID, homeTeam, awayTeam, federation, country, prediction, status);
 				matchList.add(matchInfo);
 			}
 

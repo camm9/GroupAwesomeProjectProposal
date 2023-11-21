@@ -118,7 +118,7 @@
 								<!-- about -->
 								<li class="nav-item">
 
-									<a class="nav-link scroll-to" href="#section_pricing">
+									<a class="nav-link scroll-to" href="#">
 										STAT
 									</a>
 
@@ -178,11 +178,11 @@
 								<li class="list-inline-item mx-1">
 
 								<a th:href="@{loginpage}" aria-label="Account Options" class="btn btn-sm btn-primary text-white "  aria-expanded="false" aria-haspopup="true">
-									<span class="group-icon">
-										<i class="fi fi-user-male"></i>
-										<i class="fi fi-close"></i>
-									</span>
-									<span>Account</span>
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">  
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>  
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+</svg>
+									<span class="ml-2">Login</span>
 								</a>
 								
 								
@@ -334,223 +334,7 @@
 
 
 
-			<!-- block : pricing -->
-			<section id="section_pricing">
-				<div class="container">
-
-
-					<!-- Billing Switcher -->
-					<div class="d-flex justify-content-center p-3 mb-3">
-						<span class="text-gray-600">Monthly Stat</span>
-
-						<label class="form-switch form-switch-pill form-switch-primary m-0 mx-3">
-							<input type="checkbox" value="1" checked data-count-target=".pricetable-count">
-							<i></i>
-						</label>
-
-						<span class="text-gray-600">Annual Stat</span>
-					</div>
-					<!-- /Billing Switcher -->
-
-
-					<!-- mobile swipe info -->
-					<div class="d-block d-md-none position-relative bg-theme-color-light clearfix text-center p-4 text-gray-500">
-						<i class="fi fi-arrow-left-slim float-start"></i>
-						<i class="fi fi-arrow-right-slim float-end"></i>
-						<span class="text-gray-500">
-							swipe for all
-						</span>
-						<i class="arrow arrow-lg arrow-bottom arrow-center border-theme-color-light"></i>
-					</div>
-					<!-- /mobile swipe info -->
-
-
-
-					<div class="swiper-container px-5 p-0-xs"
-						data-swiper='{
-							"autoplay": false,
-							"slidesPerView": 3,
-							"spaceBetween": 30,
-							"breakpoints": {
-								"1200": { "slidesPerView": "3" },
-								"768": { "slidesPerView": "2" },
-								"0": 	{ "slidesPerView": "1" }
-							}
-						}'>
-						<div class="swiper-wrapper py-5">
-
-							<div class="swiper-slide">
-
-								<div class="bg-white rounded-xl p-5 m-4-xs shadow-md text-center">
-									<h3 class="h4">
-										<span class="fs--18 font-weight-normal">-</span>
-										<span class="pricetable-count display-4 font-weight-medium"
-											data-toggle="count" 
-											data-count-decimals="" 
-											data-count-from="0" 
-											data-count-to="29" 
-											data-count-duration="1000"
-
-											data-count-toggle='[
-												{"from":"0", "to":"29", "duration":800},
-												{"from":"29", "to":"39", "duration":800}
-											]'>29</span>
-										<span class="fs--18 font-weight-normal">/stat</span>
-									</h3>
-
-									<p class="badge badge-light badge-pill fs--20 font-weight-normal px-3 py-2 mb-5">
-										Startup
-									</p>
-
-									<ul class="list-unstyled mb-5">
-										<li class="list-item py-1">Backend Included</li>
-										<li class="list-item py-1">Marketing for 3 months</li>
-										<li class="list-item py-1">Hosting included</li>
-										<li class="list-item py-1">Stat 1</li>
-									</ul>
-
-									<a href="#!" class="btn btn-block btn-pill btn-outline-secondary">
-										Join Startup
-									</a>
-
-								</div>
-
-							</div>
-
-							<div class="swiper-slide">
-
-								<div class="bg-white rounded-xl p-5 m-4-xs shadow-md text-center">
-									<h3 class="h4">
-										<span class="fs--18 font-weight-normal">*</span>
-										<span class="pricetable-count display-4 font-weight-medium"
-											data-toggle="count" 
-											data-count-decimals="" 
-											data-count-from="0" 
-											data-count-to="39" 
-											data-count-duration="1000"
-
-											data-count-toggle='[
-												{"from":"0", "to":"39", "duration":800},
-												{"from":"39", "to":"49", "duration":800}
-											]'>39</span>
-										<span class="fs--18 font-weight-normal">/stat</span>
-									</h3>
-
-									<p class="badge badge-danger badge-soft badge-pill fs--20 font-weight-normal px-3 py-2 mb-5">
-										Stat
-									</p>
-
-									<ul class="list-unstyled mb-5">
-										<li class="list-item py-1">Analysis</li>
-										<li class="list-item py-1">Sport Betting Analysis</li>
-										<li class="list-item py-1">Betting</li>
-										<li class="list-item py-1">Sport Betting Analysis</li>
-									</ul>
-
-									<a href="#!" class="btn btn-block btn-pill btn-danger bg-gradient-danger">
-										Join Business
-									</a>
-
-								</div>
-
-							</div>
-
-							<div class="swiper-slide">
-
-								<div class="bg-white rounded-xl p-5 m-4-xs shadow-md text-center">
-									<h3 class="h4">
-										<span class="fs--18 font-weight-normal">-</span>
-										<span class="pricetable-count display-4 font-weight-medium"
-											data-toggle="count" 
-											data-count-decimals="" 
-											data-count-from="0" 
-											data-count-to="119" 
-											data-count-duration="1000"
-
-											data-count-toggle='[
-												{"from":"0", "to":"119", "duration":800},
-												{"from":"119", "to":"129", "duration":800}
-											]'>119</span>
-										<span class="fs--18 font-weight-normal">/mo</span>
-									</h3>
-
-									<p class="badge badge-light badge-pill fs--20 font-weight-normal px-3 py-2 mb-5">
-										Enterprise
-									</p>
-
-									<ul class="list-unstyled mb-5">
-											<li class="list-item py-1">Analysis</li>
-										<li class="list-item py-1">Sport Betting Analysis</li>
-										<li class="list-item py-1">Betting</li>
-										<li class="list-item py-1">Sport Betting Analysis</li>
-									</ul>
-
-									<a href="#!" class="btn btn-block btn-pill btn-outline-secondary">
-										Join Us
-									</a>
-
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-			<!-- /block : pricing -->
-
-
-
-
-
-			<!-- BAR BRANDS -->
-			<section class="p-0 bg-transparent position-relative z-index-2">
-				<div class="container">
-					
-					<div class="bg-white shadow-primary-xs rounded pt-4 pb-4">
-
-						<!-- Billing Switcher -->
-						<div class="d-flex justify-content-center px-5">
-
-					<div class="row">
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="150" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_airbnb.svg" alt="...">
-						</div>
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="200" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_netflix.svg" alt="...">
-						</div>
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="250" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_coinbase.svg" alt="...">
-						</div>
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="300" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_instagram.svg" alt="...">
-						</div>
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="350" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_pinterest.svg" alt="...">
-						</div>
-
-						<div class="col-4 col-md-2 py-3" data-aos="fade-in" data-aos-delay="400" data-aos-offset="0">
-							<img width="140" height="50" class="img-fluid opacity-4" src="demo.files/svg/vendors/vendor_dribble.svg" alt="...">
-						</div>
-
-					</div>
-
-						</div>
-						<!-- /Billing Switcher -->
-
-					</div>
-
-				</div>
-			</section>
-			<!-- /BAR BRANDS -->
-
-
+		
 
 
 

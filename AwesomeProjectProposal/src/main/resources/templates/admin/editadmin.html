@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>GameDayTrades - Admin</title>
+	<title>GameDayTrades - Edit Admin</title>
 	<meta name="description" content="Sports betting analytic website">
 
 	<meta name="viewport" content="width=device-width, maximum-scale=5, initial-scale=1">
@@ -16,13 +16,13 @@
 	<!-- preloading icon font is helping to speed up a little bit -->
 	<link rel="preload" href="assets/fonts/flaticon/Flaticon.woff2" as="font" type="font/woff2" crossorigin>
 
-	<link rel="stylesheet" href="assets/css/core.min.css">
-	<link rel="stylesheet" href="assets/css/vendor_bundle.min.css">
+	<link rel="stylesheet" href="/assets/css/core.min.css">
+	<link rel="stylesheet" href="/assets/css/vendor_bundle.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap">
 
 
 	<!-- favicon -->
-	<link rel="apple-touch-icon" href="assets/images/logo/logo.png">
+	<link rel="apple-touch-icon" href="/assets/images/logo/logo.png">
 
 </head>
 
@@ -89,15 +89,14 @@
 
 						<!-- logo : mobile only -->
 						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="/">
-							<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+							<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 						</a>
 
 					</div>
 
 					<!-- navbar : navigation -->
 					<div class="collapse navbar-collapse" id="navbarMainNav">
-					
-					<h2 class="d-flex align-items-center">Admin list </h2>
+					<h2 class="d-flex align-items-center">Edit Administrator </h2>
 
 						<!-- navbar : mobile menu -->
 						<div class="navbar-xs d-none">
@@ -106,7 +105,7 @@
 
 							<!-- logo -->
 							<a class="navbar-brand" href="/">
-								<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+								<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 							</a>
 
 						</div>
@@ -114,7 +113,6 @@
 					</div>
 					<!-- /navbar : navigation -->
 
-				
 					<!-- options -->
 					<ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
 
@@ -128,7 +126,7 @@
 							<!-- has avatar -->
 							<a href="#" id="dropdownAccountOptions"
 								class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle shadow bg-cover"
-								style="background-image:url(demo.files/images/icons/user750.png)"
+								style="background-image:url(/demo.files/images/icons/user750.png)"
 								data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
 								aria-haspopup="true" aria-label="Account options"></a>
 
@@ -167,10 +165,8 @@
 				<!-- sidebar : logo -->
 				<div class="py-2 px-3 mb-3 mt-1">
 					<a href="/">
-						<img src="assets/images/logo/logo.png" width="85" height="70" alt="...">
+						<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 					</a>
-					
-					
 				</div>
 				<!-- /sidebar : logo -->
 
@@ -317,17 +313,16 @@
 
 				<!-- PAGE TITLE -->
 				<header>
-					<h1 class="h4">Administrator list</h1>
+					<h1 class="h4">Update Administrator</h1>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb small">
-						   <li class="breadcrumb-item"><a th:href="@{/admin/add}">New</a></li>
-    						<li class="breadcrumb-item text-muted active" aria-current="page">Administrator list</li>
+						 <li class="breadcrumb-item"><a th:href="@{/admin}">List</a></li>
+						 <li class="breadcrumb-item"><a th:href="@{/admin/add}">New</a></li>
+							<li class="breadcrumb-item text-muted active" aria-current="page">Update Administrator</li>
 						</ol><br>
 					</nav>
 				</header>
-				
-				
-			
+
 
 
 
@@ -340,101 +335,71 @@
 
 							<!-- item list -->
 							<div class="table-responsive-md">
+				<form action="#" th:action="@{/editFormPost}" th:object="${selected}" method="post">
+								 <div class="section">
+                  <div class="h5 card-header bg-secondary text-white border-bottom-0 fw-bold">Editing Administrator Account</div>
+                  <div class="card-body">
 
-								<table class="table table-align-middle" role="grid" aria-describedby="mobile-page-info">
-									<thead>
-										<tr>
-											
-											<th class="small text-muted" style="width:20px">
-												<a href="#!" class="d-flex link-muted" 
-													aria-label="order by inventory">
+                    <div class="row g-3 mb-3">
+                      <div class="col-lg-12">
+                        <div class="form-floating">
+                          <input required type="text" class="form-control" th:value="${selected.userId}" th:field="${selected.userId}" readOnly>
+                          <label for="user-fname">Id</label>
+                        </div>
+                      </div>
+                     
+                    </div>
+                    
+                    <div class="row g-3 mb-3">
+                      <div class="col-lg-12">
+                        <div class="form-floating">
+                          <input required type="text" class="form-control" name="username" th:value="${selected.username}" th:field="${selected.username}">
+                          <label for="user-fname">Username</label>
+                        </div>
+                      </div>
+                     
+                    </div>
 
-													<span class="ms-2">Id</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted" 
-													aria-label="order by inventory">
+                    <div class="form-floating mb-3">
+                      <input required type="email" class="form-control"  name="email" th:value="${selected.email}" th:field="${selected.email}">
+                      <label for="user-email">Email address</label>
+                    </div>
 
-													<span class="ms-2">Username</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted" 
-													aria-label="order by inventory">
+                    <div class="form-floating">
+                      <input required type="password" class="form-control" name="password" th:value="${selected.password}" th:field="${selected.password}">
+                      <label for="user-password">Password</label>
+                    </div>
 
-													<span class="ms-2">Email</span>
-												</a>
-											</th>
-											<th class="small text-muted" style="width:220px">
-												<a href="#!" class="d-flex link-muted"
-													aria-label="order by inventory">
+                  </div>
 
-													<span class="ms-2">Password</span>
-												</a>
-											</th>
-											
-											<th class="small text-muted">
-											<a href="#!" class="d-flex link-muted" 
-													aria-label="order by inventory">
+                  <div class="card-footer border-light">
+                    <button type="submit" class="btn btn-purple">
+                      <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Update changes</span>
+                    </button>
+                    
+                    
+                    
+                    <a class="btn btn-secondary" th:href="@{'/admin'}">
+													 <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">  
+						  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+						</svg>
+                      <span>Cancel</span>
+					</a>
+                  </div>
 
-													<span class="ms-2">Options</span>
-												</a>
-											</th>
-										</tr>
-									</thead>
-									<tbody id="checkall-list">
-
-										<!-- DB item -->
-										<tr th:each="user: ${userList}">
-											
-											<td><!-- user -->
-												<div class="d-flex align-items-center">
-													<div class="ms-4">
-														<a href="#!" class="text-dark" th:text="${user.userId}"> </a>
-
-													</div>
-												</div>
-											</td>
-											<td>
-												<div class="ms-4">
-													<a href="#!" class="text-dark" th:text="${user.username}"></a>
-
-												</div>
-											</td>
-											<td class="text-center"><!-- email -->
-												<a href="#!" class="text-dark" th:text="${user.email}"></a>
-											</td>
-											<td class="text-dark"><!-- status -->
-												xxxxxxxxxxx
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="btn btn-sm btn-block btn-success" th:href="@{'/admin/editadmin?id=' + ${user.userId}}">
-													<span class="text-white">Edit</span>
-												</a>
-											</td>
-											<td class="text-end"><!-- options -->
-												<a class="btn btn-sm btn-block btn-danger" th:href="@{'/users/delete?deleteUser=' + ${user.userId}}">
-													<span class="text-white">Delete</span>
-												</a>
-											</td>				
-										</tr>
-
-										<!-- end DB item -->
-
-									</tbody>
-								</table>
-
+                </div>
+                </form>
 							</div>
 
 
 
 						</div>
 					</div>
-					
-					</div>
 
-
+				</div>
 			</main>
 			<!-- /main -->
 
@@ -450,8 +415,8 @@
 
 
 	<!-- Core javascripts -->
-	<script src="assets/js/core.min.js"></script>
-	<script src="assets/js/vendor_bundle.min.js"></script>
+	<script src="/assets/js/core.min.js"></script>
+	<script src="/assets/js/vendor_bundle.min.js"></script>
 
 	<!-- Your custom javascripts -->
 

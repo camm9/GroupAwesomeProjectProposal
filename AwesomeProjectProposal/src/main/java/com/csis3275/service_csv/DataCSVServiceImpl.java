@@ -23,7 +23,7 @@ public class DataCSVServiceImpl implements DataCSVService {
 	public List<UserDataset> getUserDataList() {
 		// TODO Auto-generated method stub
 		//List<UserDataset> NewDataset = 	UserDatasetService.readUserDataset();
-				
+		PopulateDataSet();
 		//Return Deummy value
 	
 		return DataRepo.findAll();

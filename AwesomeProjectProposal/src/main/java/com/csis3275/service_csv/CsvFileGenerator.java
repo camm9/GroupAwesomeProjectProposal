@@ -30,6 +30,8 @@ public class CsvFileGenerator {
 			for (UserDataset UserDataset : UserDatasets) {
 				printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
 			}
+			printer.printRecord("End of File");
+			printer.close();
 		} catch (IOException e) {
 			//Disabled Print Stack 
 			//e.printStackTrace();

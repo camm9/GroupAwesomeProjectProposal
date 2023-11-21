@@ -26,11 +26,13 @@ public class CsvFileGenerator {
 		try {
 
 			CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT);
+			printer.printRecord("User", "MatchID", "Date");
 			for (UserDataset UserDataset : UserDatasets) {
 				printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			//Disabled Print Stack 
+			//e.printStackTrace();
 		}
 	}
 }

@@ -72,8 +72,7 @@ public class MemberControllerTest {
 				
 	}
 	
-	
-	
+
 	@Test
 	void TestRenderSaveDatasetMember() throws Exception	{
 

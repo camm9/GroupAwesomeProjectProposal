@@ -32,7 +32,7 @@ public class CsvFileGenerator {
 			}
 		} catch (IOException e) {
 			//Disabled Print Stack 
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }

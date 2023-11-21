@@ -29,8 +29,8 @@ public class CsvFileGenerator {
 			printer.printRecord("UserID", "MatchID", "Date");
 			for (UserDataset UserDataset : UserDatasets) {
 				if (UserDataset.getUser()!= null) {
-					//printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
-					printer.printRecord( "UserOf" + UserDataset.getDos(), UserDataset.getMatchId(), UserDataset.getDos());
+					printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
+					//printer.printRecord( "UserOf" + UserDataset.getDos(), UserDataset.getMatchId(), UserDataset.getDos());
 				}
 				else {
 					printer.printRecord( "UserOf" + UserDataset.getDos(), UserDataset.getMatchId(), UserDataset.getDos());

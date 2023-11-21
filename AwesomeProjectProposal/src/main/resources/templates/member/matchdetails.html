@@ -407,14 +407,12 @@
 									class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
 									<!--									Search bar to enter matchID to match details-->
 									<div id="matchDetailsByID">
-										<form name="matchDetailsByID" action="#"
-											th:action="@{/member/api_searchMatchDetailsByID}"
-											onkeyup="return validateForm()" method="post" required>
-											<input class="form-control" id="matchDetailsByIDValue"
-												name="matchDetailsByID" type="text"
-												placeholder="Search a match details by MatchID..."
-												onkeyup="apiChart_AwayTeam();apiChart_HomeTeam();">
-											
+										<form name="matchDetailsByID_form" id="matchDetailsByID_form"
+											th:action="@{/member/api_searchMatchDetailsByID}" method="post" required>
+											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="text"
+												placeholder="Search a match details by MatchID...">
+											<!--												//onkeyup="apiChart_AwayTeam();apiChart_HomeTeam();"-->
+											<button type="submit">Submit</button>
 										</form>
 									</div>
 
@@ -694,7 +692,7 @@
 		<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
 		<script>
 			function validateForm() {
-				var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
+				var x = document.forms["matchDetailsByID_form"]["searchByMatchID"].value;
 				if (x == "") {
 					alert("MatchID must be filled out");
 					return false;
@@ -705,50 +703,110 @@
 
 		<script>
 
-			var apiHomeTeamLabels = [];
-			var apiHomeTeamStats = [];
+			let apiHomeTeamLabels = [];
+			let apiHomeTeamStats = [];
 
-			async function apiChart_HomeTeam() {
-				await getAPIData_HomeTeam();
+			let apiAwayTeamLabels = [];
+			let apiAwayTeamStats = [];
 
-				const ctx = document.getElementById('homeTeamStats');
+			let matchID = "274216";
 
-				new Chart(ctx, {
-					type: 'bar',
-					data: {
-						labels: apiHomeTeamLabels,
-						datasets: [{
-							label: apiHomeTeamStats_TeamName + ' Stats',
-							data: apiHomeTeamStats,
-							borderWidth: 2,
-							borderColor: '#000000',
-							backgroundColor: "#0047AB",
+			const delayInMilliseconds = 100000;
 
-						}]
+			const ctxAway = document.getElementById('awayTeamStats');
+			const ctxHome = document.getElementById('homeTeamStats');
+
+			var ctxHomeTeam = new Chart(ctxHome, {
+				type: 'bar',
+				data: {
+					labels: apiHomeTeamLabels,
+					datasets: [{
+						label: apiHomeTeamLabels,
+						data: apiHomeTeamStats,
+						borderWidth: 2,
+						borderColor: '#000000',
+						backgroundColor: "#0047AB",
+
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'index',
 					},
-					options: {
-						tooltips:{
-							mode:'index',
-						},
-						scales: {
-							y: {
-								beginAtZero: true,
-								ticks: {
-									stepSize: 1,
-								}
+					scales: {
+						y: {
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1,
 							}
 						}
 					}
-				});
-			}
-			apiChart_HomeTeam()
+				}
+			});
 
-			async function getAPIData_HomeTeam() {
+			var ctxAwayTeam = new Chart(ctxAway, {
+				type: 'bar',
+				data: {
+					labels: apiAwayTeamLabels,
+					datasets: [{
+						label: apiAwayTeamLabels,
+						data: apiAwayTeamStats,
+						borderWidth: 2,
+						borderColor: '#000000',
+						backgroundColor: '#FF0099'
+					}]
+				},
+				options: {
+					tooltips: {
+						mode: 'index',
+					},
+					scales: {
+						y: {
+							beginAtZero: true,
+							ticks: {
+								stepSize: 1,
+							}
+						}
+					}
+				}
+			});
+
+			//Load matchID entered
+			matchID = document.getElementById("matchDetailsByIDValue").value;
+			dataToGraph();
+
+			//Listener event to get matchID from user
+			document.getElementById('matchDetailsByID_form').addEventListener('submit', dataToGraph(event));
+
+
+
+
+
+			async function dataToGraph(event) {
+				if (event) {
+					event.preventDefault();
+				}
 
 				var matchID = document.getElementById("matchDetailsByIDValue").value;
-				alert("home team - match id  = " + matchID)
 
-				const url = 'https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/' + matchID + '?limit=5';
+				alert("dataToGraph " + matchID);
+				// give feedback to user that data is loading in background
+				ctxHomeTeam.data.datasets[0].label = `loading ... ${matchID}`;
+				ctxAwayTeam.data.datasets[0].label = `loading ... ${matchID}`;
+
+				ctxHomeTeam.update();
+				ctxAwayTeam.update();
+
+				// set all variables to empty again
+
+				let apiHomeTeamLabels = [];
+				let apiHomeTeamStats = [];
+
+				let apiAwayTeamLabels = [];
+				let apiAwayTeamStats = [];
+
+				//fetch API data
+
 				const options = {
 					method: 'GET',
 					headers: {
@@ -757,120 +815,85 @@
 					}
 				};
 
-				try {
-					const response = await fetch(url, options);
-					const result = await response.json();
-					console.log(result.data.stats.home_team);
-					apiHomeTeamStats_TeamName = result.data.stats.home_team.team_name;
-					apiHomeTeamStats = result.data.stats.home_team;
-					var key = "first_half_lost"
-					var key1 = "team_name"
-					var key2 = "first_half_win"
-					var key3 = "first_half_draw"
-					var key4 = "avg_bookie_win_chance"
-					var key5 = "avg_bookie_draw_chance"
-					var key6 = "avg_bookie_lose_chance"
-
-					delete apiHomeTeamStats[key];
-					delete apiHomeTeamStats[key1];
-					delete apiHomeTeamStats[key2];
-					delete apiHomeTeamStats[key3];
-					delete apiHomeTeamStats[key4];
-					delete apiHomeTeamStats[key5];
-					delete apiHomeTeamStats[key6];
-
-					console.log(apiHomeTeamStats);
+				alert(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5`);
+				const response = await fetch(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5`, options)
+				const result = await response.json();
 
 
-				} catch (error) {
-					console.error(error);
-				}
-			}
+				apiHomeTeamStats_TeamName = result.data.stats.home_team.team_name;
+				apiHomeTeamStats = result.data.stats.home_team;
+				var key = "first_half_lost"
+				var key1 = "team_name"
+				var key2 = "first_half_win"
+				var key3 = "first_half_draw"
+				var key4 = "avg_bookie_win_chance"
+				var key5 = "avg_bookie_draw_chance"
+				var key6 = "avg_bookie_lose_chance"
 
-			var apiAwayTeamLabels = [];
-			var apiAwayTeamStats = [];
-
-			async function apiChart_AwayTeam() {
-
-				await getAPIData_AwayTeam();
-
-				var matchID = document.getElementById("matchDetailsByIDValue").value;
-
-				const ctx = document.getElementById('awayTeamStats');
-
-				new Chart(ctx, {
-					type: 'bar',
-					data: {
-						labels: apiAwayTeamLabels,
-						datasets: [{
-							label: apiAwayTeamStats_TeamName + ' Stats',
-							data: apiAwayTeamStats,
-							borderWidth: 2,
-							borderColor: '#000000',
-							backgroundColor: '#FF0099'
-						}]
-					},
-					options: {
-						tooltips:{
-							mode:'index',
-						},
-						scales: {
-							y: {
-								beginAtZero: true,
-								ticks: {
-									stepSize: 1,
-								}
-							}
-						}
-					}
-				});
-			}
-			apiChart_AwayTeam()
-
-			async function getAPIData_AwayTeam() {
-
-				var matchID = document.getElementById("matchDetailsByIDValue").value;
-				alert("away team - match id  = " + matchID)
+				delete apiHomeTeamStats[key];
+				delete apiHomeTeamStats[key1];
+				delete apiHomeTeamStats[key2];
+				delete apiHomeTeamStats[key3];
+				delete apiHomeTeamStats[key4];
+				delete apiHomeTeamStats[key5];
+				delete apiHomeTeamStats[key6];
 
 
-				const url = 'https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/' + matchID + '?limit=5';
-				const options = {
-					method: 'GET',
-					headers: {
-						'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
-						'X-RapidAPI-Host': 'football-prediction-api.p.rapidapi.com'
-					}
-				};
+				apiAwayTeamStats_TeamName = result.data.stats.away_team.team_name;
+				apiAwayTeamStats = result.data.stats.away_team;
+				var key = "first_half_lost"
+				var key1 = "team_name"
+				var key2 = "first_half_win"
+				var key3 = "first_half_draw"
+				var key4 = "avg_bookie_win_chance"
+				var key5 = "avg_bookie_draw_chance"
+				var key6 = "avg_bookie_lose_chance"
 
-				try {
-					const response = await fetch(url, options);
-					const result = await response.json();
-					console.log(result.data.stats.home_team);
-					apiAwayTeamStats_TeamName = result.data.stats.away_team.team_name;
-					apiAwayTeamStats = result.data.stats.away_team;
-					var key = "first_half_lost"
-					var key1 = "team_name"
-					var key2 = "first_half_win"
-					var key3 = "first_half_draw"
-					var key4 = "avg_bookie_win_chance"
-					var key5 = "avg_bookie_draw_chance"
-					var key6 = "avg_bookie_lose_chance"
+				delete apiAwayTeamStats[key];
+				delete apiAwayTeamStats[key1];
+				delete apiAwayTeamStats[key2];
+				delete apiAwayTeamStats[key3];
+				delete apiAwayTeamStats[key4];
+				delete apiAwayTeamStats[key5];
+				delete apiAwayTeamStats[key6];
 
-					delete apiAwayTeamStats[key];
-					delete apiAwayTeamStats[key1];
-					delete apiAwayTeamStats[key2];
-					delete apiAwayTeamStats[key3];
-					delete apiAwayTeamStats[key4];
-					delete apiAwayTeamStats[key5];
-					delete apiAwayTeamStats[key6];
+				ctxHomeTeam.data.dataset = apiHomeTeamStats;
+				ctxAwayTeam.data.dataset = apiAwayTeamStats;
 
-					console.log(apiAwayTeamStats);
+				//graphHomeTeam();
+				//graphAwayTeam();
+				
+				document.getElementById('homeTeamStats').style.display = "block";
 
+				ctxHomeTeam.data.datasets[0].label  = apiHomeTeamStats_TeamName;
+				ctxHomeTeam.data.datasets[0].data = apiHomeTeamStats;
+				ctxHomeTeam.update();
+				
+				document.getElementById('awayTeamStats').style.display = "block";
+				
+				ctxAwayTeam.data.datasets[0].label  = apiAwayTeamStats_TeamName;
+				ctxAwayTeam.data.datasets[0].data = apiAwayTeamStats;
+				ctxAwayTeam.update();
 
-				} catch (error) {
-					console.error(error);
-				}
-			}
+			};
+
+			//function graphHomeTeam() {
+			//	document.getElementById('homeTeamStats').style.display = "block";
+//
+				//ctxHomeTeam.data.datasets[0].label  = apiHomeTeamStats_TeamName;
+			//	ctxHomeTeam.data.datasets[0].data = apiHomeTeamStats;
+				
+			//	ctxHomeTeam.update();
+		//	}
+
+		//	function graphAwayTeam() {
+			//	document.getElementById('awayTeamStats').style.display = "block";
+				
+			//	ctxAwayTeam.data.datasets[0].label  = apiAwayTeamStats_TeamName;
+			//	ctxAwayTeam.data.datasets[0].data = apiAwayTeamStats;
+
+			//	ctxAwayTeam.update();
+		//	}
 		</script>
 
 

@@ -408,36 +408,35 @@
 									<!--									Search bar to enter matchID to match details-->
 									<div id="matchDetailsByID">
 										<form name="matchDetailsByID_form" id="matchDetailsByID_form"
-											th:action="@{/member/api_searchMatchDetailsByID}" method="post" required>
+											 method="post" required>
 											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="text"
 												placeholder="Search a match details by MatchID...">
-											<!--												//onkeyup="apiChart_AwayTeam();apiChart_HomeTeam();"-->
-											<button type="submit">Submit</button>
+											<button type="submit" id="matchDetailsByID_button" onclick="dataToGraph(event)">Submit</button>
 										</form>
 									</div>
 
 									<h4>Overall Head to Head Stats</h4>
-									<table class="table table-align-middle" role="grid" id="head2HeadOverallTable">
-										<thead class="small">
-											<tr>
-												<th class="fw-bold" style="width:20px">Number of Encounters</th>
-												<th class="fw-bold" style="width:20px">Total Goals</th>
-												<th class="fw-bold" style="width:20px">Matches Both Teams Scored</th>
-												<th class="fw-bold" style="width:20px">Average Goals Per Match</th>
-											</tr>
-										</thead>
-										<tbody id="checkall-list">
+<!--									<table class="table table-align-middle" role="grid" id="head2HeadOverallTable">-->
+<!--										<thead class="small">-->
+<!--											<tr>-->
+<!--												<th class="fw-bold" style="width:20px">Number of Encounters</th>-->
+<!--												<th class="fw-bold" style="width:20px">Total Goals</th>-->
+<!--												<th class="fw-bold" style="width:20px">Matches Both Teams Scored</th>-->
+<!--												<th class="fw-bold" style="width:20px">Average Goals Per Match</th>-->
+<!--											</tr>-->
+<!--										</thead>-->
+<!--										<tbody id="checkall-list">-->
 
-											<!-- item -->
-											<tr th:each="overall:${overallHead2Head}">
-												<td th:text="${overall.numEncounters}"></td>
-												<td th:text="${overall.totalGoals}"></td>
-												<td th:text="${overall.bothTeamsScored}"></td>
-												<td th:text="${overall.avgGoalsPerMatch}"></td>
-											</tr>
-											<!-- end item -->
-										</tbody>
-									</table>
+<!--											 item -->
+<!--											<tr th:each="overall:${overallHead2Head}">-->
+<!--												<td th:text="${overall.numEncounters}"></td>-->
+<!--												<td th:text="${overall.totalGoals}"></td>-->
+<!--												<td th:text="${overall.bothTeamsScored}"></td>-->
+<!--												<td th:text="${overall.avgGoalsPerMatch}"></td>-->
+<!--											</tr>-->
+<!--											 end item -->
+<!--										</tbody>-->
+<!--									</table>-->
 									<h4> Home Team Stats - Head to Head</h4>
 									<canvas id="homeTeamStats"></canvas>
 									<h4> Away Team Stats - Head to Head</h4>
@@ -711,8 +710,6 @@
 
 			let matchID = "274216";
 
-			const delayInMilliseconds = 100000;
-
 			const ctxAway = document.getElementById('awayTeamStats');
 			const ctxHome = document.getElementById('homeTeamStats');
 
@@ -776,18 +773,14 @@
 			dataToGraph();
 
 			//Listener event to get matchID from user
-			document.getElementById('matchDetailsByID_form').addEventListener('submit', dataToGraph(event));
-
-
-
-
+		//	document.getElementById('matchDetailsByID_button').addEventListener('submit', dataToGraph(event));
 
 			async function dataToGraph(event) {
 				if (event) {
 					event.preventDefault();
 				}
 
-				var matchID = document.getElementById("matchDetailsByIDValue").value;
+				matchID = document.getElementById("matchDetailsByIDValue").value;
 
 				alert("dataToGraph " + matchID);
 				// give feedback to user that data is loading in background
@@ -815,8 +808,8 @@
 					}
 				};
 
-				alert(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5`);
-				const response = await fetch(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/274216?limit=5`, options)
+				alert(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/${matchID}?limit=5`);
+				const response = await fetch(`https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/${matchID}?limit=5`, options)
 				const result = await response.json();
 
 
@@ -860,9 +853,6 @@
 				ctxHomeTeam.data.dataset = apiHomeTeamStats;
 				ctxAwayTeam.data.dataset = apiAwayTeamStats;
 
-				//graphHomeTeam();
-				//graphAwayTeam();
-				
 				document.getElementById('homeTeamStats').style.display = "block";
 
 				ctxHomeTeam.data.datasets[0].label  = apiHomeTeamStats_TeamName;
@@ -877,23 +867,6 @@
 
 			};
 
-			//function graphHomeTeam() {
-			//	document.getElementById('homeTeamStats').style.display = "block";
-//
-				//ctxHomeTeam.data.datasets[0].label  = apiHomeTeamStats_TeamName;
-			//	ctxHomeTeam.data.datasets[0].data = apiHomeTeamStats;
-				
-			//	ctxHomeTeam.update();
-		//	}
-
-		//	function graphAwayTeam() {
-			//	document.getElementById('awayTeamStats').style.display = "block";
-				
-			//	ctxAwayTeam.data.datasets[0].label  = apiAwayTeamStats_TeamName;
-			//	ctxAwayTeam.data.datasets[0].data = apiAwayTeamStats;
-
-			//	ctxAwayTeam.update();
-		//	}
 		</script>
 
 

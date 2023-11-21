@@ -527,56 +527,10 @@
                 
                 <div class="portlet-header">
 
-                
-
-<div id="searchByMatchID">
-  <h2> Know the MatchID already? Get match odds!</h2>
-  <form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
-    <input class="form-control" id="searchByMatchID" name="searchByMatchID"
-      type="text" placeholder="Search a specific MatchID..." onkeyup="">
-    <button class="btn" type="submit">Submit</button>
-  </form>
-
-  <table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
-    <thead>
-      <tr>
-        <th class="fw-bold" style="width:180px">Match ID</th>
-        <th class="fw-bold" style="width:20px">Home Team</th>
-        <th class="fw-bold" style="width:20px">Away Team</th>
-        <th class="fw-bold" style="width:20px">Prediction</th>
-        <th class="fw-bold" style="width:20px">Odds</th>
-
-      </tr>
-    </thead>
-    <tbody id="checkall-list">
-
-      <!-- item -->
-      <tr th:each="details:${matchIDDetails}">
-        <td> <a href="#!" class="link-normal fw-medium"
-            th:text="${details.id}"></a></td>
-        <td th:text="${details.homeTeam}"></td>
-        <td th:text="${details.awayTeam}"></td>
-        <td th:text="${details.prediction}"></td>
-<!--												<td th:text="${getOdd_1}"></td>-->
-        <td>
-           <ul>
-          1:<p th:text="${getOdd_1}"></p>
-          2:<p th:text="${getOdd_2}"></p>
-          12:<p th:text="${getOdd_12}"></p>
-          X:<p th:text="${getOdd_X}"></p>
-          1X:<p th:text="${getOdd_1X}"></p>
-          X2:<p th:text="${getOdd_X2}"></p>
-           </ul>
-
-        </td>
-      </tr>
-      <!-- end item -->
-    </tbody>
-  </table>
-</div>
- 
+          
 
 <div class="mb-3">
+
 
 									<div class="fw-bold d-flex align-items-center mb-3">
 
@@ -642,7 +596,51 @@
             
             
             
-            
+            <div id="searchByMatchID">
+  <h2> Know the MatchID already? Get match odds!</h2>
+  <form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
+    <input class="form-control" id="searchByMatchID" name="searchByMatchID"
+      type="text" placeholder="Search a specific MatchID..." onkeyup="">
+    <button class="btn" type="submit">Submit</button>
+  </form>
+
+  <table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
+    <thead>
+      <tr>
+        <th class="fw-bold" style="width:180px">Match ID</th>
+        <th class="fw-bold" style="width:20px">Home Team</th>
+        <th class="fw-bold" style="width:20px">Away Team</th>
+        <th class="fw-bold" style="width:20px">Prediction</th>
+        <th class="fw-bold" style="width:20px">Odds</th>
+
+      </tr>
+    </thead>
+    <tbody id="checkall-list">
+
+      <!-- item -->
+      <tr th:each="details:${matchIDDetails}">
+        <td> <a href="#!" class="link-normal fw-medium"
+            th:text="${details.id}"></a></td>
+        <td th:text="${details.homeTeam}"></td>
+        <td th:text="${details.awayTeam}"></td>
+        <td th:text="${details.prediction}"></td>
+<!--												<td th:text="${getOdd_1}"></td>-->
+        <td>
+           <ul>
+          1:<p th:text="${getOdd_1}"></p>
+          2:<p th:text="${getOdd_2}"></p>
+          12:<p th:text="${getOdd_12}"></p>
+          X:<p th:text="${getOdd_X}"></p>
+          1X:<p th:text="${getOdd_1X}"></p>
+          X2:<p th:text="${getOdd_X2}"></p>
+           </ul>
+
+        </td>
+      </tr>
+      <!-- end item -->
+    </tbody>
+  </table>
+</div>
             
             
             

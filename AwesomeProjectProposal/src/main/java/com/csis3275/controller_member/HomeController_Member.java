@@ -73,7 +73,7 @@ public class HomeController_Member {
 	
 	//Post matchID to get populated charts of matchdetails page
 		@PostMapping("/member/api_searchMatchDetailsByID")
-		public String renderMatchDetails(@RequestParam(value="matchDetailsByID") String matchDetailsByID,Model model) {
+		public String renderMatchDetails(@RequestParam(value="matchDetailsByID") String matchDetailsByID, Model model) {
 			System.out.print(matchDetailsByID);
 			model.addAttribute("overallHead2Head", apiService.getOverallHead2Head(matchDetailsByID));
 			return "member/matchdetails";

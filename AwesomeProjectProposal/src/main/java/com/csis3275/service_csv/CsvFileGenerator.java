@@ -28,7 +28,12 @@ public class CsvFileGenerator {
 			CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT);
 			printer.printRecord("User", "MatchID", "Date");
 			for (UserDataset UserDataset : UserDatasets) {
-				printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
+				if (UserDataset.getUser()!= null) {
+					printer.printRecord(UserDataset.getUser(), UserDataset.getMatchId(), UserDataset.getDos());
+				}
+				else {
+					printer.printRecord( "UserOf" + UserDataset.getDos(), UserDataset.getMatchId(), UserDataset.getDos());
+				}
 			}
 			printer.printRecord("End of File");
 			printer.close();

@@ -9,7 +9,6 @@ import com.csis3275.model_db.User;
 import com.csis3275.model_db.UserDataset;
 import com.csis3275.service_db.UserDatasetService;
 
-
 @Service
 public class DataCSVServiceImpl implements DataCSVService {
 
@@ -26,19 +25,26 @@ public class DataCSVServiceImpl implements DataCSVService {
 	@Override
 	public List<UserDataset> getUserDataList() {
 		// TODO Auto-generated method stub
-		//List<UserDataset> NewDataset = 	UserDatasetService.readUserDataset();
+		// List<UserDataset> NewDataset = UserDatasetService.readUserDataset();
 		PopulateDataSet();
-		//Return Deummy value	
+		// Return Deummy value
 		return DataRepo.findAll();
 	}
-	
+
 	public void PopulateDataSet() {
-	    for (int i = 0; i <= 10; i++) {
-	    	UserDataset UserData = new UserDataset();
-	    	//UserData.setUser(new User ("NewUserToken" + i));
-	    	UserData.setMatchId(""+i);
-	    	UserData.setDos(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-	    	addUserDataset(UserData);
-	      }
+
+		for (int i = 0; i <= 10; i++) {
+			UserDataset UserData = new UserDataset();
+			User NewUser = new User();
+
+//			NewUser.setTokenUser("NewUser" + i);
+//			NewUser.setEmail(i + "@newuser.com");
+//			NewUser.setUserId(Long.valueOf(i));
+//			// NewUser.getTokenUser()
+//			UserData.setUser(NewUser);
+			UserData.setMatchId("" + i);
+			UserData.setDos(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+			addUserDataset(UserData);
+		}
 	}
 }

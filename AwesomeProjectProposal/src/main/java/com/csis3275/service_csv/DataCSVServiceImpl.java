@@ -35,12 +35,10 @@ public class DataCSVServiceImpl implements DataCSVService {
 
 		for (int i = 0; i <= 10; i++) {
 			UserDataset UserData = new UserDataset();
-			User NewUser = new User();
-
+//			User NewUser = new User();
 //			NewUser.setTokenUser("NewUser" + i);
 //			NewUser.setEmail(i + "@newuser.com");
 //			NewUser.setUserId(Long.valueOf(i));
-//			// NewUser.getTokenUser()
 //			UserData.setUser(NewUser);
 			UserData.setMatchId("" + i);
 			UserData.setDos(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));

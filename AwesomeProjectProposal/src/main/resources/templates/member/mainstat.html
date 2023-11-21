@@ -436,12 +436,14 @@ Rounded - add class:
 								</div>
 								<div id="searchByMatchID">
 									<h2> Know the MatchID already? Get match odds!</h2>
-									<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()" method="post" required>
+									<form name="searchByMatchIDForm" action="#"
+										th:action="@{/member/api_searchByMatchID}" onsubmit="return validateForm()"
+										method="post" required>
 										<input class="form-control" id="searchByMatchID" name="searchByMatchID"
 											type="text" placeholder="Search a specific MatchID..." onkeyup="">
 										<button class="btn" type="submit">Submit</button>
 									</form>
-								
+
 									<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
 										<thead>
 											<tr>
@@ -462,16 +464,16 @@ Rounded - add class:
 												<td th:text="${details.homeTeam}"></td>
 												<td th:text="${details.awayTeam}"></td>
 												<td th:text="${details.prediction}"></td>
-<!--												<td th:text="${getOdd_1}"></td>-->
+												<!--												<td th:text="${getOdd_1}"></td>-->
 												<td>
-													 <ul>
-													1:<p th:text="${getOdd_1}"></p>
-													2:<p th:text="${getOdd_2}"></p>
-													12:<p th:text="${getOdd_12}"></p>
-													X:<p th:text="${getOdd_X}"></p>
-													1X:<p th:text="${getOdd_1X}"></p>
-													X2:<p th:text="${getOdd_X2}"></p>
-													 </ul>
+													<ul>
+														1:<p th:text="${getOdd_1}"></p>
+														2:<p th:text="${getOdd_2}"></p>
+														12:<p th:text="${getOdd_12}"></p>
+														X:<p th:text="${getOdd_X}"></p>
+														1X:<p th:text="${getOdd_1X}"></p>
+														X2:<p th:text="${getOdd_X2}"></p>
+													</ul>
 
 												</td>
 											</tr>
@@ -613,7 +615,9 @@ Rounded - add class:
 										<span class="w-100">Your Stats </span>
 										<i class="fi fi-cloud-download fs--25"></i>
 									</div>
-
+									<!-- Download CSV -->
+									<a href="http://localhost:8080/member/export-to-csv"
+										class="btn btn-primary">Download CSV File</a>
 									<!-- imports -->
 
 
@@ -730,19 +734,19 @@ Rounded - add class:
 		});
 
 	</script>
-	
+
 	<!--If searchByMatchID search bar is empty, API will cause break, stop empty input submission-->
-<script>
-function validateForm() {
-    var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
-    if (x == "") {
-      alert("MatchID must be filled out");
-      return false;
-    }
-  }
-</script>
-	
-	
+	<script>
+		function validateForm() {
+			var x = document.forms["searchByMatchIDForm"]["searchByMatchID"].value;
+			if (x == "") {
+				alert("MatchID must be filled out");
+				return false;
+			}
+		}
+	</script>
+
+
 
 </body>
 

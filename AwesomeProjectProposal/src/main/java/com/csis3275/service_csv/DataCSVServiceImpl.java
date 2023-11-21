@@ -36,7 +36,7 @@ public class DataCSVServiceImpl implements DataCSVService {
 	public void PopulateDataSet() {
 	    for (int i = 0; i <= 10; i++) {
 	    	UserDataset UserData = new UserDataset();
-	    	UserData.setUser(new User ("NewUser" + i));
+	    	//UserData.setUser(new User ("NewUser" + i));
 	    	UserData.setMatchId(""+i);
 	    	UserData.setDos(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 	    	addUserDataset(UserData);

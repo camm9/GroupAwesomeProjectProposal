@@ -194,7 +194,7 @@
               .nav-deep-bordered  bordered links
 
             -->
-					<nav class="nav-deep nav-deep-sm nav-deep-light">
+						<nav class="nav-deep nav-deep-sm nav-deep-light">
 						<ul class="nav flex-column">
 
 
@@ -214,29 +214,41 @@
 											d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z">
 										</path>
 									</svg>
-									<span>Dashboard</span>
+									<span class="ml-2">Dashboard</span>
+								</a>
+							</li>
+
+
+							<li class="nav-item">
+								<a class="nav-link" href="/member/mainstat">
+
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+										<path
+											d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z">
+										</path>
+									</svg>
+									<span class="ml-2">Your Stats</span>
 								</a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/member/mainstat">
+								<a class="nav-link" href="#">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										fill="currentColor" class="bi bi-arrow-up-right-square-fill"
+										viewBox="0 0 16 16">
 										<path
-											d="M7.5 5.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L6 7l-.549.317a.5.5 0 1 0 .5.866l.549-.317V8.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L8 7l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V5.5zm-2 4.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
-										</path>
-										<path
-											d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z">
+											d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z">
 										</path>
 									</svg>
-									<span>Statistics</span>
+									<span class="ml-2">Trends</span>
 								</a>
 							</li>
 
-							<li class="nav-item active">
-								<a class="nav-link" href="/member/matchdetails" target="_self" rel="noopener">
+							<li class="nav-item">
+								<a class="nav-link" href="/member/matchdetails">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-file-earmark-medical" viewBox="0 0 16 16">
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
 										<path
 											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
 										</path>
@@ -244,44 +256,33 @@
 									<span>Match Details</span>
 								</a>
 							</li>
-
+							
 							<li class="nav-item">
-								<a class="nav-link" href="#">
+								<a class="nav-link" href="/member/matchodds">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-droplet-half" viewBox="0 0 16 16">
-										<path fill-rule="evenodd"
-											d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z">
-										</path>
-										<path fill-rule="evenodd"
-											d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z">
-										</path>
-									</svg>
-									<span>Option 3</span>
-								</a>
-							</li>
-
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z">
-										</path>
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
 										<path
-											d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z">
+											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
 										</path>
 									</svg>
-									<span>Option 4</span>
+									<span>Match Odds</span>
 								</a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/">
+								<a class="nav-link" th:href="@{/logout}">
 									<i class="fi fi-power float-start"></i>
-									Log Out
+									<span class="ml-2">Log Out</span>
 								</a>
 							</li>
 
+							<li class="nav-item">
 
+								<span>
+									<hr class="w-75">
+								</span>
+
+							</li>
 
 						</ul>
 					</nav>

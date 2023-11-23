@@ -236,18 +236,6 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/member/matchdetails">
-									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
-										<path
-											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
-										</path>
-									</svg>
-									<span>Match Details</span>
-								</a>
-							</li>
-
-							<li class="nav-item">
 								<a class="nav-link" href="#">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
 										fill="currentColor" class="bi bi-arrow-up-right-square-fill"
@@ -260,10 +248,32 @@
 								</a>
 							</li>
 
-
+							<li class="nav-item">
+								<a class="nav-link" href="/member/matchdetails">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										<path
+											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
+										</path>
+									</svg>
+									<span>Match Details</span>
+								</a>
+							</li>
+							
+							<li class="nav-item">
+								<a class="nav-link" href="/member/matchodds">
+									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+										<path
+											d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z">
+										</path>
+									</svg>
+									<span>Match Odds</span>
+								</a>
+							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="/">
+								<a class="nav-link" th:href="@{/logout}">
 									<i class="fi fi-power float-start"></i>
 									<span class="ml-2">Log Out</span>
 								</a>
@@ -624,56 +634,6 @@
 						</div>
 
 					</div>
-
-
-
-
-					<div id="searchByMatchID">
-						<h2> Know the MatchID already? Get match odds!</h2>
-						<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}"
-							onsubmit="return validateForm()" method="post" required>
-							<input class="form-control" id="searchByMatchID" name="searchByMatchID" type="text"
-								placeholder="Search a specific MatchID..." onkeyup="">
-							<button class="btn" type="submit">Submit</button>
-						</form>
-
-						<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
-							<thead>
-								<tr>
-									<th class="fw-bold" style="width:180px">Match ID</th>
-									<th class="fw-bold" style="width:20px">Home Team</th>
-									<th class="fw-bold" style="width:20px">Away Team</th>
-									<th class="fw-bold" style="width:20px">Prediction</th>
-									<th class="fw-bold" style="width:20px">Odds</th>
-
-								</tr>
-							</thead>
-							<tbody id="checkall-list">
-
-								<!-- item -->
-								<tr th:each="details:${matchIDDetails}">
-									<td> <a href="#!" class="link-normal fw-medium" th:text="${details.id}"></a></td>
-									<td th:text="${details.homeTeam}"></td>
-									<td th:text="${details.awayTeam}"></td>
-									<td th:text="${details.prediction}"></td>
-									<!--												<td th:text="${getOdd_1}"></td>-->
-									<td>
-										<ul>
-											1:<p th:text="${getOdd_1}"></p>
-											2:<p th:text="${getOdd_2}"></p>
-											12:<p th:text="${getOdd_12}"></p>
-											X:<p th:text="${getOdd_X}"></p>
-											1X:<p th:text="${getOdd_1X}"></p>
-											X2:<p th:text="${getOdd_X2}"></p>
-										</ul>
-
-									</td>
-								</tr>
-								<!-- end item -->
-							</tbody>
-						</table>
-					</div>
-
 
 
 				</div>

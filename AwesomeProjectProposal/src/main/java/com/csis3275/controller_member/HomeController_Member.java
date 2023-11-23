@@ -134,19 +134,7 @@ public class HomeController_Member {
 		return "/loginpage";
 	}
 
-	// Prints match odds to mainstat page
-	@PostMapping("/member/api_searchByMatchID")
-	public String renderAPIMatchDetails(Model model, @RequestParam(value = "searchByMatchID") String searchByMatchID) {
-//		System.out.print(searchByMatchID);
-		model.addAttribute("matchIDDetails", apiService.getMatchOdds(searchByMatchID));
-		model.addAttribute("getOdd_1", apiService.getMatchOdds(searchByMatchID).getOdds().get1());
-		model.addAttribute("getOdd_2", apiService.getMatchOdds(searchByMatchID).getOdds().get2());
-		model.addAttribute("getOdd_12", apiService.getMatchOdds(searchByMatchID).getOdds().get12());
-		model.addAttribute("getOdd_X", apiService.getMatchOdds(searchByMatchID).getOdds().getX());
-		model.addAttribute("getOdd_1X", apiService.getMatchOdds(searchByMatchID).getOdds().get1x());
-		model.addAttribute("getOdd_X2", apiService.getMatchOdds(searchByMatchID).getOdds().getX2());
-		return "member/mainstat";
-	}
+
 
 	@GetMapping("/member/matchdetails")
 	public String renderMatchDetails(Model model) {
@@ -243,7 +231,26 @@ public class HomeController_Member {
 		
 		return "redirect:/member";
 	}
-
+	
+//Render matchodds page
+	@GetMapping("/member/matchodds")
+	public String renderMatchOdds(Model model) {
+		return "member/matchodds";
+	}
+	
+	// Prints match odds to matchodds page
+	@PostMapping("/member/api_searchByMatchID")
+	public String renderAPIMatchDetails(Model model, @RequestParam(value = "searchByMatchID") String searchByMatchID) {
+		model.addAttribute("matchIDDetails", apiService.getMatchOdds(searchByMatchID));
+		model.addAttribute("getOdd_1", apiService.getMatchOdds(searchByMatchID).getOdds().get1());
+		model.addAttribute("getOdd_2", apiService.getMatchOdds(searchByMatchID).getOdds().get2());
+		model.addAttribute("getOdd_12", apiService.getMatchOdds(searchByMatchID).getOdds().get12());
+		model.addAttribute("getOdd_X", apiService.getMatchOdds(searchByMatchID).getOdds().getX());
+		model.addAttribute("getOdd_1X", apiService.getMatchOdds(searchByMatchID).getOdds().get1x());
+		model.addAttribute("getOdd_X2", apiService.getMatchOdds(searchByMatchID).getOdds().getX2());
+		return "member/matchodds";
+	}
+	
 	// Post matchID to get populated charts of matchdetails page
 	@PostMapping("/member/api_searchMatchDetailsByID")
 	public String renderMatchDetails(@RequestParam(value = "matchDetailsByID") String matchDetailsByID, Model model) {

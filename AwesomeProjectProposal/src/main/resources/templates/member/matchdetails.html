@@ -364,7 +364,7 @@
 									<div id="matchDetailsByID">
 										<form name="matchDetailsByID_form" id="matchDetailsByID_form" method="post"
 											required>
-											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="text"
+											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="number"
 												placeholder="Search a match details by MatchID...">
 											<button type="submit" id="matchDetailsByID_button"
 												onclick="dataToGraph(event);validateForm()">Submit</button>
@@ -632,6 +632,7 @@
 					alert("MatchID must be filled out");
 					return false;
 				}
+				
 			}
 		</script>
 

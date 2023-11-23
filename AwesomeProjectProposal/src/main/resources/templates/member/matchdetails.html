@@ -362,12 +362,12 @@
 									class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
 									<!--									Search bar to enter matchID to match details-->
 									<div id="matchDetailsByID">
-										<form name="matchDetailsByID_form" id="matchDetailsByID_form" method="post"
+										<form name="matchDetailsByID_form" id="matchDetailsByID_form"  method="post"
 											required>
 											<input id="matchDetailsByIDValue" name="matchDetailsByID" type="number"
-												placeholder="Search a match details by MatchID...">
+												placeholder="Search a match details by MatchID..." class="form-control rounded form-control-sm bg-transparent">
 											<button type="submit" id="matchDetailsByID_button"
-												onclick="dataToGraph(event);validateForm()">Submit</button>
+												onclick="dataToGraph(event);validateForm()" class="btn">Submit</button>
 										</form>
 									</div>
 

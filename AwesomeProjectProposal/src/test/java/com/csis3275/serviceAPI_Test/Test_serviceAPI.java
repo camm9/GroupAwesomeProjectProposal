@@ -39,6 +39,10 @@ class Test_serviceAPI {
 	@Autowired
 	private MockMvc mvc;
 
+	/*
+	 * Checks if getAllMatchesForDate("yyyy-MM-dd") returns API results with
+	 * List<Datum> of matches and their details
+	 */
 	@Test
 	@DisplayName("Should Create List of Matches")
 	public void shouldGetListOfMatches() {
@@ -60,11 +64,11 @@ class Test_serviceAPI {
 		}
 	}
 
-
+	/* Checks getMatchOdds successfully get's betting odds from API of a matchID */
 	@Test
 	@DisplayName("Should Create a Datum object with MatchOdds")
 	public void shouldGetMatchOdds() {
-		// sample matchID take from API 274216
+		// sample matchID take from API
 		String matchID = "274216";
 
 		Datum testData = apiService.getMatchOdds(matchID);
@@ -74,25 +78,78 @@ class Test_serviceAPI {
 
 		// check that it is a Datum type
 		assertTrue(testData instanceof Datum);
-		
-		//check that Odds field is found in testData
+
+		// check that Odds field is found in testData
 		Odds oddsField = testData.getOdds();
-		
+
 		assertNotNull(oddsField);
-		
+
 		assertEquals(Odds.class, oddsField.getType());
 
 	}
-	
+
+	/*
+	 * Checks that expected errors are thrown when non-existent MatchID is entered
+	 * into getOverallHead2Head(matchID)
+	 */
 	@Test
 	@DisplayName("Should Return API error - non-existent MatchID")
 	public void shouldMatchIDNotExist() {
 		String fakeMatchID = "123";
-		
-		//Should throw a ResponseStatusException
-		assertThrows(ResponseStatusException.class, () ->{
+
+		// Should throw a ResponseStatusException
+		assertThrows(ResponseStatusException.class, () -> {
 			apiService.getOverallHead2Head(fakeMatchID);
 		});
+	}
+
+	/*
+	 * Boundary Value Analysis testing for API functions. Because API uses it's own
+	 * randomized assigned id value (matchID), there are not 'true' minimal and
+	 * maximal values to be entered. We will test by manipulating a valid matchID to
+	 * minimal and maximal values, these naturally become more 'out of bound'
+	 * testing than the regular min and max testing of BVA
+	 */
+	@Test
+	@DisplayName("BVA Testing API")
+	public void BVATest_API() {
+		// sample matchID take from API (valid)
+		String matchID = "274216";
+		Datum testData = apiService.getMatchOdds(matchID);
+		// that API call is not null
+		assertNotNull(testData);
+
+		// check that it is a Datum type
+		assertTrue(testData instanceof Datum);
+
+		// check that Odds field is found in testData
+		Odds oddsField = testData.getOdds();
+
+		
+		// minimal & out of bounds value
+		String min_MatchID = "-274216";
+
+		// Should throw a ResponseStatusException
+		assertThrows(ResponseStatusException.class, () -> {
+			Datum testData_Min = apiService.getMatchOdds(min_MatchID);
+		});
+
+		
+		// maximal & out of bounds value
+		String max_MatchID = "274216000";
+		// Should throw a ResponseStatusException
+		assertThrows(ResponseStatusException.class, () -> {
+			Datum testData_Max = apiService.getMatchOdds(max_MatchID);
+		});
+
+		
+		// random out of bounds value
+		String random_MatchID = "alksfj!";
+		// Should throw a ResponseStatusException
+		assertThrows(ResponseStatusException.class, () -> {
+			Datum testData_Random = apiService.getMatchOdds(random_MatchID);
+		});
+
 	}
 
 }

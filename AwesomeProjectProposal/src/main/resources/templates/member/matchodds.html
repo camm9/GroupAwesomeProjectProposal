@@ -68,8 +68,7 @@
 						<!-- sidebar toggler -->
 						<a href="#aside-main"
 							class="btn-sidebar-toggle h-100 d-inline-block d-lg-none justify-content-center align-items-center p-2">
-							<span>
-								<svg width="25" height="25" viewBox="0 0 20 20">
+							<span> <svg width="25" height="25" viewBox="0 0 20 20">
 									<path
 										d="M 19.9876 1.998 L -0.0108 1.998 L -0.0108 -0.0019 L 19.9876 -0.0019 L 19.9876 1.998 Z">
 									</path>
@@ -87,8 +86,8 @@
 						</a>
 
 						<!-- logo : mobile only -->
-						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="index.html">
-							<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+						<a class="navbar-brand d-inline-block d-lg-none mx-2" href="index.html"> <img
+								src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
 						</a>
 
 					</div>
@@ -112,8 +111,8 @@
 							</button>
 
 							<!-- logo -->
-							<a class="navbar-brand" href="index.html">
-								<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+							<a class="navbar-brand" href="index.html"> <img src="/assets/images/logo/logo.png"
+									width="85" height="70" alt="...">
 							</a>
 
 						</div>
@@ -129,17 +128,11 @@
 
 					<!-- account -->
 					<li class="list-inline-item mx-1 dropdown">
-
-						<!-- has avatar -->
-						<a href="#" id="dropdownAccountOptions"
+						<!-- has avatar --> <a href="#" id="dropdownAccountOptions"
 							class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle shadow bg-cover"
-							style="background-image:url(/demo.files/images/icons/user750.png)" data-bs-toggle="dropdown"
-							data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true"
-							aria-label="Account options"></a>
-						<a href="http://localhost:8080/member/export-to-csv" class="btn btn-primary">Download CSV
-							File</a>
-						<!-- no avatar -->
-						<!--
+							style="background-image: url(/demo.files/images/icons/user750.png)"
+							data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+							aria-haspopup="true" aria-label="Account options"></a> <!-- no avatar --> <!--
                 <a href="#" id="dropdownAccountOptions" class="btn btn-sm btn-icon btn-light dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                   <span class="small fw-bold">JD</span>
                 </a>
@@ -173,8 +166,8 @@
 
 				<!-- sidebar : logo -->
 				<div class="py-2 px-3 mb-3 mt-1">
-					<a href="/member/mainstat">
-						<img src="/assets/images/logo/logo.png" width="85" height="70" alt="...">
+					<a href="/member/mainstat"> <img src="/assets/images/logo/logo.png" width="85" height="70"
+							alt="...">
 					</a>
 				</div>
 				<!-- /sidebar : logo -->
@@ -259,7 +252,6 @@
 									<span>Match Details</span>
 								</a>
 							</li>
-							
 							<li class="nav-item">
 								<a class="nav-link" href="/member/matchodds">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
@@ -334,311 +326,76 @@
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb small">
 							<li class="breadcrumb-item"><a href="/member">Dashboard</a></li>
-							<li class="breadcrumb-item text-muted active" aria-current="page">Your Stats
-							</li>
+							<li class="breadcrumb-item text-muted active" aria-current="page">Match Odds</li>
 						</ol>
 					</nav>
 
 				</header>
 
+				<div id="searchByMatchID">
+					<h2>Know the MatchID already? Get match odds!</h2>
+					<form name="searchByMatchIDForm" action="#" th:action="@{/member/api_searchByMatchID}"
+						onsubmit="return validateForm()" method="post" required>
+						<input class="form-control" id="searchByMatchID" name="searchByMatchID" type="number"
+							placeholder="Search a specific MatchID..." onkeyup="">
+						<button class="btn" type="submit">Submit</button>
+					</form>
 
-				<!-- Primary -->
-				<div class="section rounded mb-3">
+					<table class="table table-align-middle mb-0" role="grid" id="matchDetailsTable">
+						<thead>
+							<tr>
+								<th class="fw-bold" style="width: 180px">Match ID</th>
+								<th class="fw-bold" style="width: 20px">Home Team</th>
+								<th class="fw-bold" style="width: 20px">Away Team</th>
+								<th class="fw-bold" style="width: 20px">Prediction</th>
+								<th class="fw-bold" style="width: 20px">Odds</th>
 
-					<div class="d-flex align-items-center justify-content-between border-bottom pb-4 my-2">
+							</tr>
+						</thead>
+						<tbody id="checkall-list">
 
-						<div class="w-100">
-							<h2 class="h5 mb-0">Last Activity</h2>
-							<small class="small text-muted"> Summary activity, today is </small><small
-								class="small text-muted" th:text="${dateTime}"></small>
-						</div>
+							<!-- item -->
+							<tr th:each="details:${matchIDDetails}">
+								<td><a href="#!" class="link-normal fw-medium" th:text="${details.id}"></a></td>
+								<td th:text="${details.homeTeam}"></td>
+								<td th:text="${details.awayTeam}"></td>
+								<td th:text="${details.prediction}"></td>
+								<!--												<td th:text="${getOdd_1}"></td>-->
+								<td>
+									<ul>
+										1:
+										<p th:text="${getOdd_1}"></p>
+										2:
+										<p th:text="${getOdd_2}"></p>
+										12:
+										<p th:text="${getOdd_12}"></p>
+										X:
+										<p th:text="${getOdd_X}"></p>
+										1X:
+										<p th:text="${getOdd_1X}"></p>
+										X2:
+										<p th:text="${getOdd_X2}"></p>
+									</ul>
 
-						<!-- save image -->
-						<a href="#" data-chartjs-id="yourstats" data-file-name="Awesome-Group-DouglasC"
-							class="chartjs-save btn btn-sm btn-light text-primary-hover rounded-circle float-end m-0"
-							data-bs-toggle="tooltip" title="Save Chart" aria-label="Save Chart">
-							<i class="fi fi-arrow-download m-0"></i>
-						</a>
-
-					</div>
-
-					<div class="row g-4 ">
-
-						<div class="col-12 col-lg-7 col-xl-9 bg-white">
-
-							<div class="position-relative h-100" style="min-height:250px; max-height:500px">
-								<canvas id="yourstats" class="chartjs" data-chartjs-dots="true"
-									data-chartjs-legend="true" data-chartjs-grid="true" data-chartjs-tooltip="true"
-									data-chartjs-title="Activity by visit" data-chartjs-xaxes-label="Date"
-									data-chartjs-yaxes-label="Number of dataset" data-chartjs-line-width="8"
-									data-chartjs-type="line" th:data-chartjs-labels='${dateArray}'
-									th:data-chartjs-datasets='${"[{ ""label"": ""Number of dataset saved by date"" , ""data"":  " + occurrences + " , ""fill"": true, ""backgroundColor"": ""rgba(255, 111, 0, 0.7)"" }]"}'></canvas>
-
-
-							</div>
-
-						</div>
-
-						<div class="col-12 col-lg-5 col-xl-3">
-
-							<!-- card -->
-							<div th:each="dataSet,iterator: ${preferedDataSet}"
-								class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150"
-								th:if="${iterator.index} <2">
-
-
-
-
-								<a href="#" class="d-block h6 text-dark"
-									th:text="${'Dataset # ' + dataSet.userDatasetId}"></a>
-								<p class="small"
-									th:text="${'This is an example for an important statistic 1 ' + dataSet.matchId}">
-								</p>
-								<p class="small" th:text="${'Match ID : ' + dataSet.matchId}"></p>
-
-								<!-- progress -->
-								<span class="small" th:text="${'Date : ' + dataSet.dos}"></span>
-								<div class="progress" style="height:3px">
-									<div class="progress-bar bg-success" role="progressbar" aria-label="progressbar"
-										style="width: 100%" aria-valuenow="39" aria-valuemin="0" aria-valuemax="100">
-									</div>
-								</div>
-
-							</div>
-
-							<!-- card -->
-
-
-
-
-
-						</div>
-
-					</div>
-
+								</td>
+							</tr>
+							<!-- end item -->
+						</tbody>
+					</table>
 				</div>
-				<!-- /Primary -->
-
-
-				<!-- widgets -->
-				<div class="row g-3 mb-3">
-
-
-
-
-					<div class="col-12 col-md-6 col-xl-6 mt-1">
-
-						<div class="portlet">
-
-
-							<div class="col-12 col-lg-7 col-xl-12 bg-white">
-
-								<div class="position-relative h-100" style="min-height:350px; max-height:500px">
-									<canvas id="yourstats2" class="chartjs" data-chartjs-dots="true"
-										data-chartjs-legend="true" data-chartjs-grid="false" data-chartjs-tooltip="true"
-										data-chartjs-title="" data-chartjs-xaxes-label="Date"
-										data-chartjs-yaxes-label="Number of dataset" data-chartjs-line-width="8"
-										data-chartjs-type="radar" th:data-chartjs-labels='${dateArray}'
-										th:data-chartjs-datasets='${"[{ ""label"": ""Number of dataset saved by date"" , ""data"":  " + occurrences + " , ""fill"": true, ""backgroundColor"": ""rgba(0, 181, 26, 0.9)"" }]"}'></canvas>
-
-
-								</div>
-
-							</div>
-
-						</div>
-
+				 <div class="bg-white shadow-lg p-4 rounded my-3 transition-hover-top transition-all-ease-150">
+					<div id="PredictionAccuracy" class="bg-white text-center">
+						<h3 class="fs-5 mt-4">Latest Prediction Accuracy</h3>
+						<p>Over the last 30 days</p>
+						<h2 th:text="${accuracyData_30Days}"></h2>
+						<p>Over the last 14 days</p>
+						<h2 th:text="${accuracyData_14Days}"></h2>
+						<p>Over the last 7 days</p>
+						<h2 th:text="${accuracyData_7Days}"></h2>
+						<p>Yesterday</p>
+						<h2 th:text="${accuracyData_Yesterday}"></h2>
 					</div>
-
-
-					<div class="col-12 col-xl-6 mt-1">
-
-						<div class="portlet">
-
-
-							<div class="col-12 col-lg-7 col-xl-12 bg-white">
-
-								<div class="position-relative h-100" style="min-height:350px; max-height:500px">
-									<canvas id="yourstats1" class="chartjs" data-chartjs-dots="true"
-										data-chartjs-legend="true" data-chartjs-grid="true" data-chartjs-tooltip="true"
-										data-chartjs-title="" data-chartjs-xaxes-label="Date"
-										data-chartjs-yaxes-label="Number of dataset" data-chartjs-line-width="8"
-										data-chartjs-type="bar" th:data-chartjs-labels='${dateArray}'
-										th:data-chartjs-datasets='${"[{ ""label"": ""Number of dataset saved by date"" , ""data"":  " + occurrences + " , ""fill"": true, ""backgroundColor"": ""rgba(255, 0, 0, 0.9)"" }]"}'></canvas>
-
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
 				</div>
-
-
-				<!-- widgets -->
-				<div class="row g-3 mb-3">
-					<div class="col-12 col-md-6 col-xl-6">
-
-						<!-- small graph widget -->
-						<div class="bg-white shadow-md text-dark p-5 rounded text-center">
-
-							<!-- icon -->
-							<img src="https://logowik.com/content/uploads/images/fifa3518.jpg" width="150px">
-
-							<h3 class="fs-5 mt-4">FIFA confederations</h3>
-							<h3 class="h3 text-purple">6 continental confederations</h3>
-
-							<!-- chart -->
-							<div class="position-relative" style="height:100px">
-								<canvas class="chartjs" data-chartjs-dots="true" data-chartjs-legend="false"
-									data-chartjs-grid="false" data-chartjs-tooltip="true" data-chartjs-line-width="3"
-									data-chartjs-type="line"
-									data-chartjs-labels='["UEFA", "OFC", "CONMEBOL", "CONCACAF", "CAF", "AFC"]'
-									data-chartjs-datasets='[{                                                           
-                          "label": "Members",
-                          "data": [11, 11, 17, 11, 15, 12],
-                          "fill": false,
-                          "backgroundColor": "rgba(255, 159, 64, 1)"
-                      }]'></canvas>
-							</div>
-
-						</div>
-						<!-- /small graph widget -->
-
-					</div>
-
-					<div class="col-12 col-md-6 col-xl-6">
-
-						<!-- small graph widget -->
-						<div class="bg-white shadow-md text-dark p-5 rounded text-center">
-
-							<!-- icon -->
-							<span
-								class="d-inline-flex align-items-center justify-content-center bg-light text-gray-900 rounded-circle"
-								style="width: 100px;height:100px">
-								<svg xmlns="http://www.w3.org/2000/svg" height="4em"
-									viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-									<path
-										d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-48 0l-.003-.282-26.064 22.741-62.679-58.5 16.454-84.355 34.303 3.072c-24.889-34.216-60.004-60.089-100.709-73.141l13.651 31.939L256 139l-74.953-41.525 13.651-31.939c-40.631 13.028-75.78 38.87-100.709 73.141l34.565-3.073 16.192 84.355-62.678 58.5-26.064-22.741-.003.282c0 43.015 13.497 83.952 38.472 117.991l7.704-33.897 85.138 10.447 36.301 77.826-29.902 17.786c40.202 13.122 84.29 13.148 124.572 0l-29.902-17.786 36.301-77.826 85.138-10.447 7.704 33.897C442.503 339.952 456 299.015 456 256zm-248.102 69.571l-29.894-91.312L256 177.732l77.996 56.527-29.622 91.312h-96.476z" />
-								</svg>
-							</span>
-
-							<h3 class="fs-5 mt-4 text-success">Today's predictions</h3>
-							<h3 id="predictionsTimeToday" class="h3 text-primary" th:text="${matchListSize}"></h3>
-
-							<!-- chart -->
-							<div class="position-relative" style="height:110px">
-								<canvas class="chartjs" data-chartjs-dots="false" data-chartjs-legend="false"
-									data-chartjs-grid="false" data-chartjs-tooltip="false" data-chartjs-line-width="3"
-									data-chartjs-type="bar"
-									data-chartjs-labels='["Game", "Game", "Game", "Game", "Game", "Game", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]'
-									data-chartjs-datasets='[{                                                           
-                        "label": "",
-                        "data": [11, 11, 17, 11, 15, 12, 13, 16, 11, 18, 20, 21],
-                        "fill": false,
-                        "backgroundColor": "rgba(54, 162, 235, 1)"
-                    }]'></canvas>
-							</div>
-
-						</div>
-						<!-- /small graph widget -->
-
-					</div>
-
-				</div>
-
-
-				<div class="col-12 mt-3 col-xl-12">
-
-					<div class="col-12 col-xl-12">
-						<h3 class="fs-5 mt-4">Your saved data sets</h3>
-
-						<div class="portlet">
-
-							<div class="portlet-header">
-
-
-
-								<div class="mb-3">
-
-
-									<div class="fw-bold d-flex align-items-center mb-3">
-
-										<span class="w-100">Your Stats </span>
-										<i class="fi fi-cloud-download fs--25"></i>
-									</div>
-
-									<!-- imports -->
-
-
-
-
-
-									<!-- item -->
-									<div th:each="dataSetList: ${preferedDataSet}"
-										class="py-2 border-bottom border-light">
-
-
-
-
-										<div class="flex-fill text-truncate px-0 small">
-											<img width="25" height="25" class="img-fluid lazy"
-												src="/demo.files/svg/icons/files/csv.svg" alt="..." data-loaded="true">
-
-											<span class="text-muted"
-												th:text="${'Match ID: ' + dataSetList.matchId}"></span>
-											<a href="#"><span class="flex-none text-success float-right ml-2">
-													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="currentColor" class="bi bi-bar-chart-line-fill"
-														viewBox="0 0 16 16">
-														<path
-															d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
-													</svg> Analyze</span></a>
-											<br>
-											<span class="small d-block text-muted ml-5"
-												th:text="${'Date : ' + dataSetList.dos}"></span>
-
-										</div>
-
-
-										<div class="flex-none ms-2 small text-muted text-align-end">
-											<a href="#" clas="sl-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-													fill="currentColor" class="bi bi-cloud-arrow-down-fill"
-													viewBox="0 0 16 16">
-													<path
-														d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z" />
-												</svg>
-												Download</a>
-										</div>
-
-									</div>
-									<!-- /item -->
-
-
-
-
-
-
-									<!-- /imports -->
-
-								</div>
-
-							</div>
-
-
-
-						</div>
-
-					</div>
-
-
-				</div>
-
-
 
 
 
@@ -653,7 +410,8 @@
 
 
 
-	</div><!-- /#wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
 
 
@@ -667,11 +425,7 @@
 	<script src="/assets/js/vendor_bundle.min.js"></script>
 	<script src="https://app.freshlifefloral.com/back-end/assets/js/blockui.js"></script>
 	<script>
-
-
 		window.onload = function (e) {
-
-
 
 			let options = {
 				timeZone: 'Europe/London',
@@ -681,15 +435,13 @@
 				hour: 'numeric',
 				minute: 'numeric',
 				second: 'numeric',
-			},
-				formatter = new Intl.DateTimeFormat([], options);
+			}, formatter = new Intl.DateTimeFormat([], options);
 
-			document.getElementById('predictionsTimeToday').innerHTML = formatter.format(new Date());
+			document.getElementById('predictionsTimeToday').innerHTML = formatter
+				.format(new Date());
 			$.unblockUI();
 
 		};
-
-
 	</script>
 
 	<!-- Your custom javascripts -->
@@ -702,6 +454,7 @@
 				alert("MatchID must be filled out");
 				return false;
 			}
+
 		}
 	</script>
 

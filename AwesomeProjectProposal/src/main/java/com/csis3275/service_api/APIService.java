@@ -60,7 +60,7 @@ public class APIService {
 
 			// Map JSON to Predictions object
 			// Configure objectMapper to ignore unknown properties
-//			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
 			String JSONString = response.body();
 			JsonNode data = objectMapper.readTree(JSONString).get("data");
 			List<JsonNode> listOfNodes = data.findParents("home_team");
@@ -74,11 +74,6 @@ public class APIService {
 				String prediction = data.get(i).get("prediction").asText();
 				System.out.println("Match ID: "+ matchID + " Home Team: "+ homeTeam + " vs. Away Team: "+ awayTeam);
 			}
-
-// I still like this idea of turning the JSON into a list of objects, while this code doesn't work I want to keep here for future reference and inspiration.			
-//			Predictions[] predictions = objectMapper.readValue(String.valueOf(JSONString), new TypeReference<Predictions[]>() {
-//			});
-//			System.out.println(predictions[0].toString());
 
 		} catch (Exception e) {
 			System.out.println("something went wrong while getting value from API");
@@ -217,7 +212,6 @@ public class APIService {
 
 	// Get API prediction performance statistics
 	public Accuracy_Performance getPrediction_Performance() {
-		Prediction_Performance data = new Prediction_Performance();
 		Accuracy_Performance accuracyData;
 
 		try {
@@ -316,9 +310,6 @@ public class APIService {
 
 				JsonNode data = objectMapper.readTree(JSONString);
 				
-				//(Integer firstHalfDraw, Integer lost, Double avgBookieWinChance, Integer firstHalfWin, Double avgBookieLoseChance, 
-				//Double avgBookieDrawChance, Integer goalsConceived, Double avgGoalsConceived, Integer won, Integer firstHalfLost, Integer draw, 
-				//Integer goalsScored, Integer cleanSheet, Double avgGoalsScored, String teamName)
 				String team_name = data.findValue("home_team").get("team_name").asText();
 				Integer goalsScored = data.findValue("home_team").get("goals_scored").asInt();
 				Integer goalsConceived = data.findValue("home_team").get("goals_conceived").asInt();
@@ -331,11 +322,6 @@ public class APIService {
 				Double avgBookieWinChance = data.findValue("home_team").get("avg_bookie_win_chance").asDouble();
 				Double avgBookieDrawChance = data.findValue("home_team").get("avg_bookie_draw_chance").asDouble();
 				Double avgBookieLoseChance = data.findValue("home_team").get("avg_bookie_lose_chance").asDouble();
-
-				
-				//public HomeTeam_Head2Head(String teamName, Integer goalsScored, Integer goalsConceived, Double avgGoalsScored, Double avgGoalsConceived, Integer won,
-				// Integer lost,Integer draw,Integer cleanSheet,  Double avgBookieWinChance,Double avgBookieDrawChance,Double avgBookieLoseChance) 
-				
 				
 				homeTeam = new HomeTeam_Head2Head(team_name, goalsScored, goalsConceived, avgGoalsScored, avgGoalsConceived, won, lost, draw, cleanSheet, avgBookieWinChance, avgBookieDrawChance, avgBookieLoseChance);
 				
@@ -348,14 +334,6 @@ public class APIService {
 			return homeTeam;
 		}
 	
-	// Get Away Team Head to Head data up to 5 matches, required parameters = matchID
 
-	// Get Home Team League Stats
-
-	// Get Away Team League Stats
-
-	// Get Home Team Last 10 Matches
-
-	// Get Away Team Last 10 Matches
 
 }

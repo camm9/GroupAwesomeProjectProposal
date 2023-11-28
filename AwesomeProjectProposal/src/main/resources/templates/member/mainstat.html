@@ -388,8 +388,7 @@
 
 
 
-
-								<a href="#" class="d-block h6 text-dark"
+								<a th:href="@{'/member/matchIDdetails?matchID=' + ${dataSet.matchId}}" class="d-block h6 text-dark"
 									th:text="${'Dataset # ' + dataSet.userDatasetId}"></a>
 								<p class="small"
 									th:text="${'This is an example for an important statistic 1 ' + dataSet.matchId}">
@@ -590,7 +589,7 @@
 
 											<span class="text-muted"
 												th:text="${'Match ID: ' + dataSetList.matchId}"></span>
-											<a href="#"><span class="flex-none text-success float-right ml-2">
+											<a th:href="@{'/member/matchIDdetails?matchID=' + ${dataSetList.matchId}}"><span class="flex-none text-success float-right ml-2">
 													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 														fill="currentColor" class="bi bi-bar-chart-line-fill"
 														viewBox="0 0 16 16">

@@ -132,6 +132,13 @@ public class HomeController_Member {
 	public String renderMatchDetails(Model model) {
 		return "member/matchdetails";
 	}
+	
+	
+	@GetMapping("/member/matchIDdetails")
+	public String renderMatchIDDetails(@RequestParam("matchID") String matchID, Model model) {
+		model.addAttribute("matchID", matchID);
+		return "member/matchdetails";
+	}
 
 	@PostMapping("/member")
 	public String renderAPIDateMember(@RequestParam("date_p") String date_p, @RequestParam("token") String token,

@@ -89,4 +89,9 @@ public class Odds {
 		this.x2 = x2;
 	}
 
+	public Object getType() {
+		// TODO Auto-generated method stub
+		return Odds.class;
+	}
+
 }

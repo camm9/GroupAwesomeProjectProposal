@@ -452,7 +452,7 @@
 											<!-- item -->
 											<!--  <form  action="#" th:action="@{/member/savedataset}" th:object="${datasetSelected}" method="post">-->
 											<tr th:each="match:${matchList}">
-												<td class="fs--15"><a href="#!a"
+												<td class="fs--15"><a th:href="@{'/member/matchIDdetails?matchID=' + ${match.id}}"
 														class="text-primary link-normal fw-medium text-decoration-none"
 														th:text="${match.id}"></a>
 													<span class="d-block fw-bold smaller fw-bold text-purple">

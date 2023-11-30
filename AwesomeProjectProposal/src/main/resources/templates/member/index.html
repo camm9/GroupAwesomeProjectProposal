@@ -271,7 +271,7 @@
 									<span>Match Details</span>
 								</a>
 							</li>
-							
+
 							<li class="nav-item">
 								<a class="nav-link" href="/member/matchodds">
 									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
@@ -452,7 +452,8 @@
 											<!-- item -->
 											<!--  <form  action="#" th:action="@{/member/savedataset}" th:object="${datasetSelected}" method="post">-->
 											<tr th:each="match:${matchList}">
-												<td class="fs--15"><a th:href="@{'/member/matchIDdetails?matchID=' + ${match.id}}"
+												<td class="fs--15"><a
+														th:href="@{'/member/matchIDdetails?matchID=' + ${match.id}}"
 														class="text-primary link-normal fw-medium text-decoration-none"
 														th:text="${match.id}"></a>
 													<span class="d-block fw-bold smaller fw-bold text-purple">
@@ -467,7 +468,8 @@
 													<span class="d-block fw-bold smaller fw-bold text-warning">
 														<font color="#82703d"> <i
 																class="fi fi-loading-dots fi-spin"></i> Prediction:
-															<span th:text="${match.prediction}"></span></font>
+															<span th:text="${match.prediction}"></span>
+														</font>
 													</span>
 
 												</td>
@@ -530,6 +532,7 @@
 
 
 							</div>
+
 
 							<div class="card-footer p-4">
 								<small class="d-block text-muted">Consumed from</small>
@@ -613,6 +616,14 @@
 									</div>
 								</div>
 							</div>
+							<!--News API-->
+							<div id="newsAPI" class="card">
+								<h3>Latest News </h3>
+								<div id="newsHeadlines" class="card">
+
+								</div>
+							</div>
+
 
 							<div class="card-body p-4 h-100">
 
@@ -757,12 +768,88 @@
 
 		}
 
+	</script>
 
+	<!--	News API-->
+	<script>
+		//fetch API data
+		async function getNews() {
+			const url = 'https://football-news-aggregator-live.p.rapidapi.com/news/90mins';
+			const options = {
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+					'X-RapidAPI-Host': 'football-news-aggregator-live.p.rapidapi.com'
+				}
+			};
 
+			try {
+				const response = await fetch(url, options);
+				const result = await response.json();
+				console.log(result);
+				
+				for (var i = 0; i < 2; i++) {
+ 
 
+				let sourceLink = result[i].url;
+				let headLine = result[i].title;
+				let newsImg = result[i].news_img;
+				
+				//Add results to news card
 
+				const _90minsDiv = document.createElement("div");
 
+				//Add Headling
+				const _90minsHeadline = document.createTextNode(headLine);
+				_90minsDiv.appendChild(_90minsHeadline);
+				
+				//Add link to news story
+				const _90minsLink = document.createElement('a');
+				_90minsLink.href = sourceLink;
+				_90minsLink.textContent = " - Link to story";
+				_90minsDiv.appendChild(_90minsLink);
+				
+				//Add image
+				const _90minsImg = document.createElement('img');
+				_90minsImg.src = newsImg;
+				_90minsDiv.appendChild(_90minsImg);
+				
 
+				const currentDiv = document.getElementById("newsHeadlines");
+				currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
+				}
+				
+				for (var i = 2; i < 4; i++) {
+ 
+
+				let sourceLink = result[i].url;
+				let headLine = result[i].title;
+				
+				//Add results to news card
+
+				const _90minsDiv = document.createElement("div");
+
+				//Add Headling
+				const _90minsHeadline = document.createTextNode(headLine);
+				_90minsDiv.appendChild(_90minsHeadline);
+				
+				//Add link to news story
+				const _90minsLink = document.createElement('a');
+				_90minsLink.href = sourceLink;
+				_90minsLink.textContent = " - Link to story";
+				_90minsDiv.appendChild(_90minsLink);
+							
+
+				const currentDiv = document.getElementById("newsHeadlines");
+				currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
+				}
+
+			} catch (error) {
+				console.error(error);
+			}
+
+		};
+		getNews();
 	</script>
 
 </body>

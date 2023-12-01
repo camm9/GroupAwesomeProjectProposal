@@ -617,10 +617,14 @@
 								</div>
 							</div>
 							<!--News API-->
-							<div id="newsAPI" class="card">
-								<h3>Latest News </h3>
-								<div id="newsHeadlines" class="card">
+							<div class="w-100 ps-4">
+								<div id="newsAPI" class="m-4 align-items-center text-muted">
+									<h3>Latest News </h3>
+									<ul class="list-unstyled m-4 p-0">
+										<div id="newsHeadlines" class="text-decoration-none align-items-center">
 
+										</div>
+									</ul>
 								</div>
 							</div>
 
@@ -787,61 +791,74 @@
 				const response = await fetch(url, options);
 				const result = await response.json();
 				console.log(result);
-				
+
 				for (var i = 0; i < 2; i++) {
- 
 
-				let sourceLink = result[i].url;
-				let headLine = result[i].title;
-				let newsImg = result[i].news_img;
-				
-				//Add results to news card
 
-				const _90minsDiv = document.createElement("div");
+					let sourceLink = result[i].url;
+					let headLine = result[i].title;
+					let newsImg = result[i].news_img;
 
-				//Add Headling
-				const _90minsHeadline = document.createTextNode(headLine);
-				_90minsDiv.appendChild(_90minsHeadline);
-				
-				//Add link to news story
-				const _90minsLink = document.createElement('a');
-				_90minsLink.href = sourceLink;
-				_90minsLink.textContent = " - Link to story";
-				_90minsDiv.appendChild(_90minsLink);
-				
-				//Add image
-				const _90minsImg = document.createElement('img');
-				_90minsImg.src = newsImg;
-				_90minsDiv.appendChild(_90minsImg);
-				
+					//Add results to news card
 
-				const currentDiv = document.getElementById("newsHeadlines");
-				currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
+					const _90minsDiv = document.createElement("div");
+
+					//Add Headling
+					const _90minsHeadline = document.createElement("li");
+					_90minsHeadline.textContent = headLine;
+					_90minsDiv.appendChild(_90minsHeadline);
+
+					//Add breakline
+					const _90minsBreakline = document.createElement('p');
+					_90minsBreakline.textContent = " \n ";
+					_90minsDiv.appendChild(_90minsBreakline);
+
+
+					//Add image
+					const _90minsImg = document.createElement('img');
+					_90minsImg.src = newsImg;
+
+					//Add source link to image of news story
+					const _90minsLink = document.createElement('a');
+					_90minsLink.href = sourceLink;
+					_90minsLink.appendChild(_90minsImg);
+					_90minsDiv.appendChild(_90minsLink)
+
+					_90minsDiv.appendChild(_90minsBreakline);
+
+					const currentDiv = document.getElementById("newsHeadlines");
+					currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
 				}
-				
+
+				//Add 2 stories without image
 				for (var i = 2; i < 4; i++) {
- 
 
-				let sourceLink = result[i].url;
-				let headLine = result[i].title;
-				
-				//Add results to news card
 
-				const _90minsDiv = document.createElement("div");
+					let sourceLink = result[i].url;
+					let headLine = result[i].title;
 
-				//Add Headling
-				const _90minsHeadline = document.createTextNode(headLine);
-				_90minsDiv.appendChild(_90minsHeadline);
-				
-				//Add link to news story
-				const _90minsLink = document.createElement('a');
-				_90minsLink.href = sourceLink;
-				_90minsLink.textContent = " - Link to story";
-				_90minsDiv.appendChild(_90minsLink);
-							
+					//Add results to news card
 
-				const currentDiv = document.getElementById("newsHeadlines");
-				currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
+					const _90minsDiv = document.createElement("div");
+
+					//Add Headling
+					const _90minsHeadline = document.createTextNode(headLine);
+					_90minsDiv.appendChild(_90minsHeadline);
+
+					//Add link to news story
+					const _90minsLink = document.createElement('a');
+					_90minsLink.href = sourceLink;
+					_90minsLink.textContent = " | Link to story";
+					_90minsDiv.appendChild(_90minsLink);
+
+					//Add breakline
+					const _90minsBreakline = document.createElement('p');
+					_90minsBreakline.textContent = " \n ";
+					_90minsDiv.appendChild(_90minsBreakline);
+
+
+					const currentDiv = document.getElementById("newsHeadlines");
+					currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
 				}
 
 			} catch (error) {

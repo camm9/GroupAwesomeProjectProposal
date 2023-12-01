@@ -411,7 +411,6 @@
 									<h3 class="h5 py-3">Up-to-date</h3>
 									<p>
 										Get the latest football headlines that could change your bet.
-									</p>
 								</div>
 
 							</div>
@@ -434,11 +433,11 @@
 					<span class="font-weight-medium">Stats, odds, predictions, news!</span>
 				</h2>
 			</div>
-			<div class="row mt-6">
+			<div class="row">
 
 				<div class="col-12 col-lg-6 my-5">
-					<div class="h-100 bg-white shadow-md rounded ">
-						<h3 class="h5 mb-4 font-weight-normal text-center">
+					<div class="m-4 h-100 bg-white shadow-md rounded ">
+						<h3 class="m-4 h5 mb-4 font-weight-normal text-center ">
 							<span class="d-block-xs">Matches Available Today!</span>
 						</h3>
 
@@ -491,19 +490,32 @@
 
 				<div class="col-12 col-lg-6 my-5">
 
-					<div class="h-100 bg-white shadow-md rounded">
+					<div class="m-4 h-100 bg-white shadow-md rounded ">
 						<h2 class="h5 mb-4 font-weight-normal text-center"> A taste of the stats you can expect!
 						</h2>
-						<h3 class="h5 mb-4 font-weight-normal text-center" th:text="${SampleMatchId}"
+						<h3 class="h5 mb-4 font-weight-normal text-center m-4" th:text="${SampleMatchId}"
 							name="SampleMatchId" value="SampleMatchId" id="SampleMatchIdHeader">
 						</h3>
-						<canvas id="head2HeadStats"></canvas>
+						<canvas id="head2HeadStats" class="m-4"></canvas>
 
 					</div>
 
 				</div>
-
 			</div>
+			<div class="container">
+				<div class="m-4 h-100 bg-white shadow-md rounded text-center">
+					<div id="newsAPI" class="m-4 align-items-center">
+						<h3>Latest News </h3>
+						<ul class="list-unstyled m-4 p-0">
+							<div id="newsHeadlines" class="text-decoration-none align-items-center">
+
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
 			<!-- /testimonials -->
 
 	</div>
@@ -1062,6 +1074,65 @@
 		};
 
 
+	</script>
+
+	<script>
+		//fetch API data
+		async function getNews() {
+			const url = 'https://football-news-aggregator-live.p.rapidapi.com/news/90mins';
+			const options = {
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Key': 'f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53',
+					'X-RapidAPI-Host': 'football-news-aggregator-live.p.rapidapi.com'
+				}
+			};
+
+			try {
+				const response = await fetch(url, options);
+				const result = await response.json();
+				console.log(result);
+
+				let sourceLink = result[0].url;
+				let headLine = result[0].title;
+				let newsImg = result[0].news_img;
+
+				//Add results to news card
+				const _90minsDiv = document.createElement("div");
+
+				//Add Headling
+				const _90minsHeadline = document.createElement("li");
+				_90minsHeadline.textContent = headLine;
+				_90minsDiv.appendChild(_90minsHeadline);
+
+				//Add breakline
+				const _90minsBreakline = document.createElement('p');
+				_90minsBreakline.textContent = " \n ";
+				_90minsDiv.appendChild(_90minsBreakline);
+
+
+				//Add image
+				const _90minsImg = document.createElement('img');
+				_90minsImg.src = newsImg;
+
+				//Add source link to image of news story
+				const _90minsLink = document.createElement('a');
+				_90minsLink.href = sourceLink;
+				_90minsLink.appendChild(_90minsImg);
+				_90minsDiv.appendChild(_90minsLink)
+
+				_90minsDiv.appendChild(_90minsBreakline);
+
+				const currentDiv = document.getElementById("newsHeadlines");
+				currentDiv.parentNode.insertBefore(_90minsDiv, currentDiv);
+
+
+			} catch (error) {
+				console.error(error);
+			}
+
+		};
+		getNews()
 	</script>
 
 

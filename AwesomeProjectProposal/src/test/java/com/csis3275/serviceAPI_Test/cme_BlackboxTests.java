@@ -49,10 +49,17 @@ public class cme_BlackboxTests {
 	    driver.quit();
 	  }
 	
-//	@Test
-//	@DisplayName("User searches for match odds")
-//	  public void searchMatchOdds() {
-//	    driver.get("http://localhost:8080/");
-//	  }
+	@Test
+	@DisplayName("User searches for match odds")
+	  public void searchMatchOdds() {
+	    driver.get("http://localhost:8080/");
+	    driver.manage().window().maximize();
+	    driver.findElement(By.linkText("Login")).click();
+	    driver.findElement(By.linkText("GitHub")).click();
+	    driver.findElement(By.cssSelector(".nav-item:nth-child(6) span")).click();
+	    driver.findElement(By.name("searchByMatchID")).click();
+	    driver.findElement(By.name("searchByMatchID")).sendKeys("279290");
+	    driver.findElement(By.cssSelector(".btn:nth-child(2)")).click();
+	  }
 
 }

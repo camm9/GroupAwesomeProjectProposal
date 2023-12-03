@@ -72,6 +72,7 @@ public class cme_BlackboxTests {
 	@DisplayName("User clicks matchID on match odds page")
 	  public void viewStatsviaOddsPage() {
 	    driver.get("http://localhost:8080/");
+	    driver.manage().window().maximize();
 	    driver.findElement(By.linkText("Login")).click();
 	    driver.findElement(By.linkText("GitHub")).click();
 	    driver.findElement(By.cssSelector(".nav-item:nth-child(6) span")).click();

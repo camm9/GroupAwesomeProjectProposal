@@ -1,6 +1,7 @@
 package com.csis3275.service_api;
 
 import java.io.IOException;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -10,6 +11,10 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -34,14 +39,15 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+
 @Service
 public class APIService {
 	private String initialUrl = "https://football-prediction-api.p.rapidapi.com/api/v2/predictions?";
 	private String market = "market=classic";
 	private String iso_date = "&iso_date=2023-10-01"; // user must choose this
 	private String federation = "&federation=UEFA"; // user must choose this
-//	public String finalUrl = initialUrl+market+iso_date+federation;
-
+	
 	private static final String rapidApiKey = "f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53";
 	private static final String rapidApiHost = "football-prediction-api.p.rapidapi.com";
 

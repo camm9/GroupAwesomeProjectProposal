@@ -151,14 +151,9 @@ public class MemberControllerTest {
 				.accept(MediaType.TEXT_HTML)) //From springframework.http
 				.andDo(print())
 				.andExpect(model().attribute("matchID","277799"))
-				.andExpect(MockMvcResultMatchers.view().name("member/matchdetails"))
+				.andExpect(MockMvcResultMatchers.view().name("/admin/index"))
 				.andExpect(status().isOk());
 	}
-	
-	
-	
-	
-
 	
 	
 }

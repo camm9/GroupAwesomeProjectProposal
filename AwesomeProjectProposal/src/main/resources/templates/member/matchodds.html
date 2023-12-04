@@ -356,7 +356,9 @@
 
 							<!-- item -->
 							<tr th:each="details:${matchIDDetails}">
-								<td><a href="#!" class="link-normal fw-medium" th:text="${details.id}"></a></td>
+								<td class="fs--15"><a th:href="@{'/member/matchIDdetails?matchID=' + ${details.id}}"
+														class="text-primary link-normal fw-medium text-decoration-none"
+														th:text="${details.id}"></a></td>
 								<td th:text="${details.homeTeam}"></td>
 								<td th:text="${details.awayTeam}"></td>
 								<td th:text="${details.prediction}"></td>

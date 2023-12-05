@@ -54,8 +54,8 @@ public class WebSecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
 //                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
 //                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
-                        .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyRole("ADMIN", "USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll()
                         .anyRequest().authenticated())
@@ -90,8 +90,8 @@ public class WebSecurityConfig {
 		return new InMemoryUserDetailsManager(user);
 	}
 	
-	  @Autowired
-	    private CustomOAuth2UserService userService;
+	@Autowired
+	private CustomOAuth2UserService userService;
 	  
 	@Autowired
 	public void configure (AuthenticationManagerBuilder auth) throws Exception {

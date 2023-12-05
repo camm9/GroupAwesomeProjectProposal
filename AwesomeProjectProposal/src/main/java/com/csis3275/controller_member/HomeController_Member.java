@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.csis3275.controller_auth.AuthController;
 import com.csis3275.model_db.User;
 import com.csis3275.model_db.UserDataset;
 import com.csis3275.service_api.APIService;
@@ -137,6 +138,8 @@ public class HomeController_Member {
 	@GetMapping("/logout")
 	public String renderLogoutUser() {
 		session_var = false;
+		setToken_s(null);
+		AuthController.voidUserDetails();
 		return "/loginpage";
 	}
 

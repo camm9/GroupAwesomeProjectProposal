@@ -46,19 +46,24 @@ public class WebSecurityConfig {
 				.requestMatchers(new AntPathRequestMatcher("/test")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/testAPICharts")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/**/*.*")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
 				.requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+				.requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll()
 				.anyRequest().authenticated())
 		.headers(headers -> headers.frameOptions().disable())
         	.csrf(csrf -> csrf
             .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
-		
-		.formLogin(form -> form.loginPage("/loginpage").loginProcessingUrl("/loginpage")
-				.permitAll())
-		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").permitAll());
+        .oauth2Login()
+//		.formLogin(form -> form.loginPage("/loginpage").loginProcessingUrl("/loginpage")
+//				.permitAll())
+//		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
+//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//				.logoutSuccessUrl("/").permitAll())
+        	;
 
 		return http.build();
 		

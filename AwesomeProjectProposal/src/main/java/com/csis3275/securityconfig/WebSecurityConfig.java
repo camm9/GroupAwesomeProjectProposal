@@ -21,13 +21,6 @@ import org.springframework.security.core.userdetails.User;
 @EnableWebSecurity
 public class WebSecurityConfig {
 	
-//	
-//	@Autowired
-//	SuccessHandler_group3 customSuccessHandler;
-//	
-//	@Autowired
-//	CustomUserDetailsService_group3 customUserDetailsService;
-	
 	@Bean
 	public static PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -38,7 +31,7 @@ public class WebSecurityConfig {
 	    return new MvcRequestMatcher.Builder(introspector);
 	}
 	
-	//.requestMatchers(new AntPathRequestMatcher("/registration", "/css/**")).permitAll()
+	//
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception{
 		
@@ -48,13 +41,13 @@ public class WebSecurityConfig {
 				//.requestMatchers(mvc.pattern("/admin-page")).hasAuthority("ADMIN")
 				//.requestMatchers(mvc.pattern("/user-page")).hasAuthority("USER")
 				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/loginpage")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/error/*")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/loginpage/**")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/error/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/test")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/testAPICharts")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/**/*.*")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/admin/*")).hasAuthority("ADMIN")
-				.requestMatchers(new AntPathRequestMatcher("/admin/*")).hasAuthority("USER")
+				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
+				.requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 				.anyRequest().authenticated())
 		.headers(headers -> headers.frameOptions().disable())

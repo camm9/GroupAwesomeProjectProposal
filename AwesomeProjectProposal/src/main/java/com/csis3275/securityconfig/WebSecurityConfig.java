@@ -52,8 +52,8 @@ public class WebSecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
                         .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
@@ -68,11 +68,11 @@ public class WebSecurityConfig {
                         .passwordParameter("pass")
                         .defaultSuccessUrl("/admin"))
                 .oauth2Login(login -> login
-                        .loginPage("/login")
+                        .loginPage("/loginpage")
                         .userInfoEndpoint()
                         .userService(userService)
                         .and()
-                        .defaultSuccessUrl("/member")
+                        .defaultSuccessUrl("/member/valida")
                         )
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 

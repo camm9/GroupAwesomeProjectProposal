@@ -34,30 +34,34 @@ public class WebSecurityConfig {
 	//
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception{
-		
-		http.csrf(c -> c.disable())
-		
-		.authorizeHttpRequests(request -> request
-				//.requestMatchers(mvc.pattern("/admin-page")).hasAuthority("ADMIN")
-				//.requestMatchers(mvc.pattern("/user-page")).hasAuthority("USER")
-				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/loginpage/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/error/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/test")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/testAPICharts")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/**/*.*")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
-				.requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
-				.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
-				.requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll()
-				.anyRequest().authenticated())
-		.headers(headers -> headers.frameOptions().disable())
-        	.csrf(csrf -> csrf
-            .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
-        .oauth2Login()
+
+        http.csrf(c -> c.disable())
+
+                .authorizeHttpRequests(request -> request
+                        //.requestMatchers(mvc.pattern("/admin-page")).hasAuthority("ADMIN")
+                        //.requestMatchers(mvc.pattern("/user-page")).hasAuthority("USER")
+                        .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/loginpage/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/error/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/test")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/testAPICharts")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/**/*.*")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll()
+                        .anyRequest().authenticated())
+                .headers(headers -> headers.frameOptions().disable())
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
+                .formLogin(login -> login.permitAll()
+                        .loginPage("/member"))
+                .oauth2Login(login -> login
+                        .loginPage("/member")
+                        .userInfoEndpoint())
 //		.formLogin(form -> form.loginPage("/loginpage").loginProcessingUrl("/loginpage")
 //				.permitAll())
 //		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)

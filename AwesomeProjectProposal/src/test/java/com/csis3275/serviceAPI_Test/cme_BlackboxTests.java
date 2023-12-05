@@ -18,7 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class cme_BlackboxTests {
 	
-	public static String driverPath = "A:\\Douglas\\csis3275\\geckodriver.exe";
+	public static String driverPath = "C:\\Github\\geckodriver.exe";
 
 	private static FirefoxDriver driver;
 	// setting up browser to run tests
@@ -27,7 +27,7 @@ public class cme_BlackboxTests {
 		//Set up browser
 		System.setProperty("webdriver.gecko.driver", driverPath);
 		FirefoxOptions options = new FirefoxOptions();
-		options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+		options.setBinary("C:\\Program Files\\WindowsApps\\Mozilla.Firefox_120.0.1.0_x64__n80bbvh6b1yt2\\VFS\\ProgramFiles\\Firefox Package Root\\firefox.exe");
 		options.setImplicitWaitTimeout(Duration.ofSeconds(10));
 		driver = new FirefoxDriver(options);
 	}

@@ -1,6 +1,7 @@
 package com.csis3275.controller_auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,19 @@ import com.csis3275.service_db.UserService;
 public class AuthController {
 	@Autowired
 	private UserService userService;
+	private static UserDetails userDetails;
+	public static UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public static void setUserDetails(UserDetails userDetails) {
+		AuthController.userDetails = userDetails;
+	}
 	
+	public static void voidUserDetails() {
+		AuthController.userDetails = null;
+	}
+
 	@GetMapping("/login/member")
 	public String loginMember() {
 		LoginSuccessHandler.State = 0;

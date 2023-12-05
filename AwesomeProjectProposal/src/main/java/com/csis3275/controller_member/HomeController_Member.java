@@ -47,11 +47,23 @@ public class HomeController_Member {
 	String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now());
 
 	private String date_p_s;
-	private String token_s;
-	private String date_today;
+	private static String token_s;
+	private  String date_today;
+	
+	public static String getToken_s() {
+		return token_s;
+	}
+
+	public static void setToken_s(String _token_s) {
+		token_s = _token_s;
+	}
+
 	private int sizeAPICurrentDay;
 	private int sizePreferedMID;
 
+	
+	
+	
 	@GetMapping("/member/test")
 	public String renderHomeMmeber() {
 		return "member/index";

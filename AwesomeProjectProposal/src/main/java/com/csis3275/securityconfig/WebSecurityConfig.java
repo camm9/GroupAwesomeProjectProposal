@@ -53,7 +53,7 @@ public class WebSecurityConfig {
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll().anyRequest()
 				.authenticated())
 				.oauth2Login(login -> login.loginPage("/loginpage").userInfoEndpoint().userService(userService).and()
-						.defaultSuccessUrl("/login/success"))
+						.defaultSuccessUrl("/login/done"))
 				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
 		return http.build();

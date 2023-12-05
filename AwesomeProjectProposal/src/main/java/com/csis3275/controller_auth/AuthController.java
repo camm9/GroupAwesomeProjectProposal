@@ -33,14 +33,14 @@ public class AuthController {
 		return "redirect:/oauth2/authorization/github";
 	}
 	
-	@GetMapping ("/login/success")
+	@GetMapping ("/login/done")
 	public String loginSuccess() {
-//		if (State == 0) {
-//			return "/member/valida";
-//		}
-//		else if (State == 1) {
-//			return "/admin/index";
-//		}
-		return "/";
+		if (State == 0) {
+			return "redirect:/member/valida";
+		}
+		else if (State == 1) {
+			return "redirect:/admin/index";
+		}
+		return "redirect:/";
 	}
 }

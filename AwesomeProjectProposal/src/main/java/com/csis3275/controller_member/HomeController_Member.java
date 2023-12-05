@@ -45,27 +45,26 @@ public class HomeController_Member {
 
     @Bean
     String getUserName() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken) && authentication != null) {
-		    String currentUserName = authentication.getName();
-		    return currentUserName;
-		}
-		return dateTime;
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		if (!(authentication instanceof AnonymousAuthenticationToken) && authentication != null) {
+//		    String currentUserName = authentication.getName();
+//		    return currentUserName;
+//		}
+		return "2";
 	}
     
     @Bean
     String getToken() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken && authentication != null)) {
-			OAuth2AuthenticationToken oauthToken =
-				    (OAuth2AuthenticationToken) authentication;
-			if (oauthToken != null) {
-			    String token = oauthToken.toString();
-			    return token;
-			}
-
-		}
-		return dateTime;
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		if (!(authentication instanceof AnonymousAuthenticationToken && authentication != null)) {
+//			OAuth2AuthenticationToken oauthToken =
+//				    (OAuth2AuthenticationToken) authentication;
+//			if (oauthToken != null) {
+//			    String token = oauthToken.toString();
+//			    return token;
+//			}
+//		}
+		return "2";
 	}
 	
 	private String date_p_s;

@@ -52,6 +52,8 @@ public class WebSecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
                         .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
@@ -64,7 +66,7 @@ public class WebSecurityConfig {
                         .loginPage("/loginpage")
                         .usernameParameter("email")
                         .passwordParameter("pass")
-                        .defaultSuccessUrl("/member"))
+                        .defaultSuccessUrl("/admin"))
                 .oauth2Login(login -> login
                         .loginPage("/login")
                         .userInfoEndpoint()

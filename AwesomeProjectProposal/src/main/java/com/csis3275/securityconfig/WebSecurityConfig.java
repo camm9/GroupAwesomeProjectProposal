@@ -54,7 +54,9 @@ public class WebSecurityConfig {
 				.authenticated())
 				.oauth2Login(login -> login.loginPage("/loginpage").userInfoEndpoint().userService(userService).and()
 						.defaultSuccessUrl("/login/done").permitAll())
-				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+				.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
+						.logoutRequestMatcher(new AntPathRequestMatcher("/logoutpage"))
+						.logoutSuccessUrl("/loginpage?logout").permitAll());
 
 		return http.build();
 	}

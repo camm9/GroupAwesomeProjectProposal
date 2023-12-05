@@ -125,7 +125,7 @@ public class HomeController_Member {
 	@GetMapping("/logout")
 	public String renderLogoutUser() {
 		session_var = false;
-		return "/loginpage";
+		return "redirect:/logoutpage";
 	}
 
 	@GetMapping("/member/matchdetails")

@@ -17,13 +17,13 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/admin")
-	public String listStudents(Model model) {
+	public String listUsers(Model model) {
 		model.addAttribute("userList", userService.readUsers());
 		return "/admin/index";
 	}
 	
 	@GetMapping("/admin/add")
-	public String addStudentAdmin() {
+	public String addAdmin() {
 		return "/admin/addadmin";
 	}
 	

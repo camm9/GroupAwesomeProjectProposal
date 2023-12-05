@@ -2,21 +2,20 @@ package com.csis3275.controller_member;
 
 import java.math.BigInteger;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.csis3275.model_db.User;
 import com.csis3275.model_db.UserDataset;
@@ -25,12 +24,10 @@ import com.csis3275.service_db.UserDatasetService;
 import com.csis3275.service_db.UserService;
 
 import java.util.List;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import jakarta.persistence.Entity;
 
 @Controller
 public class HomeController_Member {
@@ -46,6 +43,31 @@ public class HomeController_Member {
 	Random random = new Random();
 	String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now());
 
+    @Bean
+    String getUserName() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken) && authentication != null) {
+		    String currentUserName = authentication.getName();
+		    return currentUserName;
+		}
+		return dateTime;
+	}
+    
+    @Bean
+    String getToken() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken && authentication != null)) {
+			OAuth2AuthenticationToken oauthToken =
+				    (OAuth2AuthenticationToken) authentication;
+			if (oauthToken != null) {
+			    String token = oauthToken.toString();
+			    return token;
+			}
+
+		}
+		return dateTime;
+	}
+	
 	private String date_p_s;
 	private String token_s;
 	private String date_today;
@@ -57,13 +79,19 @@ public class HomeController_Member {
 		return "member/index";
 	}
 
+	
+	@GetMapping("/username")
+	public String DisplayUserName() {
+		return getUserName();
+	}
+	
 	@GetMapping("/member/mainstat")
 	public String renderStatMember(Model model) {
 
 		List<String> dateIdUser = new ArrayList<>(Arrays.asList());
 		List<String> totalDateIdUser = new ArrayList<>(Arrays.asList());
 		List<String> occurrencesIdUser = new ArrayList<>(Arrays.asList());
-
+		token_s = getUserName();
 		if (token_s == null) {
 			return "redirect:/loginpage";
 		} else {
@@ -114,8 +142,10 @@ public class HomeController_Member {
 
 	@GetMapping("/member/valida")
 	public String renderValidarUser(Model model) {
-
-		this.token_s = "2";
+		token_s = getUserName();
+		if (token_s  == null) {
+			this.token_s = "2";
+		}
 		model.addAttribute("tokenuser", token_s);
 		session_var = true;
 
@@ -198,7 +228,7 @@ public class HomeController_Member {
 		model.addAttribute("dateTime", dateTime);
 
 		model.addAttribute("rnd", new BigInteger(500, random).toString(32));
-
+		token_s = getUserName();
 		if (token_s == null) {
 			return "/loginpage";
 		} else {

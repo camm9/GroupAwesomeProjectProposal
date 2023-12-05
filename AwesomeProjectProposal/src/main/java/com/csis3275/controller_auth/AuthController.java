@@ -51,17 +51,13 @@ public class AuthController {
 
 	@GetMapping("/login/member")
 	public String loginMember() {
-		LoginSuccessHandler.State = 0;
-		//return "http://localhost:8080/oauth2/authorization/github";
+		//LoginSuccessHandler.State = 0;
 		return "redirect:/oauth2/authorization/github";
-		//return "redirect:/member/valida";
 	}
 	
 	@GetMapping("/login/admin")
 	public String loginAdmin() {
-		LoginSuccessHandler.State = 1;
-		//model.addAttribute("userList", userService.readUsers());
-		//return "/admin/index";
+		//LoginSuccessHandler.State = 1;
 		return "redirect:/oauth2/authorization/github";
 	}
 	
@@ -73,17 +69,13 @@ public class AuthController {
 
 	@GetMapping("/login/redirectmember")
 	public String redirectMember() {
-		LoginSuccessHandler.State = 0;
-		//return "http://localhost:8080/oauth2/authorization/github";
+		//LoginSuccessHandler.State = 0;
 		return "redirect:/member";
-		//return "redirect:/member/valida";
 	}
 	
 	@GetMapping("/login/redirectadmin")
 	public String redirectAdmin() {
-		LoginSuccessHandler.State = 1;
-		//model.addAttribute("userList", userService.readUsers());
-		//return "/admin/index";
+		//LoginSuccessHandler.State = 1;
 		return "redirect:/admin";
 	}
 

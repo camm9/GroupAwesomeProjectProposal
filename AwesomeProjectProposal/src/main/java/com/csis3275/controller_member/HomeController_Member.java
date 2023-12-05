@@ -48,16 +48,8 @@ public class HomeController_Member {
 	String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now());
 
 	private String date_p_s;
-	private static String token_s;
-	private  String date_today;
-	
-	public static String getToken_s() {
-		return token_s;
-	}
-
-	public static void setToken_s(String _token_s) {
-		token_s = _token_s;
-	}
+	private String token_s;
+	private String date_today;
 
 	private int sizeAPICurrentDay;
 	private int sizePreferedMID;
@@ -76,7 +68,7 @@ public class HomeController_Member {
 		List<String> dateIdUser = new ArrayList<>(Arrays.asList());
 		List<String> totalDateIdUser = new ArrayList<>(Arrays.asList());
 		List<String> occurrencesIdUser = new ArrayList<>(Arrays.asList());
-
+		token_s = AuthController.getToken_s();
 		if (token_s == null) {
 			return "redirect:/loginpage";
 		} else {
@@ -127,8 +119,10 @@ public class HomeController_Member {
 
 	@GetMapping("/member/valida")
 	public String renderValidarUser(Model model) {
-
-		this.token_s = "2";
+		token_s = AuthController.getToken_s();
+		if (token_s == null) {
+			this.token_s = "2";
+		}
 		model.addAttribute("tokenuser", token_s);
 		session_var = true;
 
@@ -138,8 +132,10 @@ public class HomeController_Member {
 	@GetMapping("/logout")
 	public String renderLogoutUser() {
 		session_var = false;
-		setToken_s(null);
+
 		AuthController.voidUserDetails();
+		AuthController.voidToken_s();
+		token_s = AuthController.getToken_s();
 		return "/loginpage";
 	}
 
@@ -162,7 +158,10 @@ public class HomeController_Member {
 		List<String> matchIdUser = new ArrayList<>(Arrays.asList("000000"));
 
 		this.date_p_s = date_p;
-		this.token_s = token;
+		token_s = AuthController.getToken_s();
+		if (token_s == null) {
+			this.token_s = token;
+		}
 
 		model.addAttribute("matchList", apiService.getAllMatchesForDate(date_p));
 		model.addAttribute("matchListSize", apiService.getAllMatchesForDate(date_p).size());
@@ -213,7 +212,7 @@ public class HomeController_Member {
 		model.addAttribute("dateTime", dateTime);
 
 		model.addAttribute("rnd", new BigInteger(500, random).toString(32));
-
+		token_s = AuthController.getToken_s();
 		if (token_s == null) {
 			return "/loginpage";
 		} else {

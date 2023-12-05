@@ -15,6 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+
+import com.csis3275.controller_oauth2.CustomOAuth2UserService;
+
 import org.springframework.security.core.userdetails.User;
 
 @Configuration
@@ -58,23 +61,24 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
                 .formLogin(login -> login.permitAll()
-                        .loginPage("/member"))
+                        .loginPage("/loginpage")
+                        .usernameParameter("email")
+                        .passwordParameter("pass")
+                        .defaultSuccessUrl("/member"))
                 .oauth2Login(login -> login
-                        .loginPage("/member")
-                        .userInfoEndpoint())
-//		.formLogin(form -> form.loginPage("/loginpage").loginProcessingUrl("/loginpage")
-//				.permitAll())
-//		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
-//				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//				.logoutSuccessUrl("/").permitAll())
-        	;
+                        .loginPage("/login")
+                        .userInfoEndpoint()
+                        .userService(userService)
+                        .and()
+                        .defaultSuccessUrl("/member")
+                        )
+                .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
-		return http.build();
-		
+		return http.build();		
 	}
-	
-	@Bean
-	public UserDetailsService userDetailsService() {
+
+    @Bean
+    UserDetailsService userDetailsService() {
 		UserDetails user =
 			 User.withDefaultPasswordEncoder()
 				.username("admin")
@@ -84,7 +88,9 @@ public class WebSecurityConfig {
 		return new InMemoryUserDetailsManager(user);
 	}
 	
-	
+	  @Autowired
+	    private CustomOAuth2UserService userService;
+	  
 	@Autowired
 	public void configure (AuthenticationManagerBuilder auth) throws Exception {
 		//auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());

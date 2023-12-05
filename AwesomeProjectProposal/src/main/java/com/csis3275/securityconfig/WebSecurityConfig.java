@@ -62,11 +62,11 @@ public class WebSecurityConfig {
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
-                .formLogin(login -> login.permitAll()
-                        .loginPage("/loginpage")
-                        .usernameParameter("email")
-                        .passwordParameter("pass")
-                        .defaultSuccessUrl("/admin"))
+//                .formLogin(login -> login.permitAll()
+//                        .loginPage("/loginpage")
+//                        .usernameParameter("email")
+//                        .passwordParameter("pass")
+//                        .defaultSuccessUrl("/admin"))
                 .oauth2Login(login -> login
                         .loginPage("/loginpage")
                         .userInfoEndpoint()

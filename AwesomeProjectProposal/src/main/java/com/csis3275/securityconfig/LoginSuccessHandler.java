@@ -26,6 +26,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		AuthController.setUserDetails((UserDetails) authentication.getPrincipal());
+
+		
 		UserDetails userDetails = AuthController.getUserDetails();
 		
 		OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
@@ -33,7 +35,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 //			    clientService.loadAuthorizedClient(
 //			            oauthToken.getAuthorizedClientRegistrationId(),
 //			            oauthToken.getName());
-		
+		AuthController.setToken_s(oauthToken.toString());
 		String username = userDetails.getUsername();
 		//HomeController_Member.setToken_s();
 		if (State == 0) {

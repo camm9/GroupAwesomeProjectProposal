@@ -23,9 +23,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class AwesomeProjectProposalApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
-	static APIService apiService = new APIService();
-	static List<Datum> listOfMatches = new ArrayList();
-	static Datum matchOdds = new Datum();
+
 
 	
 	

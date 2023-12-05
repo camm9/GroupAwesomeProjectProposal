@@ -142,7 +142,7 @@ public class HomeController_Member {
 
 	@GetMapping("/member/valida")
 	public String renderValidarUser(Model model) {
-		token_s = getUserName();
+		token_s = getToken();
 		if (token_s  == null) {
 			this.token_s = "2";
 		}

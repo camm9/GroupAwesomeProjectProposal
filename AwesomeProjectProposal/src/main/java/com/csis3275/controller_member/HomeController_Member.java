@@ -48,7 +48,7 @@ public class HomeController_Member {
 	String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDateTime.now());
 
 	private String date_p_s;
-	private String token_s;
+	private String token_s = "3";
 	private String date_today;
 
 	private int sizeAPICurrentDay;

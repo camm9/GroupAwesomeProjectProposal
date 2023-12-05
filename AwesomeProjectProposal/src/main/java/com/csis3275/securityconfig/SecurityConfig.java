@@ -44,9 +44,11 @@ public class SecurityConfig {
 		.authorizeHttpRequests(request -> request
 				.requestMatchers(mvc.pattern("/admin-page")).hasAuthority("ADMIN")
 				.requestMatchers(mvc.pattern("/user-page")).hasAuthority("USER")
-				.requestMatchers(new AntPathRequestMatcher("/register")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/loginpage")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/loginpage")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/error/*")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/test")).permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/testAPICharts")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/**/*.*")).permitAll()
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 				.anyRequest().authenticated())

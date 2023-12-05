@@ -198,7 +198,7 @@
 
 							<!-- SIGN IN -->
 
-							<form class="collapse bs-validate show" novalidate method="get" action="#" th:action="${'/admin'}">
+							<form class="collapse bs-validate show">
 
 								<!-- title -->
 								<h2 class="text-primary mb-1">
@@ -266,10 +266,10 @@
 										
 
 									</div>
+							<a th:href="@{/login/admin}" class="btn btn-primary btn-soft btn-block">
+								Sign In
+							</a>
 
-									<button type="submit" class="btn btn-primary btn-soft btn-block">
-										Sign In
-									</button>
 									
 									
 									

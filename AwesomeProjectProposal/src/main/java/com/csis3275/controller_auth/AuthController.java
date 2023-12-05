@@ -39,7 +39,7 @@ public class AuthController {
 			return "redirect:/member/valida";
 		}
 		else if (State == 1) {
-			return "redirect:/admin/index";
+			return "redirect:/admin";
 		}
 		return "redirect:/";
 	}

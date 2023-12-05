@@ -47,13 +47,13 @@ public class WebSecurityConfig {
 				.requestMatchers(new AntPathRequestMatcher("/login/oauth2/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
 				.requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
-				.requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
+//				.requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
+//				.requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 				.requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll().anyRequest()
 				.authenticated())
 				.oauth2Login(login -> login.loginPage("/loginpage").userInfoEndpoint().userService(userService).and()
-						.defaultSuccessUrl("/login/done"))
+						.defaultSuccessUrl("/login/done").permitAll())
 				.logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
 		return http.build();

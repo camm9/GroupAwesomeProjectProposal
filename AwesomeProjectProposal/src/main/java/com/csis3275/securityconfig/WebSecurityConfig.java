@@ -53,9 +53,9 @@ public class WebSecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/login/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/oauth2/**")).permitAll()
 //                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).permitAll()
-//                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
-                        .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(new AntPathRequestMatcher("/member/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAuthority("ADMIN")
+//                        .requestMatchers(new AntPathRequestMatcher("/member/**")).hasAnyAuthority("ADMIN", "USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/oauth2/**")).permitAll()
                         .anyRequest().authenticated())
@@ -83,9 +83,10 @@ public class WebSecurityConfig {
     UserDetailsService userDetailsService() {
 		UserDetails user =
 			 User.withDefaultPasswordEncoder()
-				.username("admin@admin.com")
+				.username("admin")
 				.password("password")
 				.roles("ADMIN")
+				.authorities("ADMIN", "USER")
 				.build();
 		return new InMemoryUserDetailsManager(user);
 	}

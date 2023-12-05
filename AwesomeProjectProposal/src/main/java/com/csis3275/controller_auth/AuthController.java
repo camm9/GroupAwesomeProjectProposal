@@ -16,9 +16,9 @@ public class AuthController {
 	private UserService userService;
 	
 	@GetMapping("/login/oauth2/code/github")
-	public String deleteUser(@RequestParam("deleteUser") String id) {
+	public String login() {
 		// Delete the student
 		//userService.deleteUser(Long.parseLong(id));
-		return "redirect:/member";
+		return "redirect:/member/valida";
 	}
 }

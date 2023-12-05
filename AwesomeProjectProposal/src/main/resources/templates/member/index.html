@@ -247,18 +247,7 @@
 								</a>
 							</li>
 
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									<svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor" class="bi bi-arrow-up-right-square-fill"
-										viewBox="0 0 16 16">
-										<path
-											d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z">
-										</path>
-									</svg>
-									<span class="ml-2">Trends</span>
-								</a>
-							</li>
+							
 
 							<li class="nav-item">
 								<a class="nav-link" href="/member/matchdetails">
@@ -502,6 +491,7 @@
 
 													<button th:if="${not #lists.isEmpty(preferedDataSet)}"
 														th:id="btnsavedataset + ${match.id}"
+														th:name="btnsavedataset + ${match.id}"
 														class="btn btn-success btn-sm badge mb-3"
 														th:disabled="${#lists.contains(preferedDataSet, '' + match.id + '')}"
 														th:classappend="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'btn btn-warning btn-sm badge mb-3 disabled' : 'btn btn-success btn-sm badge mb-3'"
@@ -513,7 +503,7 @@
 															<path
 																d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7.793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z" />
 														</svg>
-														<span class="ml-2"
+														<span th:id="btnvalue + ${match.id}" th:name="btnvalue + ${match.id}"  class="ml-2"
 															th:text="${#lists.contains(preferedDataSet, '' + match.id + '')} ? 'Saved' : 'Save'"></span>
 													</button>
 

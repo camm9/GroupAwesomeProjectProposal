@@ -20,6 +20,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
@@ -48,11 +49,17 @@ public class APIService {
 	private String iso_date = "&iso_date=2023-10-01"; // user must choose this
 	private String federation = "&federation=UEFA"; // user must choose this
 	
-	private static final String rapidApiKey = "f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53";
+	configAPI apiConfig;
+	
+	private  String rapidApiKey = configAPI.getKey();
 	private static final String rapidApiHost = "football-prediction-api.p.rapidapi.com";
 
 	ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+	public void printAPIKey() {
+		System.out.println("This is printed from @Service APIService: " +rapidApiKey);
+	}
+	
 	public void getAllPredictionDataForDate() {
 		try {
 			HttpRequest request = HttpRequest.newBuilder().uri(URI.create(initialUrl + market + iso_date + federation))
@@ -138,7 +145,7 @@ public class APIService {
 	public void getFederationList() {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("https://football-prediction-api.p.rapidapi.com/api/v2/list-federations"))
-				.header("X-RapidAPI-Key", "f3f0a7542fmsh81ac85922b3edc9p174165jsn99009b470c53")
+				.header("X-RapidAPI-Key", rapidApiKey)
 				.header("X-RapidAPI-Host", "football-prediction-api.p.rapidapi.com")
 				.method("GET", HttpRequest.BodyPublishers.noBody()).build();
 		HttpResponse<String> response = null;

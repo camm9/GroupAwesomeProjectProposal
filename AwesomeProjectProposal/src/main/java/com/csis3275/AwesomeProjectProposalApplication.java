@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,15 +24,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class AwesomeProjectProposalApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(AwesomeProjectProposalApplication.class);
-
+	static APIService apiService;
+	
+	
+	static configAPI config;
 	
 	public static void main(String[] args) {
 		log.info("In main method");
 
 		SpringApplication.run(AwesomeProjectProposalApplication.class, args);
 		try {
-
-
+			apiService.printAPIKey();
+			System.out.println("This is printed by call config in Main: " + config.getKey());
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
